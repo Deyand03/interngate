@@ -36,7 +36,10 @@
           <a class="btn btn-info">Register</a>
         </div>
       </div>
-    @yield('content')
+
+      <div class="">
+        @yield('content')
+      </div>
     <script src="resources/js/main.js"></script>
 </body>
 </html>
