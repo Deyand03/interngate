@@ -2,45 +2,34 @@
 
 @section('title', 'Beranda')
 @section('content')
-<div class="bg-[#2196f3] text-white py-16">
-    <div class="container mx-auto flex flex-col-reverse lg:flex-row items-center justify-between px-4">
-        {{-- Kiri: Teks --}}
-        <div class="lg:w-1/2">
-            <h1 class="text-3xl md:text-4xl font-bold leading-snug mb-4">
-                Optimasi Skill dan Kompetensi,<br>
-                Lebih Siap Kerja dan Wirausaha
-            </h1>
-            <p class="mb-6 text-white text-lg">
-                GAMELAB menghadirkan platform lengkap untuk meningkatkan kompetensi lulusan
-                yang siap kerja dan siap wirausaha melalui program pelatihan berbasis proyek (PBL),
-                magang <em>online</em> bersertifikat, dan sertifikasi industri.
-            </p>
-            <div class="flex flex-wrap gap-4">
-                <a href="#" class="btn bg-yellow-400 hover:bg-yellow-500 text-black font-bold">Daftar GRATIS Sekarang</a>
-                <a href="#" class="btn bg-sky-200 hover:bg-sky-300 text-black">Menjadi Mitra</a>
-            </div>
-        </div>
-
-        {{-- Kanan: Gambar dan badge --}}
-        <div class="lg:w-1/2 relative mb-12 lg:mb-0">
-            <div class="relative w-full max-w-sm mx-auto">
-                <img src="{{ asset('images/gamelab-foto.png') }}" alt="Gamelab Person" class="w-full rounded-lg" />
-                
-                {{-- Badge 1: 4.8/5 --}}
-                <div class="absolute top-6 left-[-20px] bg-white px-3 py-1 rounded shadow flex items-center gap-2">
-                    <span class="text-yellow-500 text-xl">⭐</span>
-                    <span class="text-sm font-semibold text-gray-800">4.8/5<br><span class="text-xs">Tingkat Kepuasan</span></span>
-                </div>
-
-                {{-- Badge 2: 100+ Kursus --}}
-                <div class="absolute top-16 right-[-40px] bg-white px-3 py-1 rounded shadow flex items-center gap-2">
-                    <span class="text-yellow-600">🎓</span>
-                    <span class="text-sm font-semibold text-gray-800">100+<br><span class="text-xs">Kursus Pilihan</span></span>
-                </div>
-            </div>
-        </div>
+<div class="text-white py-16" style="background-color: #C43670;">
+  <div class="container mx-auto flex flex-col-reverse lg:flex-row items-center justify-between px-8">
+    <div class="lg:w-1/2">
+      <h1 class="text-4xl font-bold leading-snug mb-4">
+        Siap Magang, Siap Kerja<br> Bersama InternGate
+      </h1>
+      <p class="mb-6 text-lg">
+        InternGate adalah platform pendaftaran magang Universitas Jambi untuk menghubungkan mahasiswa dengan mitra industri IT terbaik di Indonesia.
+      </p>
+      <div class="flex gap-4">
+        <a href="#" class="btn btn-warning text-black">Daftar Sekarang</a>
+        <a href="#" class="btn btn-outline btn-accent">Gabung Mitra</a>
+      </div>
     </div>
+    <div class="lg:w-1/2 relative mb-12 lg:mb-0">
+      <div class="relative w-full max-w-sm mx-auto">
+        <img src="{{ asset('images/intergate-hero.png') }}" class="w-full rounded-lg shadow-xl" />
+        <div class="absolute top-6 left-[-20px] badge badge-lg bg-white text-gray-800 shadow-md">
+          ⭐ 4.9/5<br><span class="text-xs">Kepuasan Mitra</span>
+        </div>
+        <div class="absolute top-16 right-[-40px] badge badge-lg bg-white text-gray-800 shadow-md">
+          🎓 150+ Program<br><span class="text-xs">Dari Mitra IT</span>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>
+
 
 {{-- Gamelab Academy Section --}}
 <section class="bg-gray-100 py-16">
@@ -106,78 +95,47 @@
 
 {{-- Mitra GAMELAB --}}
 <section class="bg-gray-100 py-16">
-    <div class="container mx-auto px-4">
-        <h2 class="text-3xl font-bold text-center mb-10">Mitra <span class="text-blue-600">GAMELAB</span> by Educa</h2>
+    <div class="container mx-auto px-8">
+        <h2 class="text-3xl font-bold text-center mb-10">Mitra <span class="text-blue-600">InterGate</span></h2>
 
-        <div class="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-6">
-            {{-- Kolom Judul Kategori --}}
-            <div class="bg-white shadow rounded-lg p-6 text-blue-600 font-semibold text-center">
-                <p class="text-2xl">500+</p>
-                <p>SMA/K Binaan</p>
+        @foreach ([
+          'Mitra Industri' => ['50+', ['educa.png', 'qasir.png', 'cicil.png', 'komerce.png', 'cloudhost.png', 'zahir.png', 'suitmedia.png']],
+        ] as $kategori => [$jumlah, $logos])
+        <div class="mb-10">
+            <div class="text-center mb-4">
+              <p class="text-2xl font-semibold text-blue-600">{{ $jumlah }}</p>
+              <p class="font-medium">{{ $kategori }}</p>
             </div>
-
-            {{-- Logo Sekolah --}}
-            @foreach ([
-                'smk-wahid.png', 'smk-2-demak.png', 'smk-gema.png', 'smk-sidoarjo.png',
-                'smk-mutiara.png', 'smk-alishlah.png', 'smk-cilacap.png'
-            ] as $img)
-                <div class="bg-white shadow rounded-lg p-3 flex justify-center items-center">
-                    <img src="{{ asset('images/mitra/' . $img) }}" alt="Logo Sekolah" class="max-h-16">
+            <div class="overflow-hidden relative w-full">
+                <div class="flex animate-scroll whitespace-nowrap gap-6">
+                    @foreach ($logos as $img)
+                    <div class="flex-shrink-0 bg-white p-3 shadow rounded flex justify-center items-center h-24 w-40">
+                        <img src="{{ asset('images/mitra/' . $img) }}" alt="Logo" class="max-h-16 mx-auto">
+                    </div>
+                    @endforeach
+                        
+                    {{-- Duplikat untuk efek looping --}}
+                    @foreach ($logos as $img)
+                    <div class="flex-shrink-0 bg-white p-3 shadow rounded flex justify-center items-center h-24 w-40">
+                        <img src="{{ asset('images/mitra/' . $img) }}" alt="Logo" class="max-h-16 mx-auto">
+                    </div>
+                    @endforeach
                 </div>
-            @endforeach
-
-            {{-- Tambahan Card --}}
-            <div class="bg-white shadow rounded-lg p-6 flex flex-col justify-center items-center">
-                <img src="{{ asset('images/mitra/lainnya.png') }}" alt="lainnya" class="w-10 mb-2">
-                <p class="text-center text-sm">dan ratusan sekolah lainnya</p>
-            </div>
-
-            {{-- Judul Mitra Kampus --}}
-            <div class="bg-white shadow rounded-lg p-6 text-blue-600 font-semibold text-center">
-                <p class="text-2xl">30+</p>
-                <p>Mitra Kampus</p>
-            </div>
-
-            {{-- Logo Kampus --}}
-            @foreach ([
-                'undip.png', 'polines.png', 'amikom.png', 'udinus.png',
-                'isi.png', 'mercu.png', 'polije.png'
-            ] as $img)
-                <div class="bg-white shadow rounded-lg p-3 flex justify-center items-center">
-                    <img src="{{ asset('images/mitra/' . $img) }}" alt="Logo Kampus" class="max-h-16">
-                </div>
-            @endforeach
-
-            {{-- Tambahan Kampus --}}
-            <div class="bg-white shadow rounded-lg p-6 flex flex-col justify-center items-center">
-                <img src="{{ asset('images/mitra/lainnya.png') }}" alt="lainnya" class="w-10 mb-2">
-                <p class="text-center text-sm">dan ratusan kampus lainnya</p>
-            </div>
-
-            {{-- Judul Mitra Industri --}}
-            <div class="bg-white shadow rounded-lg p-6 text-blue-600 font-semibold text-center">
-                <p class="text-2xl">50+</p>
-                <p>Mitra Industri</p>
-            </div>
-
-            {{-- Logo Industri --}}
-            @foreach ([
-                'educa.png', 'qasir.png', 'cicil.png', 'komerce.png',
-                'cloudhost.png', 'zahir.png', 'suitmedia.png'
-            ] as $img)
-                <div class="bg-white shadow rounded-lg p-3 flex justify-center items-center">
-                    <img src="{{ asset('images/mitra/' . $img) }}" alt="Logo Industri" class="max-h-16">
-                </div>
-            @endforeach
-
-            {{-- Tambahan Industri --}}
-            <div class="bg-white shadow rounded-lg p-6 flex flex-col justify-center items-center">
-                <img src="{{ asset('images/mitra/lainnya.png') }}" alt="lainnya" class="w-10 mb-2">
-                <p class="text-center text-sm">dan puluhan industri lainnya</p>
             </div>
         </div>
+        @endforeach
     </div>
 </section>
 
+<style>
+@keyframes scroll {
+  0%   { transform: translateX(0%); }
+  100% { transform: translateX(-50%); }
+}
+
+.animate-scroll {
+  animation: scroll 15s linear infinite;
+}
+</style>
 {{-- Bagian berikutnya seperti "Ekosistem Gamelab" bisa ditambahkan di bawah sini --}}
 @endsection
