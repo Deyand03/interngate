@@ -37,11 +37,6 @@
                     <span class="text-yellow-600">🎓</span>
                     <span class="text-sm font-semibold text-gray-800">100+<br><span class="text-xs">Kursus Pilihan</span></span>
                 </div>
-
-                {{-- Badge 3: Gear Icon --}}
-                <div class="absolute bottom-[-20px] left-1/2 transform -translate-x-1/2 bg-white p-2 rounded-full shadow">
-                    <span class="text-blue-600 text-lg">⚙️</span>
-                </div>
             </div>
         </div>
     </div>
@@ -49,7 +44,7 @@
 
 {{-- Gamelab Academy Section --}}
 <section class="bg-gray-100 py-16">
-    <div class="container mx-auto px-4">
+    <div class="container mx-auto px-8">
         <h2 class="text-3xl font-bold text-center mb-10">Gamelab Academy</h2>
 
         {{-- Carousel --}}
@@ -58,7 +53,7 @@
                 <div id="carousel-track" class="flex transition-transform duration-500 ease-in-out space-x-6">
                     {{-- Card 1 --}}
                     <div class="bg-white p-6 rounded-lg shadow w-60 flex-shrink-0 text-center">
-                        <img src="{{ asset('images/game-dev.png') }}" alt="Game Development" class="w-20 mx-auto mb-4">
+                        <img src="https://www.gamelab.id/img/home/icon_academy/Icon_Academy_Broadcasting.png?v=1.0" alt="Game Development" class="w-20 mx-auto mb-4">
                         <h3 class="font-semibold text-lg">Game Development</h3>
                     </div>
 
