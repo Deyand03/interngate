@@ -36,7 +36,7 @@
             <a class="btn btn-ghost text-xl">InternGate</a>
         </div>
         <div class="navbar-center hidden lg:flex">
-            <ul class="menu menu-horizontal px-1 text-lg">
+            <ul class="menu menu-horizontal px-1 text-base">
                 <li><a>Beranda</a></li>
                 <li><a>Lowongan</a></li>
                 <li><a>Perusahaan</a></li>
@@ -44,8 +44,8 @@
             </ul>
         </div>
         <div class="navbar-end gap-3">
-            <a class="btn btn-primary rounded-3xl p-5">Masuk</a>
-            <a class="btn btn-neutral rounded-3xl p-5">Register</a>
+            <a class="btn btn-warning p-5">Masuk</a>
+            <a class="btn btn-neutral p-5">Register</a>
         </div>
     </div>
     @yield('content')

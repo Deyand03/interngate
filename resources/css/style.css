@@ -1,5 +1,12 @@
 :root {
-    --bg-primary: ;
-    --bg-secondary: ;
+    --bg-primary: #134B70;
+    --bg-secondary: #508C9B;
+}
+
+.bg-header{
+    background: linear-gradient(90deg, var(--bg-primary), var(--bg-secondary));
+}
+.bg-header-2{
+    background: linear-gradient(90deg, #0e4162, #12517c);
 }
 
