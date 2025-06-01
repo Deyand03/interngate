@@ -2,7 +2,7 @@
 
 @section('title', 'Beranda')
 @section('content')
-<div class="text-white py-16" style="background-color: #C43670;">
+<div class="text-white py-16" style="background-color: #578FCA;">
   <div class="container mx-auto flex flex-col-reverse lg:flex-row items-center justify-between px-40">
     <div class="lg:w-1/2">
       <h1 class="text-4xl font-bold leading-snug mb-4">
@@ -13,7 +13,7 @@
       </p>
       <div class="flex gap-4">
         <a href="#" class="btn btn-warning text-black">Daftar Sekarang</a>
-        <a href="#" class="btn btn-outline btn-accent">Gabung Mitra</a>
+        
       </div>
     </div>
     <div class="lg:w-1/2 relative mb-12 lg:mb-0">
@@ -93,8 +93,15 @@
     </div>
 </section>
 
+<div class="w-full overflow-hidden leading-none">
+  <svg viewBox="0 0 1440 100" xmlns="http://www.w3.org/2000/svg">
+    <path fill="#f3f4f6" d="M0,64L60,74.7C120,85,240,107,360,112C480,117,600,107,720,96C840,85,960,75,1080,85.3C1200,96,1320,128,1380,144L1440,160V0H1380C1320,0,1200,0,1080,0C960,0,840,0,720,0C600,0,480,0,360,0C240,0,120,0,60,0H0Z" />
+  </svg>
+</div>
+
+
 {{-- Mitra GAMELAB --}}
-<section class="bg-gray-100 py-16">
+<section class="bg-gray-100 ">
     <div class="container mx-auto px-40">
         <h2 class="text-3xl font-bold text-center mb-10">Mitra <span class="text-blue-600">InterGate</span></h2>
 
