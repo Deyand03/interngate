@@ -1,4 +1,4 @@
-<div class="flex flex-1 gap-16 items-center justify-center mt-10">
+<div class="flex flex-1 items-center justify-evenly">
     <div class="flex gap-2">
         <div class="flex items-center justify-center bg-gray-300/50 w-[50px] h-[50px] rounded">
             <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-suitcase-lg-fill" viewBox="0 0 16 16">
@@ -7,7 +7,7 @@
         </div>
         {{-- Data Lowongan --}}
         <div class="flex flex-col justify-center">
-            <p class="text-base">testing</p>
+            <p class="text-base">?? Lowongan</p>
             <p class="text-white/75 text-sm">Jumlah lowongan yang tersedia</p>
         </div>
     </div>
@@ -19,7 +19,7 @@
         </div>
         {{-- Data Perusahaan --}}
         <div class="flex flex-col justify-center">
-            <p class="text-base">testing</p>
+            <p class="text-base">?? Perusahaan</p>
             <p class="text-white/75 text-sm">Jumlah perusahaan yang tersedia</p>
         </div>
     </div>
@@ -31,7 +31,7 @@
         </div>
         {{-- Data Pelamar --}}
         <div class="flex flex-col justify-center">
-            <p class="text-base">testing</p>
+            <p class="text-base">?? Peserta</p>
             <p class="text-white/75 text-sm">Jumlah peserta magang</p>
         </div>
     </div>

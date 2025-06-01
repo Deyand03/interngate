@@ -1,12 +1,22 @@
 :root {
-    --bg-primary: #134B70;
-    --bg-secondary: #508C9B;
+    --bg-primary: #19A7CE;
+    --bg-secondary: #1099d4;
+    --btn-color: #146C94;
 }
 
 .bg-header{
     background: linear-gradient(90deg, var(--bg-primary), var(--bg-secondary));
 }
 .bg-header-2{
-    background: linear-gradient(90deg, #0e4162, #12517c);
+    background: linear-gradient(90deg, #146C94, #187dab);
 }
-
+.nav-title{
+    transition: all 0.2s ease-in-out;
+}
+.nav-title:hover{
+    text-shadow: 0px 0px 10px rgba(25,167,206,0.6);
+}
+.navbar-custom{
+    background: rgba(255, 255, 255,0.8);
+    backdrop-filter: blur(2px);
+}

@@ -6,7 +6,7 @@ use Closure;
 use Illuminate\Contracts\View\View;
 use Illuminate\View\Component;
 
-class header-lowongan extends Component
+class DataHeader extends Component
 {
     /**
      * Create a new component instance.
@@ -21,6 +21,6 @@ class header-lowongan extends Component
      */
     public function render(): View|Closure|string
     {
-        return view('components.header-lowongan');
+        return view('components.data-header');
     }
 }
