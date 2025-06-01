@@ -38,15 +38,15 @@
         </div>
         <div class="navbar-center hidden lg:flex">
             <ul class="menu menu-horizontal px-1 text-base font-medium">
-                <li><a>Beranda</a></li>
-                <li><a>Lowongan</a></li>
-                <li><a>Perusahaan</a></li>
-                <li><a>Panduan</a></li>
+                <li><a href="">Beranda</a></li>
+                <li><a href="">Lowongan</a></li>
+                <li><a href="">Perusahaan</a></li>
+                <li><a href="">Panduan</a></li>
             </ul>
         </div>
         <div class="navbar-end gap-3">
-            <a class="btn btn-warning px-5">Masuk</a>
-            <a class="btn btn-ghost bg-[var(--btn-color)] text-[#e7f7ff] p-0 px-5">Register</a>
+            <a href="{{ route('login') }}" class="btn btn-warning px-5">Masuk</a>
+            <a href="{{ route('register') }}" class="btn btn-ghost bg-[var(--btn-color)] text-[#e7f7ff] p-0 px-5">Register</a>
         </div>
     </div>
     <div class="pt-[68px]">
