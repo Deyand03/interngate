@@ -18,7 +18,7 @@
         {{-- Foreach untuk list perusahaan --}}
         {{-- Limit list perusahaan menjadi 5 untuk digunakan ke pagination --}}
         <div class="flex flex-col gap-5 w-8/12 h-fit">
-            <div class="flex gap-5 bg-gray-500/10 shadow-lg rounded-lg p-8">
+            <div class="flex gap-5 shadow-lg rounded-lg p-8">
                 <img src="https://placehold.co/307x307" class="rounded-lg" alt="">
                 <div class="flex flex-col justify-between w-full">
                     <h3 class="font-semibold text-3xl">Title</h3>
@@ -35,7 +35,7 @@
                     <a href="#" class="btn btn-warning">Lihat Selengkapnya</a>
                 </div>
             </div>
-            <div class="flex gap-5 bg-gray-500/10 shadow-lg rounded-lg p-8">
+            <div class="flex gap-5 shadow-lg rounded-lg p-8">
                 <img src="https://placehold.co/307x307" class="rounded-lg" alt="">
                 <div class="flex flex-col justify-between w-full">
                     <h3 class="font-semibold text-3xl">Title</h3>
@@ -52,7 +52,7 @@
                     <a href="#" class="btn btn-warning">Lihat Selengkapnya</a>
                 </div>
             </div>
-            <div class="flex gap-5 bg-gray-500/10 shadow-lg rounded-lg p-8">
+            <div class="flex gap-5 shadow-lg rounded-lg p-8">
                 <img src="https://placehold.co/307x307" class="rounded-lg" alt="">
                 <div class="flex flex-col justify-between w-full">
                     <h3 class="font-semibold text-3xl">Title</h3>
@@ -75,7 +75,7 @@
         {{-- Filter --}}
 
         <div class="w-4/12 sticky top-24">
-            <div class="bg-gray-500/10 shadow-lg rounded-lg p-8">
+            <div class="shadow-lg rounded-lg p-8">
                 <fieldset class="fieldset">
                     <legend class="fieldset-legend"><span class="text-2xl">Filter</span></legend>
                     <form action="" method="get">
