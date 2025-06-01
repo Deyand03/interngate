@@ -3,7 +3,7 @@
 @section('title', 'Beranda')
 @section('content')
 <div class="text-white py-16" style="background-color: #C43670;">
-  <div class="container mx-auto flex flex-col-reverse lg:flex-row items-center justify-between px-8">
+  <div class="container mx-auto flex flex-col-reverse lg:flex-row items-center justify-between px-40">
     <div class="lg:w-1/2">
       <h1 class="text-4xl font-bold leading-snug mb-4">
         Siap Magang, Siap Kerja<br> Bersama InternGate
@@ -33,8 +33,8 @@
 
 {{-- Gamelab Academy Section --}}
 <section class="bg-gray-100 py-16">
-    <div class="container mx-auto px-8">
-        <h2 class="text-3xl font-bold text-center mb-10">Gamelab Academy</h2>
+    <div class="container mx-auto px-40">
+        <h2 class="text-3xl font-bold text-center mb-10">InternGate</h2>
 
         {{-- Carousel --}}
         <div class="relative">
@@ -95,7 +95,7 @@
 
 {{-- Mitra GAMELAB --}}
 <section class="bg-gray-100 py-16">
-    <div class="container mx-auto px-8">
+    <div class="container mx-auto px-40">
         <h2 class="text-3xl font-bold text-center mb-10">Mitra <span class="text-blue-600">InterGate</span></h2>
 
         @foreach ([
@@ -137,5 +137,5 @@
   animation: scroll 15s linear infinite;
 }
 </style>
-{{-- Bagian berikutnya seperti "Ekosistem Gamelab" bisa ditambahkan di bawah sini --}}
+
 @endsection
