@@ -34,7 +34,9 @@
                     <li><a href="" class="text-lg p-2">Panduan</a></li>
                 </ul>
             </div>
-            <a class="font-semibold gap-0 text-xl nav-title px-3 rounded-md" href="#"><span>Intern</span><span class="text-[var(--bg-primary)]">Gate</span></a>
+            <a class="flex items-center font-semibold gap-0 text-xl nav-title px-3 rounded-md" href="#"><img
+                    class="mr-1" src="{{ asset('img/title-icon.png') }}" width="40px"
+                    alt=""><span>Intern</span><span class="text-[var(--bg-primary)]">Gate</span></a>
         </div>
         <div class="navbar-center hidden lg:flex">
             <ul class="menu menu-horizontal px-1 text-base font-medium">
@@ -46,7 +48,8 @@
         </div>
         <div class="navbar-end gap-3">
             <a href="{{ route('login') }}" class="btn btn-warning px-5">Masuk</a>
-            <a href="{{ route('register') }}" class="btn btn-ghost bg-[var(--btn-color)] text-[#e7f7ff] p-0 px-5">Register</a>
+            <a href="{{ route('register') }}"
+                class="btn btn-ghost bg-[var(--btn-color)] text-[#e7f7ff] p-0 px-5">Register</a>
         </div>
     </div>
     <div class="pt-[68px]">

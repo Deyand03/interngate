@@ -1,17 +1,7 @@
-<div class="flex flex-col mt-20 px-40">
-    <div class="flex w-fit p-2 pr-4 bg-[var(--bg-secondary)] items-center rounded-lg text-white shadow-lg">
-        <div>
-            <svg width="35" height="35" viewBox="0 0 35 35" fill="currentColor"
-                xmlns="http://www.w3.org/2000/svg">
-                <path
-                    d="M19.3273 8.721L17.5 19.6877L15.6727 8.721C15.6289 8.45583 15.6433 8.18429 15.7149 7.92524C15.7866 7.6662 15.9138 7.42585 16.0876 7.22089C16.2615 7.01593 16.4779 6.85126 16.7218 6.73833C16.9657 6.62539 17.2312 6.56689 17.5 6.56689C17.7688 6.56689 18.0343 6.62539 18.2782 6.73833C18.5221 6.85126 18.7385 7.01593 18.9124 7.22089C19.0862 7.42585 19.2134 7.6662 19.2851 7.92524C19.3567 8.18429 19.3711 8.45583 19.3273 8.721Z"
-                    stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" />
-                <path
-                    d="M17.5 29.1667C18.3054 29.1667 18.9583 28.5137 18.9583 27.7083C18.9583 26.9029 18.3054 26.25 17.5 26.25C16.6946 26.25 16.0417 26.9029 16.0417 27.7083C16.0417 28.5137 16.6946 29.1667 17.5 29.1667Z"
-                    stroke="currentColor" stroke-width="2" />
-            </svg>
-        </div>
-        <span class="font-semibold">Tersedia ?? Perusahaan</span>
+<div class="flex flex-col pt-20 px-40">
+    <div class="flex flex-col items-center justify-center">
+        <span class="font-bold text-3xl mb-3">Pilihan Lowongan Magang</span>
+        <div class="line"></div>
     </div>
 
     <div class="flex my-8 gap-5 items-start">
