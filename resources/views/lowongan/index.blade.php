@@ -4,23 +4,25 @@
 @section('content')
     <div class="">
         {{-- Page Hero Lowongan --}}
-        <div class="flex flex-col bg-header text-white h-fit py-16 px-20 gap-16">
-            <div class="flex justify-evenly">
-                <div class="flex flex-col justify-between">
-                    <h1 class="text-[2.5rem] font-semibold">Temukan Tempat Magang <br> Favorit Mu Disini!</h1>
-                    <h2 class="text-lg font-medium">
-                        InternGate hadir untuk mahasiswa dan fresh graduate <br>
-                        yang ingin dapat pengalaman nyata di dunia kerja.<br>
-                        Yuk, mulai petualanganmu!</h2>
-                    <a href="#list-perusahaan" class="btn btn-warning w-fit mt-2"><span class="font-semibold">Jelajahi Program
-                            Sekarang</span></a>
+        <div class="flex justify-center bg-header text-white h-fit py-16 px-20 gap-16">
+            <div class="flex flex-col w-[70rem]">
+                <div class="flex justify-between">
+                    <div class="flex flex-col justify-between">
+                        <h1 class="text-[2.5rem] font-semibold">Temukan Tempat Magang <br> Favorit Mu Disini!</h1>
+                        <h2 class="text-lg font-medium">
+                            InternGate hadir untuk mahasiswa dan fresh graduate <br>
+                            yang ingin dapat pengalaman nyata di dunia kerja.<br>
+                            Yuk, mulai petualanganmu!</h2>
+                        <a href="#list-perusahaan" class="btn btn-warning w-fit mt-2"><span class="font-semibold">Jelajahi Program
+                                Sekarang</span></a>
+                    </div>
+                    <div>
+                        <img src="{{ asset('img/hero-image-lowongan.png') }}" alt="" class="w-80">
+                    </div>
                 </div>
-                <div>
-                    <img src="{{ asset('img/hero-image-lowongan.png') }}" alt="" class="w-80">
+                <div class="">
+                    <x-data-header></x-data-header>
                 </div>
-            </div>
-            <div>
-                <x-data-header></x-data-header>
             </div>
         </div>
 
