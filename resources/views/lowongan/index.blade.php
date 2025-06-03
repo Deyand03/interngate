@@ -2,9 +2,9 @@
 @section('title', 'Lowongan')
 
 @section('content')
-    <div class="h-[800vh]">
+    <div class="">
         {{-- Page Hero Lowongan --}}
-        <div class="flex flex-col bg-header text-white h-fit py-16 px-40 gap-16">
+        <div class="flex flex-col bg-header text-white h-fit py-16 px-20 gap-16">
             <div class="flex justify-evenly">
                 <div class="flex flex-col justify-between">
                     <h1 class="text-[2.5rem] font-semibold">Temukan Tempat Magang <br> Favorit Mu Disini!</h1>
@@ -80,10 +80,11 @@
         </div>
 
         {{-- List 3 Header --}}
-        <div class="flex bg-gray-100 h-fit justify-evenly py-10">
+        <div class="flex dark:bg-gray-100 bg-gray-800 h-fit justify-evenly pt-20 pb-5">
             <div class="flex flex-col justify-between">
                 <div class="card-head-1 flex gap-2 bg-white shadow-xl p-3.5 rounded items-center">
-                    <div class="flex bg-blue-300/80 rounded-full aspect-square w-16 items-center justify-center text-white font-semibold">
+                    <div
+                        class="flex bg-blue-300/80 rounded-full aspect-square w-16 items-center justify-center text-white font-semibold">
                         <span class="text-blue-500 text-2xl">01</span>
                     </div>
                     <div class="font-semibold text-base">
@@ -91,31 +92,41 @@
                     </div>
                 </div>
                 <div class="card-head-2 flex gap-2 bg-white shadow-xl p-3.5 rounded items-center -ml-10 mr-10">
-                    <div class="flex bg-blue-300/80 rounded-full aspect-square w-16 items-center justify-center text-white font-semibold">
+                    <div
+                        class="flex bg-blue-300/80 rounded-full aspect-square w-16 items-center justify-center text-white font-semibold">
                         <span class="text-blue-500 text-2xl">02</span>
                     </div>
                     <div class="font-semibold text-base">
                         Pengen pengalaman magang yang <br> beneran ngasah skill?
                     </div>
                 </div>
-                <div class="card-head-3 flex gap-2 bg-white shadow-xl p-3.5 rounded items-center ">
-                    <div class="flex bg-blue-300/80 rounded-full aspect-square w-16 items-center justify-center text-white font-semibold">
+                <div class="card-head-3 flex gap-2 bg-white shadow-lg p-3.5 rounded items-center ">
+                    <div
+                        class="flex bg-blue-300/80 rounded-full aspect-square w-16 items-center justify-center text-white font-semibold">
                         <span class="text-blue-500 text-2xl">03</span>
                     </div>
                     <div class="font-semibold text-base">
                         Yuk mulai magang fleksibel dan <br> berkualitas bareng kami
                     </div>
                 </div>
-
             </div>
             <div>
                 <img src="{{ asset('img/list3-header.png') }}" alt="">
             </div>
         </div>
-
+        <div>
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320">
+                <path fill="#F3F4F6" fill-opacity="1"
+                    d="M0,224L34.3,202.7C68.6,181,137,139,206,133.3C274.3,128,343,160,411,186.7C480,213,549,235,617,218.7C685.7,203,754,149,823,149.3C891.4,149,960,203,1029,218.7C1097.1,235,1166,213,1234,218.7C1302.9,224,1371,256,1406,272L1440,288L1440,0L1405.7,0C1371.4,0,1303,0,1234,0C1165.7,0,1097,0,1029,0C960,0,891,0,823,0C754.3,0,686,0,617,0C548.6,0,480,0,411,0C342.9,0,274,0,206,0C137.1,0,69,0,34,0L0,0Z">
+                </path>
+            </svg>
+        </div>
         {{-- List Perusahaan --}}
         <div id="list-perusahaan">
             <x-list-perusahaan></x-list-perusahaan>
         </div>
+
+        {{-- Pagination --}}
+
     </div>
 @endsection
