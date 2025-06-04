@@ -10,7 +10,7 @@
 </head>
 
 <body>
-    <div class="flex justify-between w-full border border-pink-500 h-screen p-10">
+    <div class="flex justify-between w-full border h-screen p-10">
         {{-- Form Login --}}
         <div class="flex flex-col justify-between w-1/3 py-10">
             <div>
