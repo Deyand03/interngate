@@ -10,42 +10,40 @@
 </head>
 
 <body>
-    <div class="flex justify-between w-full p-10 h-screen">
+    <div class="flex justify-between w-full px-20 py-10 h-screen">
         {{-- Gambar --}}
-        <div class="flex rounded-xl shadow-2xl w-3/5 h-full">
-            <div class="relative overflow-hidden">
-                <img src="{{ asset('img/login-image.jpg') }}" alt=""
+        <div class="flex rounded-xl w-3/5 h-full">
+            <div class="relative overflow-hidden flex items-center justify-center w-full h-full">
+                <img src="{{ asset('img/register-image.jpg') }}" alt=""
                     class="rounded-xl h-full w-full object-cover">
-                <div class="absolute top-5 left-5 w-full h-full">
-                    <a href=""
-                        class="inline-flex rounded px-2 py-1 bg-blue-400/50 hover:bg-blue-400/80 transition-all">
-                        <div class="font-semibold text-base text-white flex items-center gap-1">
-                            <img src="{{ asset('img/title-icon.png') }}" alt=""
-                                class="w-[2rem] opacity-60 hover:opacity-80">
-                            <span class="font-semibold text-base text-white/60 hover:text-white/90">Inter<span
-                                    class="text-blue-400">Gate</span></span>
-                        </div>
-                    </a>
-                </div>
             </div>
         </div>
 
         {{-- Form Register --}}
-        <div class="flex flex-col justify-between w-[38%] rounded-xl overflow-y-auto px-3">
+        <div class="flex flex-col justify-between w-[38%] rounded-xl">
             {{-- Header --}}
             <div class="flex flex-col justify-between">
                 <div class="flex flex-col items-center gap-3">
                     <h1 class="text-4xl font-semibold">Buat Akun</h1>
                     <h3 class="text-base font-medium">Sudah Punya Akun?
-                        <a href="{{ route('login') }}" class="text-blue-500 transition-all hover:underline hover:decoartion-blue-700">Log in</a>
+                        <a href="{{ route('login') }}"
+                            class="text-blue-500 transition-all hover:underline hover:decoartion-blue-700">Log in</a>
                     </h3>
                 </div>
             </div>
 
             {{-- Form Input --}}
-            <div class="flex flex-col">
-                <form action="{{ route('register') }}" method="POST">
+            <div class="flex flex-col overflow-y-auto transition-all px-2">
+                <form action="{{ route('register') }}" method="POST" class="flex flex-col gap-3">
                     @csrf
+                    <div>
+                        <label for="name" class="font-medium">Nama: </label>
+                        <input type="text"
+                            class="input w-full input-ghost focus:ring-blue-500 ring-blue-500 ring-1 shadow-md"
+                            id="name" name="name" placeholder="Masukan Nama" value="{{ old('name') }}"
+                            autocomplete="name" required />
+                        <x-input-error :messages="$errors->get('name')" class="mt-2" />
+                    </div>
                     <div>
                         <label for="email" class="font-medium">Email: </label>
                         <input type="email"
@@ -54,12 +52,41 @@
                             autocomplete="username" required />
                         <x-input-error :messages="$errors->get('email')" class="mt-2" />
                     </div>
+                    <div>
+                        <label for="password" class="font-medium">Password: </label>
+                        <input type="password"
+                            class="input w-full input-ghost focus:ring-blue-500 ring-blue-500 ring-1 shadow-md"
+                            id="password" name="password" placeholder="Masukan password"
+                            autocomplete="current-password" required />
+                        <x-input-error :messages="$errors->get('email')" class="mt-2" />
+                    </div>
+                    <div>
+                        <label for="role" class="flex flex-col"><span class="font-medium">Role:</span>
+                            <div>
+                                <input type="radio" name="role" id="mahasiswa" class="radio radio-sm radio-info"
+                                    value="mahasiswa" /> <span class="me-1">Mahasiswa</span>
+                                <input type="radio" name="role" id="mitra" class="radio radio-sm radio-info"
+                                    value="mitra" />
+                                Mitra
+                            </div>
+                        </label>
+                    </div>
+
+                    {{-- Form Mitra --}}
+                    <div class="hidden opacity-0 form-regis" id="form-mitra">
+                        mitra
+                    </div>
+
+                    {{-- Form Mahasiswa --}}
+                    <div class="hidden opacity-0 form-regis" id="form-mahasiswa">
+                        mahasiswa
+                    </div>
                 </form>
             </div>
 
             {{-- Footer --}}
             <div>
-                
+
             </div>
         </div>
     </div>

@@ -7,10 +7,11 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Login</title>
     @vite(['resources/css/app.css', 'resources/css/style.css', 'resources/js/main.js'])
+    <link rel="shortcut icon" href="{{ asset('img/title-icon.png') }}" type="image/x-icon">
 </head>
 
 <body>
-    <div class="flex justify-between w-full border h-screen p-10">
+    <div class="flex justify-between w-full border h-screen px-20 py-10">
         {{-- Form Login --}}
         <div class="flex flex-col justify-between w-1/3 py-10">
             <div>
@@ -82,21 +83,10 @@
             </div>
         </div>
         {{-- Gambar Kanan --}}
-        <div class="flex rounded-xl shadow-2xl w-3/5 h-full">
-            <div class="relative overflow-hidden">
+        <div class="flex justify-center items-center rounded-xl w-3/5 overflow-hidden">
+            <div class="flex justify-center items-center">
                 <img src="{{ asset('img/login-image.jpg') }}" alt=""
-                    class="rounded-xl h-full w-full object-cover">
-                <div class="absolute top-5 left-5 w-full h-full">
-                    <a href=""
-                        class="inline-flex rounded px-2 py-1 bg-blue-400/50 hover:bg-blue-400/80 transition-all">
-                        <div class="font-semibold text-base text-white flex items-center gap-1">
-                            <img src="{{ asset('img/title-icon.png') }}" alt=""
-                                class="w-[2rem] opacity-60 hover:opacity-80">
-                            <span class="font-semibold text-base text-white/60 hover:text-white/90">Inter<span
-                                    class="text-blue-400">Gate</span></span>
-                        </div>
-                    </a>
-                </div>
+                    class="rounded-xl object-cover w-11/12">
             </div>
         </div>
     </div>
