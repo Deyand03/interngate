@@ -1,21 +1,68 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
 :root {
     --bg-primary: #19A7CE;
     --bg-secondary: #1099d4;
     --btn-color: #146C94;
 }
 
-.bg-header{
+.bg-header {
     background: linear-gradient(90deg, var(--bg-primary), var(--bg-secondary));
 }
-.bg-header-2{
+
+.bg-header-2 {
     background: linear-gradient(90deg, #146C94, #187dab);
 }
-.nav-title{
+
+.nav-title {
     transition: all 0.2s ease-in-out;
 }
-.nav-title:hover{
-    text-shadow: 0px 0px 10px rgba(25,167,206,0.6);
+
+.nav-title:hover {
+    text-shadow: 0px 0px 10px rgba(25, 167, 206, 0.6);
 }
-.navbar-custom{
+
+.navbar-custom {
+    background: rgba(255, 255, 255, 0.8);
     backdrop-filter: blur(2px);
+}
+
+.card-head-1 {
+    transition: all 0.1s ease-in-out;
+}
+
+.card-head-1:hover {
+    transform: rotate(5deg) scale(108%);
+
+}
+
+.card-head-2 {
+    transition: all 0.1s ease-in-out;
+}
+
+.card-head-2:hover {
+    transform: rotate(-5deg) scale(108%);
+
+}
+
+.card-head-3 {
+    transition: all 0.1s ease-in-out;
+}
+
+.card-head-3:hover {
+    transform: rotate(7deg) scale(108%);
+}
+
+.line {
+    background: linear-gradient(90deg, var(--bg-primary), var(--bg-secondary)) !important;
+    width: 100px !important;
+    height: 5px !important;
+    border-radius: 10px !important;
+    margin-bottom: 75px;
+}
+.form-regis{
+    transition: all 0.2s ease-in-out;
 }

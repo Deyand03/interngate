@@ -1,4 +1,4 @@
-<div class="flex flex-1 items-center justify-evenly">
+<div class="flex justify-between pt-16">
     <div class="flex gap-2">
         <div class="flex items-center justify-center bg-gray-300/50 w-[50px] h-[50px] rounded">
             <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-suitcase-lg-fill" viewBox="0 0 16 16">
