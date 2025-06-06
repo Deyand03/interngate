@@ -31,118 +31,150 @@
 </div>
 
 
-{{-- Gamelab Academy Section --}}
-<section class="bg-gray-100 py-16">
-    <div class="container mx-auto px-40">
-        <h2 class="text-3xl font-bold text-center mb-10">InternGate</h2>
+{{-- InternGate Academy Section --}}
+<section class="bg-gray-100 py-10">
+  <div class="container mx-auto px-6 md:px-16 lg:px-32">
+    <h2 class="text-3xl font-bold text-center mb-12">
+      Bidang <span class="text-blue-600">InternGate</span>
+    </h2>
 
-        {{-- Carousel --}}
-        <div class="relative">
-            <div class="overflow-hidden">
-                <div id="carousel-track" class="flex transition-transform duration-500 ease-in-out space-x-6">
-                    {{-- Card 1 --}}
-                    <div class="bg-white p-6 rounded-lg shadow w-60 flex-shrink-0 text-center">
-                        <img src="https://www.gamelab.id/img/home/icon_academy/Icon_Academy_Broadcasting.png?v=1.0" alt="Game Development" class="w-20 mx-auto mb-4">
-                        <h3 class="font-semibold text-lg">Game Development</h3>
-                    </div>
-
-                    {{-- Card 2 --}}
-                    <div class="bg-white p-6 rounded-lg shadow w-60 flex-shrink-0 text-center">
-                        <img src="{{ asset('images/web-dev.png') }}" alt="Web Development" class="w-20 mx-auto mb-4">
-                        <h3 class="font-semibold text-lg">Web Development</h3>
-                    </div>
-
-                    {{-- Card 3 --}}
-                    <div class="bg-white p-6 rounded-lg shadow w-60 flex-shrink-0 text-center">
-                        <img src="{{ asset('images/app-dev.png') }}" alt="App Development" class="w-20 mx-auto mb-4">
-                        <h3 class="font-semibold text-lg">App Development</h3>
-                    </div>
-
-                    {{-- Card 4 --}}
-                    <div class="bg-white p-6 rounded-lg shadow w-60 flex-shrink-0 text-center">
-                        <img src="{{ asset('images/dev-ops.png') }}" alt="Dev Ops" class="w-20 mx-auto mb-4">
-                        <h3 class="font-semibold text-lg">Dev Ops</h3>
-                    </div>
-
-                    {{-- Card 5 --}}
-                    <div class="bg-white p-6 rounded-lg shadow w-60 flex-shrink-0 text-center">
-                        <img src="{{ asset('images/2d-design.png') }}" alt="2D Design" class="w-20 mx-auto mb-4">
-                        <h3 class="font-semibold text-lg">2D Design</h3>
-                    </div>
-
-                    {{-- Card 6 --}}
-                    <div class="bg-white p-6 rounded-lg shadow w-60 flex-shrink-0 text-center">
-                        <img src="{{ asset('images/3d-design.png') }}" alt="3D Design" class="w-20 mx-auto mb-4">
-                        <h3 class="font-semibold text-lg">3D Design</h3>
-                    </div>
-                </div>
-            </div>
-
-            {{-- Navigasi --}}
-            <button id="prev" class="absolute left-0 top-1/2 transform -translate-y-1/2 bg-yellow-400 hover:bg-yellow-500 text-black p-2 rounded-full">
-                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" d="M15 19l-7-7 7-7" />
-                </svg>
-            </button>
-            <button id="next" class="absolute right-0 top-1/2 transform -translate-y-1/2 bg-yellow-400 hover:bg-yellow-500 text-black p-2 rounded-full">
-                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" />
-                </svg>
-            </button>
-        </div>
+    <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-6">
+      @foreach ([
+        ['title' => 'Game Development', 'img' => 'https://www.gamelab.id/img/home/icon_academy/Icon_Academy_Broadcasting.png?v=1.0'],
+        ['title' => 'Web Development', 'img' => asset('images/web-dev.png')],
+        ['title' => 'App Development', 'img' => asset('images/app-dev.png')],
+        ['title' => 'Dev Ops', 'img' => asset('images/dev-ops.png')],
+        ['title' => '2D Design', 'img' => asset('images/2d-design.png')],
+        ['title' => '3D Design', 'img' => asset('images/3d-design.png')],
+      ] as $field)
+      <div class="card bg-white shadow-md hover:shadow-xl transition duration-300 p-5 items-center text-center rounded-xl">
+        <img src="{{ $field['img'] }}" alt="{{ $field['title'] }}" class="w-20 h-20 object-contain mb-4" />
+        <h3 class="font-semibold text-base text-gray-800">{{ $field['title'] }}</h3>
+        <div class="badge badge-info mt-2">Tersedia</div>
+      </div>
+      @endforeach
     </div>
+  </div>
 </section>
 
-<div class="w-full overflow-hidden leading-none">
-  <svg viewBox="0 0 1440 100" xmlns="http://www.w3.org/2000/svg">
-    <path fill="#f3f4f6" d="M0,64L60,74.7C120,85,240,107,360,112C480,117,600,107,720,96C840,85,960,75,1080,85.3C1200,96,1320,128,1380,144L1440,160V0H1380C1320,0,1200,0,1080,0C960,0,840,0,720,0C600,0,480,0,360,0C240,0,120,0,60,0H0Z" />
-  </svg>
-</div>
+</section>
 
+{{-- Mitra InterGate --}}
+<section class="bg-gray-100 py-20">
+  <div class="container mx-auto px-6 md:px-16 lg:px-32">
+    <div class="text-center mb-12">
+      <h2 class="text-4xl font-bold mb-2">Mitra <span class="text-blue-600">InternGate</span></h2>
+      <p class="text-gray-600 text-lg">Bekerja sama dengan berbagai perusahaan industri ternama.</p>
+    </div>
 
-{{-- Mitra GAMELAB --}}
-<section class="bg-gray-100 ">
-    <div class="container mx-auto px-40">
-        <h2 class="text-3xl font-bold text-center mb-10">Mitra <span class="text-blue-600">InterGate</span></h2>
+    @foreach ([
+      'Mitra Industri' => ['50+', ['educa.png', 'qasir.png', 'cicil.png', 'komerce.png', 'cloudhost.png', 'zahir.png', 'suitmedia.png']],
+    ] as $kategori => [$jumlah, $logos])
+    <div class="mb-16">
+      {{-- Info kategori --}}
+      <div class="text-center mb-8">
+        <p class="text-2xl font-bold text-blue-600">{{ $jumlah }}</p>
+        <p class="text-base font-semibold text-gray-700">{{ $kategori }}</p>
+      </div>
 
-        @foreach ([
-          'Mitra Industri' => ['50+', ['educa.png', 'qasir.png', 'cicil.png', 'komerce.png', 'cloudhost.png', 'zahir.png', 'suitmedia.png']],
-        ] as $kategori => [$jumlah, $logos])
-        <div class="mb-10">
-            <div class="text-center mb-4">
-              <p class="text-2xl font-semibold text-blue-600">{{ $jumlah }}</p>
-              <p class="font-medium">{{ $kategori }}</p>
-            </div>
-            <div class="overflow-hidden relative w-full">
-                <div class="flex animate-scroll whitespace-nowrap gap-6">
-                    @foreach ($logos as $img)
-                    <div class="flex-shrink-0 bg-white p-3 shadow rounded flex justify-center items-center h-24 w-40">
-                        <img src="{{ asset('images/mitra/' . $img) }}" alt="Logo" class="max-h-16 mx-auto">
-                    </div>
-                    @endforeach
-                        
-                    {{-- Duplikat untuk efek looping --}}
-                    @foreach ($logos as $img)
-                    <div class="flex-shrink-0 bg-white p-3 shadow rounded flex justify-center items-center h-24 w-40">
-                        <img src="{{ asset('images/mitra/' . $img) }}" alt="Logo" class="max-h-16 mx-auto">
-                    </div>
-                    @endforeach
-                </div>
-            </div>
+      {{-- Grid logo --}}
+      <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-6 place-items-center">
+        @foreach ($logos as $img)
+        <div class="bg-white p-4 rounded-xl shadow-sm hover:shadow-lg border border-gray-200 transition w-full h-28 flex items-center justify-center">
+          <img src="{{ asset('images/mitra/' . $img) }}" alt="Logo {{ $img }}" class="max-h-16 object-contain">
         </div>
         @endforeach
+      </div>
     </div>
+    @endforeach
+
+    {{-- Tombol lihat selengkapnya --}}
+    <div class="text-center mt-10">
+      <a href="#perusahaan" class="btn btn-outline btn-warning rounded-full px-8 text-base font-medium">
+        Lihat Selengkapnya
+      </a>
+    </div>
+  </div>
 </section>
 
-<style>
-@keyframes scroll {
-  0%   { transform: translateX(0%); }
-  100% { transform: translateX(-50%); }
-}
 
-.animate-scroll {
-  animation: scroll 15s linear infinite;
-}
-</style>
+{{-- FAQ Section --}}
+<section class="bg-gray-100 py-10">
+  <div class="container mx-auto px-6 md:px-20 lg:px-40">
+    <h2 class="text-3xl font-bold text-center mb-12 text-gray-800">
+      Pertanyaan Umum (FAQ)
+    </h2>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+      {{-- FAQ Card --}}
+      <div class="p-6 bg-white border border-blue-100 rounded-2xl shadow-md hover:shadow-lg transition duration-300">
+        <div class="flex items-start space-x-4">
+          <div class="text-blue-500 mt-1">
+            <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M8 10h.01M12 14h.01M16 10h.01M21 12c0 4.418-3.582 8-8 8s-8-3.582-8-8 3.582-8 8-8 8 3.582 8 8z" />
+            </svg>
+          </div>
+          <div>
+            <h3 class="text-lg font-semibold text-gray-800">Apa itu InternGate?</h3>
+            <p class="mt-1 text-gray-600">
+              InternGate adalah platform resmi magang dari Universitas Jambi untuk menghubungkan mahasiswa dengan industri IT terbaik.
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <div class="p-6 bg-white border border-blue-100 rounded-2xl shadow-md hover:shadow-lg transition duration-300">
+        <div class="flex items-start space-x-4">
+          <div class="text-blue-500 mt-1">
+            <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4l3 3" />
+              <path stroke-linecap="round" stroke-linejoin="round" d="M20.88 18.09A10 10 0 1011.91 2.12 10 10 0 0020.88 18.09z" />
+            </svg>
+          </div>
+          <div>
+            <h3 class="text-lg font-semibold text-gray-800">Siapa saja yang bisa mendaftar?</h3>
+            <p class="mt-1 text-gray-600">
+              Semua mahasiswa aktif Universitas Jambi dari berbagai program studi dapat mendaftar magang di InternGate.
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <div class="p-6 bg-white border border-blue-100 rounded-2xl shadow-md hover:shadow-lg transition duration-300">
+        <div class="flex items-start space-x-4">
+          <div class="text-blue-500 mt-1">
+            <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M9 17v-2a4 4 0 118 0v2M12 11v.01" />
+              <path stroke-linecap="round" stroke-linejoin="round" d="M6 20h12a2 2 0 002-2V8a2 2 0 00-2-2h-5l-2-2H6a2 2 0 00-2 2v10a2 2 0 002 2z" />
+            </svg>
+          </div>
+          <div>
+            <h3 class="text-lg font-semibold text-gray-800">Apa saja dokumen yang dibutuhkan?</h3>
+            <p class="mt-1 text-gray-600">
+              Umumnya CV, transkrip nilai, surat pengantar, dan portofolio (jika ada). Beberapa mitra mungkin meminta tambahan.
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <div class="p-6 bg-white border border-blue-100 rounded-2xl shadow-md hover:shadow-lg transition duration-300">
+        <div class="flex items-start space-x-4">
+          <div class="text-blue-500 mt-1">
+            <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2l4 -4" />
+              <path stroke-linecap="round" stroke-linejoin="round" d="M21 12A9 9 0 113 12a9 9 0 0118 0z" />
+            </svg>
+          </div>
+          <div>
+            <h3 class="text-lg font-semibold text-gray-800">Bagaimana proses seleksinya?</h3>
+            <p class="mt-1 text-gray-600">
+              Setelah mendaftar, mitra akan menilai kelengkapan dokumen dan kecocokan pelamar sebelum memberikan konfirmasi diterima.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
 
 @endsection
