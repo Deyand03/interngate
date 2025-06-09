@@ -5,7 +5,7 @@
 @section('content')
 <div class="bg-[#187DAB] text-white" data-theme="light">
     <div class="container mx-auto flex flex-col-reverse lg:flex-row items-center justify-between gap-12 px-6 lg:px-20 py-20 lg:py-10">
-        
+
         {{-- Konten Teks di Kiri --}}
         <div class="lg:w-1/2 text-center lg:text-left">
             <h1 class="text-4xl md:text-5xl lg:text-6xl font-extrabold !leading-tight mb-4 animate-fade-in-down">
@@ -27,7 +27,7 @@
             <div class="relative w-full max-w-md lg:max-w-lg mx-auto">
                 <div class="absolute -top-4 -left-4 w-full h-full bg-[#6692D3] bg-opacity-20 rounded-3xl transform rotate-[-3deg]"></div>
                 <img src="{{ asset('img/hero-image-beranda-page.png') }}" class="w-full rounded-2xl shadow-2xl relative transform hover:scale-105 transition-transform duration-300" alt="Mahasiswa sedang diskusi untuk magang" />
-                
+
                 {{-- Badge interaktif dengan efek hover --}}
                 <div class="absolute top-8 left-[-24px] badge badge-lg bg-white text-gray-800 shadow-lg p-4 transform hover:scale-110 transition-transform cursor-pointer">
                     <span class="text-yellow-500 mr-2">⭐</span> <strong>4.9/5</strong>&nbsp; <span class="hidden sm:inline">- Kepuasan Mitra</span>
@@ -75,7 +75,7 @@
                     </div>
                 </div>
                 <h3 class="text-2xl font-bold text-gray-800 mb-2">Sesuai Kurikulum</h3>
-                <p class="text-gray-600">Program magang yang tersedia telah disesuaikan dengan kebutuhan kurikulum Universitas Jambi, memastikan relevansi studi dengan industri.</p>
+                <p class="text-gray-600">Program magang yang tersedia telah disesuaikan dengan kebutuhan kurikulum, memastikan relevansi studi dengan industri.</p>
             </div>
         </div>
     </div>
