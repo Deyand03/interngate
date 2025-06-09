@@ -11,6 +11,10 @@ Route::get('/lowongan', function () {
     return view('lowongan.index');
 });
 
+Route::get('/faq', function(){
+    return view('beranda.faq');
+});
+
 Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');
