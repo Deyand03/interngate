@@ -37,18 +37,16 @@
                 <form action="{{ route('register') }}" method="POST" class="flex flex-col gap-3 py-1">
                     @csrf
                     <div>
-                        <label for="name" class="font-medium">Nama: </label>
+                        <label for="nama" class="font-medium">Nama: </label>
                         <input type="text"
                             class="input w-full input-ghost focus:ring-blue-500 ring-blue-500 ring-1 shadow-md"
-                            id="name" name="name" placeholder="Masukan Nama" value="{{ old('name') }}"
-                            autocomplete="name" required />
+                            id="nama" name="nama" placeholder="Masukan Nama" value="{{ old('nama') }}" required />
                     </div>
                     <div>
                         <label for="email" class="font-medium">Email: </label>
                         <input type="email"
                             class="input w-full input-ghost focus:ring-blue-500 ring-blue-500 ring-1 shadow-md"
-                            id="email" name="email" placeholder="Masukan Email" value="{{ old('email') }}"
-                            autocomplete="username" required />
+                            id="email" name="email" placeholder="Masukan Email" value="{{ old('email') }}"required />
                     </div>
                     <div>
                         <label for="password" class="font-medium">Password: </label>

@@ -8,6 +8,9 @@ class Mahasiswa extends Model
 {
     protected $table = 'mahasiswas';
     protected $primaryKey = 'nim';
-    protected $fillable = ['nim', 'nama', 'jurusan', 'universitas'];
+    protected $guarded = [];
     
+    public function user(){
+        return $this->belongsTo(User::class);
+    }
 }

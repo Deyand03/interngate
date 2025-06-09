@@ -7,5 +7,9 @@ use Illuminate\Database\Eloquent\Model;
 class Mitra extends Model
 {
     protected $table = 'mitras';
-    protected $fillable = ['nama_perusahaan', 'alamat_perusahaan', 'deskripsi', 'logo_perusahaan'];
+    protected $guarded = [];
+
+    public function mahasiswa(){
+        return $this->belongsTo(Mahasiswa::class);
+    }
 }

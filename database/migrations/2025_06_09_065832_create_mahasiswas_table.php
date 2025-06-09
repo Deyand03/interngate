@@ -17,8 +17,7 @@ return new class extends Migration
             $table->string('jurusan');
             $table->string('universitas');
             $table->string('foto_profil')->nullable();
-            $table->integer('user_id');
-            $table->timestamps();
+            $table->foreignId('user_id')->constrained()->onDelete('cascade');
         });
     }
 

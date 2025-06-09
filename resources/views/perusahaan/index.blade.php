@@ -15,27 +15,7 @@
     <img src="{{ asset('img/hero-image-lowongan.png') }}" alt="Perusahaan A" class="mx-auto h-28 object-contain" />
     <h2 class="mt-3 font-semibold text-gray-800 text-sm">Perusahaan A</h2>
   </div>
-  <!-- Kartu 1 -->
-  <div class="bg-white shadow-md rounded-lg p-4 text-center">
-    <img src="{{ asset('img/hero-image-lowongan.png') }}" alt="Perusahaan B" class="mx-auto h-28 object-contain" />
-    <h2 class="mt-3 font-semibold text-gray-800 text-sm">Perusahaan B</h2>
-  </div>
-  <!-- Kartu 1 -->
-  <div class="bg-white shadow-md rounded-lg p-4 text-center">
-    <img src="{{ asset('img/hero-image-lowongan.png') }}" alt="Perusahaan C" class="mx-auto h-28 object-contain" />
-    <h2 class="mt-3 font-semibold text-gray-800 text-sm">Perusahaan C</h2>
-  </div>
-  <!-- Kartu 1 -->
-  <div class="bg-white shadow-md rounded-lg p-4 text-center">
-    <img src="{{ asset('img/hero-image-lowongan.png') }}" alt="Perusahaan D" class="mx-auto h-28 object-contain" />
-    <h2 class="mt-3 font-semibold text-gray-800 text-sm">Perusahaan D</h2>
-  </div>
-  <!-- Kartu 1 -->
-  <div class="bg-white shadow-md rounded-lg p-4 text-center">
-    <img src="{{ asset('img/hero-image-lowongan.png') }}" alt="Perusahaan E" class="mx-auto h-28 object-contain" />
-    <h2 class="mt-3 font-semibold text-gray-800 text-sm">Perusahaan E</h2>
-  </div>
 
-  
+
 </section>
 @endsection

@@ -17,8 +17,7 @@ return new class extends Migration
             $table->string('alamat_perusahaan');
             $table->string('deskripsi');
             $table->string('logo_perusahaan')->nullable();
-            $table->integer('user_id');
-            $table->timestamps();
+            $table->foreignId('user_id')->constrained()->onDelete('cascade');
         });
     }
 
