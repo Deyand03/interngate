@@ -27,7 +27,7 @@
 
     <footer>
         <section class="bg-[#187DAB] text-white">
-            <div class="container mx-auto px-6 lg:px-8 py-20 text-center flex flex-col items-center">
+            <div class="container mx-auto px-6 lg:px-20 py-10 text-center flex flex-col items-center">
                 <h2 class="text-4xl lg:text-5xl font-extrabold mb-4">Mulai Karir Profesionalmu Sekarang!</h2>
                 <p class="text-lg opacity-90 mb-8 max-w-2xl">Jangan lewatkan kesempatan untuk mendapatkan pengalaman industri terbaik. Daftar dan temukan program magang impianmu hari ini.</p>
                 <a href="#perusahaan" class="btn bg-[#F5C219] hover:bg-[#eab308] border-none text-black font-bold h-14 px-8 text-lg transform hover:-translate-y-1 transition-all duration-300 shadow-lg">
