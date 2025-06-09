@@ -2,29 +2,21 @@
 
 use App\Http\Controllers\MahasiswaController;
 use App\Http\Controllers\MitraController;
+use App\Http\Controllers\NavigationController;
 use App\Http\Controllers\ProfileController;
 use App\Models\Mitra;
 use Illuminate\Support\Facades\Route;
 
-Route::get('/', function () {
-    return view('beranda.index');
-});
+Route::get('/', [NavigationController::class, 'beranda'])->name('beranda');
+Route::get('/lowongan', [NavigationController::class, 'lowongan'])->name('lowongan');
+Route::get('/perusahaan', [NavigationController::class, 'perusahaan'])->name('perusahaan');
+Route::get('/faq', [NavigationController::class, 'faq'])->name('faq');
 
-Route::get('/lowongan', function () {
-    return view('lowongan.index');
-});
-
-Route::get('/faq', function(){
-    return view('beranda.faq');
-});
 
 Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');
 
-Route::get('/perusahaan', function () {
-    return view('perusahaan.index');
-});
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');

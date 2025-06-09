@@ -40,13 +40,21 @@
                         <label for="nama" class="font-medium">Nama: </label>
                         <input type="text"
                             class="input w-full input-ghost focus:ring-blue-500 ring-blue-500 ring-1 shadow-md"
-                            id="nama" name="nama" placeholder="Masukan Nama" value="{{ old('nama') }}" required />
+                            id="nama" name="nama" placeholder="Masukan Nama" value="{{ old('nama') }}"
+                            required />
+                        @error('nama')
+                            <span class="text-red-500 text-sm">{{ $message }}</span>
+                        @enderror
                     </div>
                     <div>
                         <label for="email" class="font-medium">Email: </label>
                         <input type="email"
                             class="input w-full input-ghost focus:ring-blue-500 ring-blue-500 ring-1 shadow-md"
-                            id="email" name="email" placeholder="Masukan Email" value="{{ old('email') }}"required />
+                            id="email" name="email" placeholder="Masukan Email"
+                            value="{{ old('email') }}"required />
+                        @error('email')
+                            <span class="text-red-500 text-sm">{{ $message }}</span>
+                        @enderror
                     </div>
                     <div>
                         <label for="password" class="font-medium">Password: </label>
@@ -54,6 +62,9 @@
                             class="input w-full input-ghost focus:ring-blue-500 ring-blue-500 ring-1 shadow-md"
                             id="password" name="password" placeholder="Masukan password" autocomplete="new-password"
                             required />
+                        @error('password')
+                            <span class="text-red-500 text-sm">{{ $message }}</span>
+                        @enderror
                     </div>
                     <div>
                         <label for="role" class="flex flex-col"><span class="font-medium">Role:</span>
@@ -78,16 +89,25 @@
                         <input type="text" id="nim" name="nim"
                             class="input w-full input-ghost focus:ring-blue-500 ring-blue-500 ring-1 shadow-md mb-2"
                             placeholder="Masukan NIM">
+                        @error('nim')
+                            <span class="text-red-500 text-sm">{{ $message }}</span>
+                        @enderror
 
                         <label class="font-medium " for="jurusan">Jurusan :</label>
                         <input type="text" id="jurusan" name="jurusan"
                             class="input w-full input-ghost focus:ring-blue-500 ring-blue-500 ring-1 shadow-md mb-2"
                             placeholder="Masukan Jurusan">
+                        @error('jurusan')
+                            <span class="text-red-500 text-sm">{{ $message }}</span>
+                        @enderror
 
                         <label class="font-medium" for="universitas">Universitas :</label>
                         <input type="text" id="universitas" name="universitas"
                             class="input w-full input-ghost focus:ring-blue-500 ring-blue-500 ring-1 shadow-md mb-2"
                             placeholder="Masukan Universitas">
+                        @error('universitas')
+                            <span class="text-red-500 text-sm">{{ $message }}</span>
+                        @enderror
                     </div>
 
                     <button type="submit" class="btn btn-info text-white">REGISTER</button>
@@ -96,7 +116,15 @@
 
             {{-- Footer --}}
             <div>
-
+                @if ($errors->any())
+                    <div class="alert alert-danger">
+                        <ul>
+                            @foreach ($errors->all() as $error)
+                                <li>{{ $error }}</li>
+                            @endforeach
+                        </ul>
+                    </div>
+                @endif
             </div>
         </div>
     </div>
