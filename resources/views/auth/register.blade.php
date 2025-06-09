@@ -34,39 +34,34 @@
 
             {{-- Form Input --}}
             <div class="flex flex-col overflow-y-auto transition-all px-2">
-                <form action="{{ route('register') }}" method="POST" class="flex flex-col gap-3">
+                <form action="{{ route('register') }}" method="POST" class="flex flex-col gap-3 py-1">
                     @csrf
                     <div>
-                        <label for="name" class="font-medium">Nama: </label>
+                        <label for="nama" class="font-medium">Nama: </label>
                         <input type="text"
                             class="input w-full input-ghost focus:ring-blue-500 ring-blue-500 ring-1 shadow-md"
-                            id="name" name="name" placeholder="Masukan Nama" value="{{ old('name') }}"
-                            autocomplete="name" required />
-                        <x-input-error :messages="$errors->get('name')" class="mt-2" />
+                            id="nama" name="nama" placeholder="Masukan Nama" value="{{ old('nama') }}" required />
                     </div>
                     <div>
                         <label for="email" class="font-medium">Email: </label>
                         <input type="email"
                             class="input w-full input-ghost focus:ring-blue-500 ring-blue-500 ring-1 shadow-md"
-                            id="email" name="email" placeholder="Masukan Email" value="{{ old('email') }}"
-                            autocomplete="username" required />
-                        <x-input-error :messages="$errors->get('email')" class="mt-2" />
+                            id="email" name="email" placeholder="Masukan Email" value="{{ old('email') }}"required />
                     </div>
                     <div>
                         <label for="password" class="font-medium">Password: </label>
                         <input type="password"
                             class="input w-full input-ghost focus:ring-blue-500 ring-blue-500 ring-1 shadow-md"
-                            id="password" name="password" placeholder="Masukan password"
-                            autocomplete="current-password" required />
-                        <x-input-error :messages="$errors->get('email')" class="mt-2" />
+                            id="password" name="password" placeholder="Masukan password" autocomplete="new-password"
+                            required />
                     </div>
                     <div>
                         <label for="role" class="flex flex-col"><span class="font-medium">Role:</span>
                             <div>
                                 <input type="radio" name="role" id="mahasiswa" class="radio radio-sm radio-info"
-                                    value="mahasiswa" /> <span class="me-1">Mahasiswa</span>
+                                    value="mahasiswa" required /> <span class="me-1">Mahasiswa</span>
                                 <input type="radio" name="role" id="mitra" class="radio radio-sm radio-info"
-                                    value="mitra" />
+                                    value="mitra" required />
                                 Mitra
                             </div>
                         </label>
@@ -78,9 +73,24 @@
                     </div>
 
                     {{-- Form Mahasiswa --}}
-                    <div class="hidden opacity-0 form-regis" id="form-mahasiswa">
-                        mahasiswa
+                    <div class="hidden opacity-0 form-regis py-1" id="form-mahasiswa">
+                        <label class="font-medium" for="nim">NIM :</label>
+                        <input type="text" id="nim" name="nim"
+                            class="input w-full input-ghost focus:ring-blue-500 ring-blue-500 ring-1 shadow-md mb-2"
+                            placeholder="Masukan NIM">
+
+                        <label class="font-medium " for="jurusan">Jurusan :</label>
+                        <input type="text" id="jurusan" name="jurusan"
+                            class="input w-full input-ghost focus:ring-blue-500 ring-blue-500 ring-1 shadow-md mb-2"
+                            placeholder="Masukan Jurusan">
+
+                        <label class="font-medium" for="universitas">Universitas :</label>
+                        <input type="text" id="universitas" name="universitas"
+                            class="input w-full input-ghost focus:ring-blue-500 ring-blue-500 ring-1 shadow-md mb-2"
+                            placeholder="Masukan Universitas">
                     </div>
+
+                    <button type="submit" class="btn btn-info text-white">REGISTER</button>
                 </form>
             </div>
 
