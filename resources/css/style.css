@@ -66,3 +66,20 @@
 .form-regis{
     transition: all 0.2s ease-in-out;
 }
+
+.marquee-content {
+        animation: marquee 10s linear infinite;
+    }
+    
+.marquee-container:hover .marquee-content {
+        animation-play-state: paused;
+    }
+
+@keyframes marquee {
+    from {
+        transform: translateX(0);
+    }
+    to {
+        transform: translateX(-50%);
+    }
+}

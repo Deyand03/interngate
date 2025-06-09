@@ -7,10 +7,15 @@ use App\Models\Mitra;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
-    return redirect()->route('mahasiswa.index');
+    return view('beranda.index');
 });
+
 Route::get('/lowongan', function () {
     return view('lowongan.index');
+});
+
+Route::get('/faq', function(){
+    return view('beranda.faq');
 });
 
 Route::get('/dashboard', function () {
