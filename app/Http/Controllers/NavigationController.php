@@ -16,6 +16,6 @@ class NavigationController extends Controller
         return view('perusahaan.index');
     }
     public function faq(){
-        return view('beranda.faq');
+        return view('faq.index');
     }
 }

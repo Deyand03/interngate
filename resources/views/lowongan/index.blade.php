@@ -4,17 +4,16 @@
 @section('content')
     <div class="">
         {{-- Page Hero Lowongan --}}
-        <div class="flex justify-center bg-header text-white h-fit py-16 px-20 gap-16">
-            <div class="flex flex-col w-[70rem]">
+        <div class="flex bg-header text-white h-fit py-16 px-20 gap-16">
+            <div class="flex flex-col w-full">
                 <div class="flex justify-between">
                     <div class="flex flex-col justify-between">
-                        <h1 class="text-[2.5rem] font-semibold">Temukan Tempat Magang <br> Favorit Mu Disini!</h1>
+                        <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold !leading-tight">Temukan Tempat Magang <br> Favorit Mu Disini!</h1>
                         <h2 class="text-lg font-medium">
-                            InternGate hadir untuk mahasiswa dan fresh graduate <br>
+                            <span class="text-[#F5C219] font-semibold">InternGate</span> hadir untuk mahasiswa dan fresh graduate <br>
                             yang ingin dapat pengalaman nyata di dunia kerja.<br>
                             Yuk, mulai petualanganmu!</h2>
-                        <a href="#list-perusahaan" class="btn btn-warning w-fit mt-2"><span class="font-semibold">Jelajahi Program
-                                Sekarang</span></a>
+                        <a href="#list-perusahaan" class="btn bg-[#EAB308] hover:bg-[#c69f2a] shadow-lg w-fit mt-2 p-6 border-0 transition-all transform hover:-translate-y-1 hover:shadow-xl text-semibold text-black text-lg">Jelajahi Program Sekarang</a>
                     </div>
                     <div>
                         <img src="{{ asset('img/hero-image-lowongan.png') }}" alt="" class="w-80">

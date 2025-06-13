@@ -10,11 +10,11 @@
 }
 
 .bg-header {
-    background: linear-gradient(90deg, var(--bg-primary), var(--bg-secondary));
+    background: #187DAB;
 }
 
 .bg-header-2 {
-    background: linear-gradient(90deg, #146C94, #187dab);
+    background: linear-gradient(90deg, var(--bg-primary), var(--bg-secondary));
 }
 
 .nav-title {
@@ -70,7 +70,7 @@
 .marquee-content {
         animation: marquee 10s linear infinite;
     }
-    
+
 .marquee-container:hover .marquee-content {
         animation-play-state: paused;
     }

@@ -1,124 +1,105 @@
-<div class="flex flex-col pt-20 -mt-15 px-20">
-    <div class="flex flex-col items-center justify-center">
-        <span class="font-bold text-3xl mb-3">Pilihan Lowongan Magang</span>
-        <div class="line"></div>
+<div class="flex flex-col pt-12 md:pt-20 -mt-15 px-6 sm:px-12 lg:px-20 pb-20">
+    {{-- Judul Section --}}
+    <div class="flex flex-col items-center justify-center text-center">
+        <h2 class="font-bold text-3xl md:text-4xl text-gray-800 mb-3">Pilihan Lowongan Magang</h2>
+        <div class="w-24 h-1 bg-yellow-400 rounded-full"></div>
     </div>
 
-    <div class="flex flex-col my-8">
-        {{-- Foreach untuk list perusahaan --}}
-        {{-- Limit list perusahaan menjadi 5 untuk digunakan ke pagination --}}
-        <div class="flex p-3 bg-blue-100 rounded-xl mb-10">
-            <div class="flex items-center justify-between w-full px-5 gap-2">
-                <div class="flex gap-2 items-center">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24" fill="none">
-                        <path d="M10.5 19C15.1945 19 19 15.1945 19 10.5C19 5.8055 15.1945 2 10.5 2C5.8055 2 2 5.8055 2 10.5C2 15.1945 5.8055 19 10.5 19Z" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/>
-                        <path d="M13.3284 7.1715C12.9573 6.79963 12.5164 6.50471 12.031 6.30367C11.5456 6.10264 11.0253 5.99944 10.4999 6C9.97451 5.99944 9.4542 6.10264 8.96881 6.30367C8.48342 6.50471 8.04251 6.79963 7.67139 7.1715M16.6109 16.611L20.8534 20.8535" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                      </svg>
-                    <span class="text-lg font-semibold">Pencarian</span>
+    {{-- Search & Filter Bar --}}
+    <div class="bg-blue-50 p-4 sm:p-5 rounded-xl my-8 sm:my-10 shadow-sm border border-blue-100">
+        <form action="#list-perusahaan" class="flex flex-col sm:flex-row items-center gap-3 sm:gap-4">
+            {{-- Input Pencarian Utama --}}
+            <div class="relative w-full flex-grow">
+                <div class="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none">
+                    <svg class="w-5 h-5 text-gray-400" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
+                        <path fill-rule="evenodd" d="M8 4a4 4 0 100 8 4 4 0 000-8zM2 8a6 6 0 1110.89 3.476l4.817 4.817a1 1 0 01-1.414 1.414l-4.816-4.816A6 6 0 012 8z" clip-rule="evenodd" />
+                    </svg>
                 </div>
-                <form action="#list-perusahaan" class="flex gap-2 w-1/2">
-                    <input type="text" name="search" class="input w-full">
-                    <button type="submit" class="btn btn-ghost bg-blue-400 border-0 hover:bg-blue-600 transition-all hover:-translate-y-0.5 active:translate-y-0 shadow-lg  text-white">Cari</button>
-                </form>
+                <input type="text" name="search" placeholder="Cari posisi atau perusahaan..." class="w-full pl-11 pr-4 py-3 border-gray-300 rounded-lg focus:ring-blue-500 focus:border-blue-500 transition duration-200">
+            </div>
+
+            {{-- Dropdown Filter (Contoh) --}}
+            <div class="w-full sm:w-auto">
+                <select name="location" class="w-full bg-white border-gray-300 rounded-lg py-3 pr-8 pl-4 focus:ring-blue-500 focus:border-blue-500 transition duration-200">
+                    <option value="">Semua Lokasi</option>
+                    <option value="jakarta">Jakarta</option>
+                    <option value="bandung">Bandung</option>
+                    <option value="wfh">Work From Home</option>
+                </select>
+            </div>
+
+            {{-- Tombol Cari --}}
+            <div class="w-full sm:w-auto">
+                <button type="submit" class="btn btn-primary w-full py-3 text-base font-semibold">Cari</button>
+            </div>
+        </form>
+    </div>
+
+    {{-- Grid untuk List Lowongan --}}
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+
+        {{-- CARD LOWONGAN (Contoh 1) --}}
+        {{-- Ganti bagian ini dengan loop @foreach dari datamu --}}
+        <div class="bg-white rounded-xl shadow-lg overflow-hidden flex flex-col md:flex-row transition-all duration-300 hover:shadow-2xl hover:-translate-y-1">
+            {{-- Bagian Gambar --}}
+            <div class="md:w-1/3 flex-shrink-0">
+                <img class="w-full h-48 md:h-full object-cover" src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?q=80&w=2071&auto=format&fit=crop" alt="Foto suasana kerja">
+            </div>
+
+            {{-- Bagian Konten Teks --}}
+            <div class="p-6 flex flex-col justify-between flex-grow">
+                <div>
+                    <p class="text-sm font-semibold text-blue-600">Nama Perusahaan Keren</p>
+                    <h3 class="mt-1 text-xl font-bold text-gray-900">
+                        <a href="#" class="hover:underline">Backend Developer Intern (Golang)</a>
+                    </h3>
+                    <p class="text-sm text-gray-500 mt-1">Jakarta Selatan, DKI Jakarta</p>
+
+                    {{-- Tags --}}
+                    <div class="flex flex-wrap gap-2 my-4">
+                        <span class="bg-green-100 text-green-800 text-xs font-medium px-2.5 py-1 rounded-full">Hybrid</span>
+                        <span class="bg-gray-100 text-gray-800 text-xs font-medium px-2.5 py-1 rounded-full">3 Bulan</span>
+                    </div>
+
+                    <p class="text-sm text-gray-600 line-clamp-3">
+                        Mencari intern yang bersemangat untuk belajar dan berkontribusi dalam pengembangan backend service kami menggunakan Golang, gRPC, dan arsitektur microservices...
+                    </p>
+                </div>
+
+                {{-- Aksi (Tombol) --}}
+                <div class="pt-4 mt-4 border-t border-gray-200">
+                    <a href="#" class="btn btn-warning w-full">Lihat Selengkapnya</a>
+                </div>
             </div>
         </div>
-        <div class="grid lg:grid-cols-2 grid-cols-1 gap-3">
-            {{-- Card --}}
-            <div class="flex items-center h-80 gap-5 w-full overflow-hidden shadow-lg rounded-lg p-8">
-                <div class="flex max-w-full max-h-full aspect-square">
-                    <img src="https://placehold.co/307x307" class="rounded-lg" alt="">
-                </div>
-                <div class="flex h-full flex-col justify-between w-full">
-                    <h3 class="font-semibold text-3xl">Title</h3>
-                    <h4 class="font-medium text-base">(Nama Perusahaan)</h4>
-                    <p class="line-clamp-4">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Quia,
-                        dolores est
-                        labore mollitia sit tempore eos vitae ad blanditiis, repellendus, harum commodi amet
-                        voluptatum
-                        esse enim deserunt eligendi impedit excepturi dolor earum nisi dicta. Totam cum et earum
-                        ipsam
-                        veritatis numquam ullam, voluptatibus nobis sit labore, a aspernatur eaque. Laudantium?
+
+        {{-- CARD LOWONGAN (Contoh 2) --}}
+        <div class="bg-white rounded-xl shadow-lg overflow-hidden flex flex-col md:flex-row transition-all duration-300 hover:shadow-2xl hover:-translate-y-1">
+            <div class="md:w-1/3 flex-shrink-0">
+                <img class="w-full h-48 md:h-full object-cover" src="https://images.unsplash.com/photo-1556761175-5973dc0f32e7?q=80&w=1932&auto=format&fit=crop" alt="Foto suasana kerja">
+            </div>
+            <div class="p-6 flex flex-col justify-between flex-grow">
+                <div>
+                    <p class="text-sm font-semibold text-blue-600">Startup Maju Jaya</p>
+                    <h3 class="mt-1 text-xl font-bold text-gray-900">
+                        <a href="#" class="hover:underline">Digital Marketing Intern</a>
+                    </h3>
+                    <p class="text-sm text-gray-500 mt-1">Work From Home</p>
+                    <div class="flex flex-wrap gap-2 my-4">
+                        <span class="bg-blue-100 text-blue-800 text-xs font-medium px-2.5 py-1 rounded-full">Work From Home</span>
+                        <span class="bg-gray-100 text-gray-800 text-xs font-medium px-2.5 py-1 rounded-full">Paid Internship</span>
+                    </div>
+                    <p class="text-sm text-gray-600 line-clamp-3">
+                        Kesempatan emas untuk belajar tentang SEO, SEM, dan Content Marketing. Kamu akan terlibat langsung dalam campaign digital kami dan menganalisis performa iklan...
                     </p>
-                    <hr style="">
-                    <a href="#" class="btn btn-warning">Lihat Selengkapnya</a>
+                </div>
+                <div class="pt-4 mt-4 border-t border-gray-200">
+                    <a href="#" class="btn btn-warning w-full">Lihat Selengkapnya</a>
                 </div>
             </div>
-            <div class="flex items-center h-80 gap-5 w-full overflow-hidden shadow-lg rounded-lg p-8">
-                <div class="flex max-w-full max-h-full aspect-square">
-                    <img src="https://placehold.co/307x307" class="rounded-lg" alt="">
-                </div>
-                <div class="flex h-full flex-col justify-between w-full">
-                    <h3 class="font-semibold text-3xl">Title</h3>
-                    <h4 class="font-medium text-base">(Nama Perusahaan)</h4>
-                    <p class="line-clamp-4">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Quia,
-                        dolores est
-                        labore mollitia sit tempore eos vitae ad blanditiis, repellendus, harum commodi amet
-                        voluptatum
-                        esse enim deserunt eligendi impedit excepturi dolor earum nisi dicta. Totam cum et earum
-                        ipsam
-                        veritatis numquam ullam, voluptatibus nobis sit labore, a aspernatur eaque. Laudantium?
-                    </p>
-                    <hr style="">
-                    <a href="#" class="btn btn-warning">Lihat Selengkapnya</a>
-                </div>
-            </div>
-            <div class="flex items-center h-80 gap-5 w-full overflow-hidden shadow-lg rounded-lg p-8">
-                <div class="flex max-w-full max-h-full aspect-square">
-                    <img src="https://placehold.co/307x307" class="rounded-lg" alt="">
-                </div>
-                <div class="flex h-full flex-col justify-between w-full">
-                    <h3 class="font-semibold text-3xl">Title</h3>
-                    <h4 class="font-medium text-base">(Nama Perusahaan)</h4>
-                    <p class="line-clamp-4">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Quia,
-                        dolores est
-                        labore mollitia sit tempore eos vitae ad blanditiis, repellendus, harum commodi amet
-                        voluptatum
-                        esse enim deserunt eligendi impedit excepturi dolor earum nisi dicta. Totam cum et earum
-                        ipsam
-                        veritatis numquam ullam, voluptatibus nobis sit labore, a aspernatur eaque. Laudantium?
-                    </p>
-                    <hr style="">
-                    <a href="#" class="btn btn-warning">Lihat Selengkapnya</a>
-                </div>
-            </div>
-
-
-
         </div>
 
-        {{-- Filter --}}
+        {{-- Tambahkan card lain di sini --}}
 
-        {{-- <div class="w-4/12 sticky top-24">
-            <div class="shadow-lg rounded-lg p-8">
-                <fieldset class="fieldset">
-                    <legend class="fieldset-legend"><span class="text-2xl">Filter</span></legend>
-                    <form class="flex items-center">
-                        <label for="simple-search" class="sr-only">Search</label>
-                        <div class="relative w-full">
-                            <div class="absolute inset-y-0 start-0 flex items-center ps-3 pointer-events-none">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
-                                    viewBox="0 0 24 24" fill="none">
-                                    <path
-                                        d="M10.5 19C15.1945 19 19 15.1945 19 10.5C19 5.8055 15.1945 2 10.5 2C5.8055 2 2 5.8055 2 10.5C2 15.1945 5.8055 19 10.5 19Z"
-                                        stroke="currentColor" stroke-width="2" stroke-linejoin="round" />
-                                    <path
-                                        d="M13.3284 7.1715C12.9573 6.79963 12.5164 6.50471 12.031 6.30367C11.5456 6.10264 11.0253 5.99944 10.4999 6C9.97451 5.99944 9.4542 6.10264 8.96881 6.30367C8.48342 6.50471 8.04251 6.79963 7.67139 7.1715M16.6109 16.611L20.8534 20.8535"
-                                        stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                                        stroke-linejoin="round" />
-                                </svg>
-                            </div>
-                            <input type="text" id="simple-search" name="search"
-                                class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full ps-10 p-2.5"
-                                placeholder="Cari Lowongan..." required />
-                        </div>
-                        <button type="submit"
-                            class="bg-sky-400 dark:bg-blue-400 ms-2 shadow-md transition-transform hover:shadow-lg hover:-translate-y-0.5 active:translate-y-0 btn btn-ghost border-0 focus:ring-blue-500 focus:border-blue-500 ">
-                            <span class="font-medium text-sm">Search</span>
-                        </button>
-                    </form>
-                </fieldset>
-
-            </div>
-        </div> --}}
     </div>
 </div>
