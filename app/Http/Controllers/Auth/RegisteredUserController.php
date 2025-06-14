@@ -97,12 +97,8 @@ class RegisteredUserController extends Controller
             }
 
             event(new Registered($user));
-            Auth::login($user);
 
-            return match ($user->role) {
-                'mahasiswa' => redirect()->route([NavigationController::class, 'beranda']),
-                'mitra' => redirect()->route('mitra.index'),
-            };
+            return redirect()->route('login')->with('success', 'Registrasi berhasil. Silakan login.');
 
         } catch (\Exception $e) {
             Log::error("Error during registration: " . $e->getMessage());

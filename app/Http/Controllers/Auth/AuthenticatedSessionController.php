@@ -27,6 +27,12 @@ class AuthenticatedSessionController extends Controller
         $request->authenticate();
 
         $request->session()->regenerate();
+        $user = Auth::user();
+        return match ($user->role) {
+            'mahasiswa' => redirect()->route('beranda'),
+            'mitra'     => redirect()->route('mitra.index'),
+            default     => redirect('/'), 
+        };
 
         return redirect()->intended(route('beranda', absolute: false));
     }
@@ -42,6 +48,6 @@ class AuthenticatedSessionController extends Controller
 
         $request->session()->regenerateToken();
 
-        return redirect('/');
+        return redirect()->route('beranda');
     }
 }

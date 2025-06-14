@@ -16,9 +16,9 @@ return new class extends Migration
             $table->string('file_cv');
             $table->string('transkrip_nilai');
             $table->enum('status', ['Diterima', 'Ditolak', 'Menunggu', 'Berlangsung', 'Selesai']);
-            $table->string('catatan_mitra');
-            $table->foreignId('id_mahasiswa')->constrained()->onDelete('cascade');
-            $table->foreignId('id_program_magang')->constrained()->onDelete('cascade');
+            $table->string('catatan_mitra')->nullable();
+            $table->foreignId('id_mahasiswa')->constrained('mahasiswas')->onDelete('cascade');
+            $table->foreignId('id_program_magang')->constrained('program_magangs')->onDelete('cascade');
             $table->timestamps();
         });
     }

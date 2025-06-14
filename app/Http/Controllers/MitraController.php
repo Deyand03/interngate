@@ -13,7 +13,7 @@ class MitraController extends Controller
     public function index()
     {
         $data_mitra = Mitra::all();
-        return view('mitra.dashboard', compact('data_mitra'));
+        return view('mitra.index', compact('data_mitra'));
     }
 
     /**
