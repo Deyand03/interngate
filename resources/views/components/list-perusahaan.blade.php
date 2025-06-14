@@ -1,3 +1,5 @@
+@props(['posts'])
+
 <div class="flex flex-col pt-12 md:pt-20 -mt-15 px-6 sm:px-12 lg:px-20 pb-20">
     {{-- Judul Section --}}
     <div class="flex flex-col items-center justify-center text-center">
@@ -39,7 +41,8 @@
     <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
 
         {{-- CARD LOWONGAN (Contoh 1) --}}
-        {{-- Ganti bagian ini dengan loop @foreach dari datamu --}}
+
+
         <div class="bg-white rounded-xl shadow-lg overflow-hidden flex flex-col md:flex-row transition-all duration-300 hover:shadow-2xl hover:-translate-y-1">
             {{-- Bagian Gambar --}}
             <div class="md:w-1/3 flex-shrink-0">

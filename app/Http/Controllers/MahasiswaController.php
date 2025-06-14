@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Mahasiswa;
+use App\Models\User;
 use Illuminate\Http\Request;
 
 class MahasiswaController extends Controller
@@ -12,7 +13,6 @@ class MahasiswaController extends Controller
      */
     public function index()
     {
-        $data_mhs = Mahasiswa::all();
         return view('mahasiswa.dashboard', compact('data_mhs'));
     }
 

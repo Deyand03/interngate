@@ -12,6 +12,9 @@ Route::get('/lowongan', [NavigationController::class, 'lowongan'])->name('lowong
 Route::get('/perusahaan', [NavigationController::class, 'perusahaan'])->name('perusahaan');
 Route::get('/faq', [NavigationController::class, 'faq'])->name('faq');
 
+Route::get('/detail', function(){
+    return view('lowongan.detail');
+});
 
 Route::get('/dashboard', function () {
     return view('dashboard');
@@ -28,7 +31,7 @@ Route::middleware(['auth', 'role:mitra'])->group(function(){
     Route::resource('mitra', MitraController::class);
 });
 Route::middleware(['auth', 'role:mahasiswa'])->group(function(){
-    Route::resource('mahasiswa', MahasiswaController::class);
+    Route::get('mahasiswa', [MahasiswaController::class, 'index'])->name('mahasiswa.index');
 });
 
 

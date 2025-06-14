@@ -1,5 +1,5 @@
 @extends('layouts.base')
-@section('title', 'Lowongan')
+@section('title', 'Lowongan - Cari Program')
 
 @section('content')
     <div class="">

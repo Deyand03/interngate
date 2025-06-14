@@ -90,8 +90,8 @@
     </div>
 
     {{-- Container untuk efek marquee --}}
-    <div class="w-full overflow-hidden marquee-container">
-        <div class="flex marquee-content">
+    <div class="w-full overflow-hidden marquee-container ">
+        <div class="flex marquee-content py-2">
             @php
             // Data diduplikasi untuk menciptakan loop yang mulus
             $fields = [

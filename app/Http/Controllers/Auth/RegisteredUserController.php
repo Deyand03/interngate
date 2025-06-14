@@ -33,14 +33,45 @@ class RegisteredUserController extends Controller
      */
     public function store(Request $request): RedirectResponse
     {
-        // Debugging Awal: Pastikan request masuk dengan benar
-        // dd($request->all()); // Aktifkan ini jika kamu masih curiga request tidak lengkap
 
-        $request->validate([
-            'email' => ['required', 'string', 'lowercase', 'email', 'max:255', 'unique:users,email'],
-            'password' => ['required', 'string'],
-            'role' => ['required', 'in:mahasiswa,mitra'],
-        ]);
+        if($request->role == "mahasiswa"){
+            $rule_validasi = [
+                'nama' => ['required', 'string', 'max:255'],
+                'nim' => ['required', 'string', 'max:255', 'unique:'.Mahasiswa::class],
+                'jurusan' => ['required', 'string', 'max:255'],
+                'universitas' => ['required', 'string', 'max:255'],
+                'email' => ['required', 'string', 'email', 'max:255', 'unique:'.User::class],
+                'password' => ['required', 'confirmed', Rules\Password::defaults()],
+            ];
+            $pesan_validasi = [
+                'nama.required' => 'Nama harus diisi.',
+                'nim.required' => 'NIM harus diisi.',
+                'jurusan.required' => 'Jurusan harus diisi.',
+                'universitas.required' => 'Universitas harus diisi.',
+                'email.required' => 'Email harus diisi.',
+                'password.required' => 'Password harus diisi.',
+                'password.confirmed' => 'Password tidak cocok.',
+            ];
+        }elseif($request->role == "mitra"){
+            $rule_validasi = [
+                'nama_perusahaan' => ['required', 'string', 'max:255'],
+                'alamat_perusahaan' => ['required', 'string', 'max:255'],
+                'deskripsi' => ['required', 'string', 'max:255'],
+                'email' => ['required', 'string', 'email', 'max:255', 'unique:'.User::class],
+                'password' => ['required', 'confirmed', Rules\Password::defaults()],
+            ];
+            $pesan_validasi = [
+                'nama_perusahaan.required' => 'Nama perusahaan harus diisi.',
+                'alamat_perusahaan.required' => 'Alamat perusahaan harus diisi.',
+                'deskripsi.required' => 'Deskripsi harus diisi.',
+                'email.required' => 'Email harus diisi.',
+                'password.required' => 'Password harus diisi.',
+                'password.confirmed' => 'Password tidak cocok.',
+            ];
+        }
+
+
+        $request->validate($rule_validasi, $pesan_validasi  );
 
         try {
             $user = User::create([
@@ -48,10 +79,6 @@ class RegisteredUserController extends Controller
                 'password' => Hash::make($request->password),
                 'role' => $request->role,
             ]);
-
-            // Debugging: Pastikan User berhasil dibuat dan memiliki ID
-            // dd($user->role);
-
             if ($user->role == "mahasiswa") {
                 Mahasiswa::create([
                     'user_id' => $user->id,
@@ -60,7 +87,6 @@ class RegisteredUserController extends Controller
                     'jurusan' => $request->jurusan,
                     'universitas' => $request->universitas,
                 ]);
-                // Debugging: Pastikan Mahasiswa berhasil dibuat
             } elseif ($user->role == "mahasiswa") {
                 Mitra::create([
                     'user_id' => $user->id,
@@ -68,8 +94,6 @@ class RegisteredUserController extends Controller
                     'alamat_perusahaan' => $request->alamat_perusahaan,
                     'deskripsi' => $request->deskripsi,
                 ]);
-                // Debugging: Pastikan Mitra berhasil dibuat
-                // dd($user->mitra);
             }
 
             event(new Registered($user));
@@ -81,14 +105,10 @@ class RegisteredUserController extends Controller
             };
 
         } catch (\Exception $e) {
-            // Ini akan menangkap exception apapun yang terjadi selama proses penyimpanan
             Log::error("Error during registration: " . $e->getMessage());
-            Log::error("Stack Trace: " . $e->getTraceAsString()); // Untuk detail stack trace
+            Log::error("Stack Trace: " . $e->getTraceAsString());
 
-            // Kamu bisa kembalikan ke halaman register dengan pesan error atau tampilkan error di browser
             return redirect()->back()->withInput()->withErrors(['registration_error' => 'Terjadi kesalahan saat pendaftaran. Silakan coba lagi.']);
-            // Atau, untuk debugging, kamu bisa dd($e) di sini
-            // dd($e);
         }
     }
 }

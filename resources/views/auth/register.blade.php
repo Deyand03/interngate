@@ -7,6 +7,7 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Register</title>
     @vite(['resources/css/app.css', 'resources/css/style.css', 'resources/js/main.js'])
+    <link rel="shortcut icon" href="{{ asset('img/title-icon.png') }}" type="image/x-icon">
 </head>
 
 <body>
@@ -67,48 +68,29 @@
                         @enderror
                     </div>
                     <div>
+                        <label for="password_confirmation" class="font-medium">Konfirmasi Password: </label>
+                        <input type="password"
+                            class="input w-full input-ghost focus:ring-blue-500 ring-blue-500 ring-1 shadow-md"
+                            id="password_confirmation" name="password_confirmation" placeholder="Masukan password"
+                            autocomplete="new-password" required />
+                        @error('password_confirmed')
+                            <span class="text-red-500 text-sm">{{ $message }}</span>
+                        @enderror
+                    </div>
+                    <div>
                         <label for="role" class="flex flex-col"><span class="font-medium">Role:</span>
-                            <div>
-                                <input type="radio" name="role" id="mahasiswa" class="radio radio-sm radio-info"
-                                    value="mahasiswa" required /> <span class="me-1">Mahasiswa</span>
-                                <input type="radio" name="role" id="mitra" class="radio radio-sm radio-info"
-                                    value="mitra" required />
-                                Mitra
+                            <div class="">
+                                <input type="radio" name="role" id="mahasiswa" class="" value="mahasiswa" required /> <span class="me-1">Mahasiswa</span>
+                                <input type="radio" name="role" id="mitra" class=" " value="mitra" required /> Mitra
                             </div>
                         </label>
                     </div>
 
                     {{-- Form Mitra --}}
-                    <div class="hidden opacity-0 form-regis" id="form-mitra">
-                        mitra
-                    </div>
+                    <x-form-mitra></x-form-mitra>
 
                     {{-- Form Mahasiswa --}}
-                    <div class="hidden opacity-0 form-regis py-1" id="form-mahasiswa">
-                        <label class="font-medium" for="nim">NIM :</label>
-                        <input type="text" id="nim" name="nim"
-                            class="input w-full input-ghost focus:ring-blue-500 ring-blue-500 ring-1 shadow-md mb-2"
-                            placeholder="Masukan NIM">
-                        @error('nim')
-                            <span class="text-red-500 text-sm">{{ $message }}</span>
-                        @enderror
-
-                        <label class="font-medium " for="jurusan">Jurusan :</label>
-                        <input type="text" id="jurusan" name="jurusan"
-                            class="input w-full input-ghost focus:ring-blue-500 ring-blue-500 ring-1 shadow-md mb-2"
-                            placeholder="Masukan Jurusan">
-                        @error('jurusan')
-                            <span class="text-red-500 text-sm">{{ $message }}</span>
-                        @enderror
-
-                        <label class="font-medium" for="universitas">Universitas :</label>
-                        <input type="text" id="universitas" name="universitas"
-                            class="input w-full input-ghost focus:ring-blue-500 ring-blue-500 ring-1 shadow-md mb-2"
-                            placeholder="Masukan Universitas">
-                        @error('universitas')
-                            <span class="text-red-500 text-sm">{{ $message }}</span>
-                        @enderror
-                    </div>
+                    <x-form-mahasiswa></x-form-mahasiswa>
 
                     <button type="submit" class="btn btn-info text-white">REGISTER</button>
                 </form>
@@ -117,10 +99,16 @@
             {{-- Footer --}}
             <div>
                 @if ($errors->any())
-                    <div class="alert alert-danger">
+                    <div role="alert" class="alert alert-warning">
                         <ul>
                             @foreach ($errors->all() as $error)
-                                <li>{{ $error }}</li>
+                                <li class="flex items-center"><svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 shrink-0 stroke-current"
+                                        fill="none" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                            d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z" />
+                                    </svg>
+                                    {{ $error }}
+                                </li>
                             @endforeach
                         </ul>
                     </div>

@@ -1,40 +1,30 @@
-const $ = (selector) => {
-    return document.querySelector(selector);
+const $ = (selector) => document.querySelector(selector);
+
+const radioButtons = document.querySelectorAll('input[name="role"]');
+const formMahasiswa = $('#form-mahasiswa');
+const formMitra = $('#form-mitra');
+
+function showForm(formToShow, formToHide) {
+    formToShow.classList.remove('hidden');
+
+    setTimeout(() => {
+        formToShow.classList.remove('opacity-0');
+        formToShow.classList.add('opacity-100');
+    }, 10);
+
+    formToHide.classList.add('opacity-0');
+    formToHide.classList.remove('opacity-100');
+
+    setTimeout(() => {
+        formToHide.classList.add('hidden');
+    }, 10);
 }
-
-const role_mahasiswa = $('#mahasiswa');
-const role_mitra = $('#mitra');
-const form_mitra = $('#form-mitra');
-const form_mahasiswa = $('#form-mahasiswa');
-
-role_mitra.addEventListener('click', () => {
-    if (role_mitra.checked) {
-        form_mitra.classList.remove('hidden');
-        form_mitra.classList.remove('opacity-0');
-        form_mitra.classList.add('opacity-100');
-        form_mahasiswa.classList.add('hidden');
-    }
-    else if (role_mitra.unchecked) {
-        form_mitra.classList.add('hidden');
-        form_mahasiswa.classList.remove('hidden');
-        form_mahasiswa.classList.add('opacity-0');
-        form_mahasiswa.classList.remove('opacity-100');
-    }
-    form_mitra.style.transition = 'opacity 0.3s ease';
-
-})
-role_mahasiswa.addEventListener('click', () => {
-    if (role_mahasiswa.checked) {
-        form_mahasiswa.classList.remove('hidden');
-        form_mitra.classList.add('hidden');
-        form_mahasiswa.classList.add('opacity-100');
-        form_mahasiswa.classList.remove('opacity-0');
-    }
-    else if (role_mahasiswa.unchecked) {
-        form_mahasiswa.classList.add('hidden');
-        form_mitra.classList.remove('hidden');
-        form_mitra.classList.add('opacity-0');
-        form_mitra.classList.remove('opacity-100');
-    }
-    form_mahasiswa.style.transition = 'opacity 0.3s ease';
-})
+radioButtons.forEach(radio => {
+    radio.addEventListener('click', () => {
+        if (radio.value === 'mahasiswa' && radio.checked) {
+            showForm(formMahasiswa, formMitra);
+        } else if (radio.value === 'mitra' && radio.checked) {
+            showForm(formMitra, formMahasiswa);
+        }
+    });
+});
