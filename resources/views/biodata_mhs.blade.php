@@ -12,7 +12,7 @@
 </header>
 
 <main class="container mx-auto px-6 lg:px-20 -mt-16 md:-mt-20 relative z-20">
-        <div class="card bg-base-100 shadow-xl w-full">
+        <div class="card bg-base-100 shadow-xl w-full mb-10">
             <div class="card-body p-6 md:p-8">
 
                 <!-- Bagian Info Profil -->
@@ -93,7 +93,7 @@
                         </div>
                     </div>
                 </div>
-                
+
                 <!-- Bagian Riwayat Lamaran -->
                 <div class="pt-8">
                     <h3 class="text-xl font-bold text-gray-800 mb-4">Riwayat Lamaran Magang</h3>
@@ -120,9 +120,9 @@
                                     <td>
                                         <div class="badge badge-success text-white">Diterima</div>
                                     </td>
-                                    
+
                                 </tr>
-                                
+
                                 <!-- Contoh Data 2 (Status Ditolak) -->
                                 <tr>
                                     <td>
@@ -134,7 +134,7 @@
                                     <td>
                                         <div class="badge badge-error text-white">Ditolak</div>
                                     </td>
-                                    
+
                                 </tr>
 
                                 <!-- Contoh Data 3 (Status Pending) -->
@@ -148,7 +148,7 @@
                                     <td>
                                         <div class="badge badge-warning text-white">Pending</div>
                                     </td>
-                                    
+
                                 </tr>
                                 {{-- <!--
                                 // ===================================================================
@@ -187,10 +187,10 @@
                 <button class="btn btn-sm btn-circle btn-ghost absolute right-2 top-2">✕</button>
             </form>
             <h3 class="font-bold text-lg mb-6 border-b pb-3">Lengkapi Biodata Anda</h3>
-            
+
             <form method="post" action="#" class="space-y-4 max-h-[70vh] overflow-y-auto overflow-x-hidden pr-4">
                 {{-- SPACE-BACKEND: Ganti action="#" dengan {{ route('nama.route.update') }} dan tambahkan @csrf @method('patch') --}}
-                
+
                 <div class="form-control w-full">
                     <label class="label"><span class="label-text">Nama Lengkap</span></label>
                     <input type="text" name="nama" placeholder="cth: Budi Sanjaya" value="Budi Sanjaya" class="input input-bordered w-full" />
@@ -232,7 +232,7 @@
                     <label class="label"><span class="label-text">No. Handphone</span></label>
                     <input type="tel" name="no_handphone" placeholder="cth: 081234567890" value="081234567890" class="input input-bordered w-full" />
                 </div>
-                
+
                 <div class="divider">Alamat Domisili</div>
 
                 <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
@@ -257,7 +257,7 @@
                     <label class="label"><span class="label-text">Alamat Lengkap</span></label>
                     <textarea name="alamat_domisili" class="textarea textarea-bordered h-24" placeholder="Masukkan nama jalan, nomor rumah, RT/RW">Jl. Jend. Sudirman No. 12</textarea>
                 </div>
-            
+
                 <div class="modal-action sticky bottom-0 bg-base-100 pt-4 -mx-6 px-6 pb-4">
                      <button type="button" class="btn" onclick="document.getElementById('edit_biodata_modal').close()">Batal</button>
                     <button type="submit" class="btn btn-primary">Simpan Perubahan</button>
