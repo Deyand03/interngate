@@ -1,5 +1,5 @@
 @extends('layouts.sidebar')
 
-@section('title', 'Dashboard')
+@section('content')
     aiwdiadwdawd
 @endsection
