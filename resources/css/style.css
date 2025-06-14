@@ -63,12 +63,9 @@
     border-radius: 10px !important;
     margin-bottom: 75px;
 }
-.form-regis{
-    transition: all 0.2s ease-in-out;
-}
 
 .marquee-content {
-        animation: marquee 10s linear infinite;
+        animation: marquee 15s linear infinite;
     }
 
 .marquee-container:hover .marquee-content {
@@ -80,6 +77,6 @@
         transform: translateX(0);
     }
     to {
-        transform: translateX(-50%);
+        transform: translateX(-100%);
     }
 }

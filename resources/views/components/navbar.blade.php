@@ -40,7 +40,6 @@
             <div class="dropdown dropdown-end"> {{-- Menggunakan dropdown-end untuk menu di kanan --}}
                 <div tabindex="0" role="button" class="btn btn-ghost btn-circle avatar">
                     <div class="w-10 rounded-full">
-                        {{-- Logika untuk menampilkan foto profil berdasarkan role --}}
                         @if (Auth::user()->role === 'mahasiswa' && Auth::user()->mahasiswa && Auth::user()->mahasiswa->foto_profil)
                             <img src="{{ asset('storage/' . Auth::user()->mahasiswa->foto_profil) }}"
                                 alt="Foto Profil Mahasiswa" class="object-cover" />
@@ -49,7 +48,7 @@
                                 alt="Logo Perusahaan Mitra" class="object-cover" />
                         @else
                             {{-- Placeholder jika tidak ada foto profil atau role tidak terdefinisi --}}
-                            <img src="{{ asset('img/default-avatar.png') }}" alt="Default Avatar" class="object-cover" />
+                            <img src="{{ asset('img/title-icon.png') }}" alt="Default Avatar" class="object-cover" />
                         @endif
                     </div>
                 </div>

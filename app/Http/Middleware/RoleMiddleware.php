@@ -10,9 +10,8 @@ class RoleMiddleware
 {
     public function handle(Request $request, Closure $next, ...$roles): Response
     {
-        // Pastikan sudah login dan punya role
         if (!auth()->check() || !in_array(auth()->user()->role, $roles)) {
-            abort(403, 'Akses ditolak.');
+            abort(404);
         }
 
         return $next($request);
