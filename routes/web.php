@@ -12,6 +12,12 @@ Route::get('/lowongan', [NavigationController::class, 'lowongan'])->name('lowong
 Route::get('/perusahaan', [NavigationController::class, 'perusahaan'])->name('perusahaan');
 Route::get('/faq', [NavigationController::class, 'faq'])->name('faq');
 
+// Route::get('/profil/biodata', [ProfileController::class, 'show'])->name('profil.biodata.show');
+
+Route::get('biodata/mahasiswa', function () {
+    return view('biodata_mhs');
+});
+
 
 Route::get('/dashboard', function () {
     return view('dashboard');
@@ -24,12 +30,12 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
-Route::middleware(['auth', 'role:mitra'])->group(function(){
+Route::middleware(['auth', 'role:mitra'])->group(function () {
     Route::resource('mitra', MitraController::class);
 });
-Route::middleware(['auth', 'role:mahasiswa'])->group(function(){
+Route::middleware(['auth', 'role:mahasiswa'])->group(function () {
     Route::resource('mahasiswa', MahasiswaController::class);
 });
 
 
-require __DIR__.'/auth.php';
+require __DIR__ . '/auth.php';
