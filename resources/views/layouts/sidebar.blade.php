@@ -16,14 +16,17 @@
 </head>
 
 <body style="font-family: Poppins">
+    <div class="flex">
+        <nav class="flex w-[20%] h-screen bg-blue-500 p-3">
+            {{-- Sidebar --}}
+                <div class="text-center text-white ">
+                    <h1 class="text-2xl text-center font-bold"> DASHBOARD</h1>
+                </div>
+        </nav>
 
-    <nav>
-        {{-- Sidebar --}}
-        
-    </nav>
-
-    <div>
-        @yield('content')
+        <div>
+            @yield('content')
+        </div>
     </div>
 </body>
 
