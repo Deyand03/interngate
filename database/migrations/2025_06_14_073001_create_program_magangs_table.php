@@ -23,8 +23,8 @@ return new class extends Migration
             $table->date('awal_magang');
             $table->date('akhir_magang');
             $table->enum('status', ['buka', 'tutup']);
-            $table->foreignId('id_mitra')->constrained()->onDelete('cascade');
-            $table->foreignId('id_category')->constrained()->onDelete('cascade');
+            $table->foreignId('id_mitra')->constrained('mitras')->onDelete('cascade');
+            $table->foreignId('id_category')->constrained('categories')->onDelete('cascade');
             $table->timestamps();
         });
     }

@@ -13,8 +13,8 @@ class MahasiswaController extends Controller
      */
     public function index()
     {
-        $data_mhs = Mahasiswa::all();
-        return view('mahasiswa.dashboard', compact('data_mhs'));
+        $mhs_all = Mahasiswa::all();
+        return view('mahasiswa.index', compact('mhs_all'));
     }
 
     /**
@@ -54,7 +54,28 @@ class MahasiswaController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        $data = Mahasiswa::findOrFail($id);
+        if($data){
+            $data->update([
+                'nim' => $request->nim,
+                'nama' => $request->nama,
+                'jurusan' => $request->jurusan,
+                'universitas' => $request->universitas,
+                'jenis_kelamin' => $request->jenis_kelamin,
+                'tempat_lahir' => $request->tempat_lahir,
+                'tanggal_lahir' => $request->tanggal_lahir,
+                'no_hp' => $request->no_hp,
+                'provinsi_domisili' => $request->provinsi_domisili,
+                'kabupaten_domisili' => $request->kabupaten_domisili,
+                'kecamatan_domisili' => $request->kecamatan_domisili,
+                'desa_domisili' => $request->desa_domisili,
+                'alamat_domisili' => $request->alamat_domisili,
+                'foto_profil' => $request->foto_profil,
+            ]);
+            return redirect()->back()->with('success', 'Data Berhasil Di Update');
+        }else{
+            return redirect()->back()->with('error', 'Data Gagal Di Update');
+        }
     }
 
     /**

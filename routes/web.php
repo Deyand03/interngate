@@ -17,9 +17,6 @@ Route::get('/detail', function(){
 });
 // Route::get('/profil/biodata', [ProfileController::class, 'show'])->name('profil.biodata.show');
 
-Route::get('biodata/mahasiswa', function () {
-    return view('biodata_mhs');
-});
 
 Route::get('/dashboard-mitra', function () {
     return view('dashboard_mitra.index');
@@ -36,17 +33,17 @@ Route::get('/dashboard', function () {
 })->middleware(['auth', 'verified'])->name('dashboard');
 
 
-Route::middleware('auth')->group(function () {
-    Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
-    Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
-    Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
-});
+// Route::middleware('auth')->group(function () {
+//     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
+//     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
+//     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
+// });
 
 Route::middleware(['auth', 'role:mitra'])->group(function () {
     Route::resource('mitra', MitraController::class);
 });
 Route::middleware(['auth', 'role:mahasiswa'])->group(function(){
-    Route::get('mahasiswa', [MahasiswaController::class, 'index'])->name('mahasiswa.index');
+    Route::resource('mahasiswa', MahasiswaController::class);
 });
 
 

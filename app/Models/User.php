@@ -48,9 +48,9 @@ class User extends Authenticatable
         ];
     }
     public function mahasiswa(){
-        return $this->hasOne(Mahasiswa::class);
+        return $this->hasOne(Mahasiswa::class, 'user_id', 'id');
     }
     public function mitra(){
-        return $this->hasOne(Mitra::class);
+        return $this->hasOne(Mitra::class, 'user_id', 'id');
     }
 }

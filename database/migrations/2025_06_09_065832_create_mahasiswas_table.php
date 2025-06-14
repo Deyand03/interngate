@@ -12,20 +12,20 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('mahasiswas', function (Blueprint $table) {
-            $table->string('id');
+            $table->id();
             $table->string('nim')->unique();
             $table->string('nama');
             $table->string('jurusan');
             $table->string('universitas');
-            $table->enum('jenis_kelamin', ['Laki-laki', 'Perempuan']);
-            $table->string('tempat_lahir');
-            $table->date('tanggal_lahir');
-            $table->string('no_hp')->unique();
-            $table->string('provinsi_domisili');
-            $table->string('kabupaten_domisili');
-            $table->string('kecamatan_domisili');
-            $table->string('desa_domisili');
-            $table->string('alamat_domisili');
+            $table->enum('jenis_kelamin', ['Laki-laki', 'Perempuan'])->nullable();
+            $table->string('tempat_lahir')->nullable();
+            $table->date('tanggal_lahir')->nullable();
+            $table->string('no_hp')->unique()->nullable();
+            $table->string('provinsi_domisili')->nullable();
+            $table->string('kabupaten_domisili')->nullable();
+            $table->string('kecamatan_domisili')->nullable();
+            $table->string('desa_domisili')->nullable();
+            $table->string('alamat_domisili')->nullable();
             $table->string('foto_profil')->nullable();
             $table->foreignId('user_id')->constrained()->onDelete('cascade');
             $table->timestamps();
