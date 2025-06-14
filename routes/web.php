@@ -21,6 +21,15 @@ Route::get('biodata/mahasiswa', function () {
     return view('biodata_mhs');
 });
 
+Route::get('/dashboard-mitra', function () {
+    return view('dashboard_mitra.index');
+});
+Route::get('/dashboard-mitra/profile', function () {
+    return view('dashboard_mitra.profile');
+});
+Route::get('/dashboard-mitra/tambah-program', function () {
+    return view('dashboard_mitra.tambah_program');
+});
 
 Route::get('/dashboard', function () {
     return view('dashboard');

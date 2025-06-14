@@ -13,6 +13,7 @@ class MahasiswaController extends Controller
      */
     public function index()
     {
+        $data_mhs = Mahasiswa::all();
         return view('mahasiswa.dashboard', compact('data_mhs'));
     }
 

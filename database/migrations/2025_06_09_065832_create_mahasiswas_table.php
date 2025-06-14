@@ -21,7 +21,11 @@ return new class extends Migration
             $table->string('tempat_lahir');
             $table->date('tanggal_lahir');
             $table->string('no_hp')->unique();
-            $table->string('alamat');
+            $table->string('provinsi_domisili');
+            $table->string('kabupaten_domisili');
+            $table->string('kecamatan_domisili');
+            $table->string('desa_domisili');
+            $table->string('alamat_domisili');
             $table->string('foto_profil')->nullable();
             $table->foreignId('user_id')->constrained()->onDelete('cascade');
             $table->timestamps();
