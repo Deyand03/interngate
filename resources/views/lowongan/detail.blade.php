@@ -33,7 +33,7 @@
                             <p class="text-gray-500">• {{ $program->mitra->alamat_perusahaan }}</p>
                         </div>
                     </div>
-                    <div class="badge badge-xl font-semibold {{ $program->status == 'buka' ? 'text-emerald-800 bg-emerald-100' : 'text-rose-800 bg-rose-100' }} ">
+                    <div class="badge badge-xl font-semibold {{ $program->status == 'Buka' ? 'text-emerald-800 bg-emerald-100' : 'text-rose-800 bg-rose-100' }} ">
                         {{ $program->status }}
                     </div>
                 </div>
@@ -89,7 +89,7 @@
                                 Batas pendaftaran: <strong>{{ $program->batas_pendaftaran->isoFormat('D MMMM YYYY') }}</strong>
                             </p>
                             <div class="card-actions justify-end mt-4">
-                                <button @disabled($program->status == 'Tutup') class="btn btn-ghost {{ $program->status == 'Tutup' ? 'bg-[#d0a824] cursor-not-allowed' : 'bg-[#F5C219] hover:bg-[#e0ac00]' }} border-none text-black w-full font-bold" >
+                                <button {{ $program->status == 'Tutup' || Auth::user()->mahasiswa ? 'disabled' : '' }} class="btn btn-ghost {{ $program->status == 'Tutup' ? 'bg-[#d0a824] cursor-not-allowed' : 'bg-[#F5C219] hover:bg-[#e0ac00]' }} border-none text-black w-full font-bold" >
                                     Lamar Sekarang
                                 </button>
                             </div>
