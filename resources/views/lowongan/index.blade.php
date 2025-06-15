@@ -127,7 +127,7 @@
         </div>
 
         {{-- List 3 Header --}}
-        <div class="flex dark:bg-gray-100 bg-gray-800 h-fit justify-evenly pt-20 pb-5">
+        <div class="flex bg-gray-100 h-fit justify-evenly pt-20 pb-5">
             <div class="flex flex-col justify-between">
                 <div class="card-head-1 flex gap-2 bg-white shadow-xl p-3.5 rounded items-center">
                     <div
