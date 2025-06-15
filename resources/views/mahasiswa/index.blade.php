@@ -22,7 +22,7 @@
                     <div class="avatar">
                         <div class="w-32 h-32 rounded-full ring ring-[#187DAB] ring-offset-base-100 ring-offset-4">
                             {{-- <!-- SPACE-BACKEND: Hubungkan dengan path foto profil, contoh: src="{{ $user->mahasiswa?->foto_profil ? asset('storage/' . $user->mahasiswa->foto_profil) : '...' }}" --> --}}
-                            <img src="https://placehold.co/300x300/E0E0E0/757575?text=B" alt="Foto Profil" />
+                            <img src="{{ Auth::user()->mahasiswa->foto_profil ? asset('storage/' . Auth::user()->mahasiswa->foto_profil) : asset('img/placeholder.jpg') )}}" alt="Foto Profil" />
                         </div>
                     </div>
                     <div class="text-center md:text-left">

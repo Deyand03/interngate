@@ -3,6 +3,7 @@
 use App\Http\Controllers\MahasiswaController;
 use App\Http\Controllers\MitraController;
 use App\Http\Controllers\NavigationController;
+use App\Http\Controllers\PostController;
 use App\Http\Controllers\ProfileController;
 use App\Models\Mitra;
 use Illuminate\Support\Facades\Route;
@@ -21,14 +22,16 @@ Route::get('/test-view', function(){
     return view('welcome');
 });
 
-Route::get('/dashboard-mitra', function () {
-    return view('dashboard_mitra.index');
-});
-Route::get('/dashboard-mitra/profile', function () {
-    return view('dashboard_mitra.profile');
-});
-Route::get('/dashboard-mitra/tambah-program', function () {
-    return view('dashboard_mitra.tambah_program');
+Route::prefix('dashboard-mitra')->group(function () {
+    Route::get('/', function () {
+        return view('dashboard_mitra.index');
+    });
+    Route::get('/profile', function () {
+        return view('dashboard_mitra.profile');
+    });
+    Route::get('/tambah-program', function () {
+        return view('dashboard_mitra.tambah_program');
+    });
 });
 
 Route::get('/dashboard', function () {
@@ -49,5 +52,7 @@ Route::middleware(['auth', 'role:mahasiswa'])->group(function(){
     Route::resource('mahasiswa', MahasiswaController::class);
 });
 
+// Routing Post Lowongan
+Route::get('lowongan/{program:slug}', [PostController::class, 'show'])->name('lowongan.show');
 
 require __DIR__ . '/auth.php';

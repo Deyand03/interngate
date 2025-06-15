@@ -1,5 +1,7 @@
 @extends('layouts.base')
-@section('title', 'Detail Lowongan')
+@section('title')
+    {{ $program->judul }}
+@endsection
 
 @section('content')
 <!-- Header Halaman dengan Banner Perusahaan -->
@@ -20,89 +22,57 @@
                 <div class="flex flex-col sm:flex-row items-start gap-6">
                     <div class="avatar -mt-16 sm:-mt-20">
                         <div class="w-24 h-24 md:w-32 md:h-32 rounded-lg bg-white p-2 shadow-lg ring-4 ring-white">
-                             <!-- SPACE-BACKEND: Ganti src dengan 'mitra.logo_perusahaan' dari DB -->
-                            <img src="https://placehold.co/128x128/187DAB/FFFFFF?text=Mitra" alt="Logo Perusahaan"/>
-                        </div>
+                            <img src="{{ $program->mitra->logo_perusahaan ? asset('storage/' . $program->mitra->logo_perusahaan) : asset('img/placeholder.jpg') }}" alt="Logo Perusahaan"/>                        </div>
                     </div>
                     <div class="flex-grow">
                         <!-- SPACE-BACKEND: Ganti dengan 'category.name' dari DB -->
-                        <div class="badge badge-primary text-white font-medium">Web Development</div>
-                        <!-- SPACE-BACKEND: Ganti dengan 'program_magang.judul' dari DB -->
-                        <h1 class="text-3xl lg:text-4xl font-extrabold text-gray-800 mt-2">Backend Web Developer (Laravel)</h1>
+                        <div class="{{ $program->category->badge_class }} badge badge-md font-medium">{{ $program->category->name }}</div>
+                        <h1 class="text-3xl lg:text-4xl font-extrabold text-gray-800 mt-2">{{ $program->judul }}</h1>
                         <div class="flex items-center gap-2 mt-2">
-                             <!-- SPACE-BACKEND: Ganti dengan 'mitra.nama_perusahaan' dari DB -->
-                            <a href="#" class="text-xl font-medium text-gray-700 hover:underline">PT. Teknologi Maju</a>
-                            <!-- SPACE-BACKEND: Ganti dengan 'mitra.alamat_perusahaan' dari DB -->
-                            <p class="text-gray-500">• Jakarta Selatan</p>
+                            <a href="#" class="text-xl font-medium text-gray-700 cursor-auto">{{ $program->mitra->nama_perusahaan }}</a>
+                            <p class="text-gray-500">• {{ $program->mitra->alamat_perusahaan }}</p>
                         </div>
                     </div>
-
+                    <div class="badge badge-xl font-semibold {{ $program->status == 'buka' ? 'text-emerald-800 bg-emerald-100' : 'text-rose-800 bg-rose-100' }} ">
+                        {{ $program->status }}
+                    </div>
                 </div>
             </div>
         </div>
 
         <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
-            <!-- Kolom Kiri: Detail Program -->
             <div class="lg:col-span-2 space-y-8">
                 <div class="card bg-base-100 shadow-xl">
                     <div class="card-body">
-                        <!-- Info Penting dalam bentuk Stats -->
                         <div class="stats stats-vertical md:stats-horizontal shadow-sm bg-blue-50/50 w-full">
                           <div class="stat">
                             <div class="stat-title">Durasi Magang</div>
-                             <!-- SPACE-BACKEND: Hitung durasi dari 'awal_magang' dan 'selesai_magang' -->
-                            <div class="stat-value text-lg text-primary">3 Bulan</div>
-                            <div class="stat-desc text-xs">1 Agu - 31 Okt 2025</div>
+                            <div class="stat-value text-lg text-primary">{{ $program->durasi }}</div>
+                            <div class="stat-desc text-xs">{{ $program->rentang_tanggal }}</div>
                           </div>
                           <div class="stat">
                             <div class="stat-title">Batas Pendaftaran</div>
-                            <!-- SPACE-BACKEND: Ganti dengan 'program_magang.batas_pendaftaran' -->
-                            <div class="stat-value text-lg text-secondary-focus">14 Juli 2025</div>
+                            <div class="stat-value text-lg text-secondary-focus">{{ $program->batas_pendaftaran->isoFormat('D MMMM YYYY') }}</div>
                           </div>
                           <div class="stat">
                             <div class="stat-title">Kuota Tersedia</div>
-                             <!-- SPACE-BACKEND: Ganti dengan 'program_magang.kuota' -->
-                            <div class="stat-value text-lg text-accent">5 Peserta</div>
+                            <div class="stat-value text-lg text-accent">{{ $program->kuota }}</div>
                           </div>
                         </div>
 
-                        <!-- Deskripsi & Kualifikasi -->
                         <div class="prose max-w-none text-gray-700 mt-8">
                             <h3 class="font-bold text-gray-800 text-xl">Deskripsi Program</h3>
-                             <!-- SPACE-BACKEND: Ganti dengan 'program_magang.deskripsi_program' -->
-                            <p>Kami mencari intern yang bersemangat untuk belajar dan berkontribusi dalam pengembangan backend service kami menggunakan Laravel, Livewire, dan arsitektur modular. Anda akan bekerja sama dengan tim engineer senior untuk membangun fitur-fitur baru dan memelihara service yang sudah ada.</p>
-
-                            <h3 class="font-bold text-gray-800 mt-8 text-xl">Tanggung Jawab</h3>
-                            <!-- SPACE-BACKEND: Ganti dengan 'program_magang.kualifikasi' (format sebagai list) -->
-                            <div class="space-y-3 mt-4">
-                                <div class="flex items-start gap-3">
-                                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-primary flex-shrink-0 mt-1" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" /></svg>
-                                    <span>Membantu desain, pengembangan, dan implementasi API backend.</span>
-                                </div>
-                                 <div class="flex items-start gap-3">
-                                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-primary flex-shrink-0 mt-1" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" /></svg>
-                                    <span>Menulis kode yang bersih, efisien, dan terdokumentasi dengan baik.</span>
-                                </div>
-                                <div class="flex items-start gap-3">
-                                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-primary flex-shrink-0 mt-1" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" /></svg>
-                                    <span>Berkolaborasi dengan tim frontend untuk integrasi layanan.</span>
-                                </div>
-                            </div>
-
+                            <p>{{ $program->deskripsi }}</p>
                             <h3 class="font-bold text-gray-800 mt-8 text-xl">Kualifikasi</h3>
                             <div class="space-y-3 mt-4">
-                                <div class="flex items-start gap-3">
-                                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-primary flex-shrink-0 mt-1" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" /></svg>
-                                    <span>Mahasiswa tingkat akhir atau fresh graduate dari jurusan Teknik Informatika, Ilmu Komputer, atau sejenisnya.</span>
+                                @foreach ($program->kualifikasi_list as $item)
+                                <div class="flex items-center gap-2">
+                                    <div class="flex items-center">
+                                        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-primary flex-shrink-0 mt-1" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" /></svg>
+                                    </div>
+                                    <span>{{ $item }}</span>
                                 </div>
-                                 <div class="flex items-start gap-3">
-                                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-primary flex-shrink-0 mt-1" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" /></svg>
-                                    <span>Memiliki pemahaman dasar tentang bahasa pemrograman PHP dan framework Laravel.</span>
-                                </div>
-                                <div class="flex items-start gap-3">
-                                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-primary flex-shrink-0 mt-1" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" /></svg>
-                                    <span>Memiliki semangat belajar yang tinggi dan kemampuan problem-solving yang baik.</span>
-                                </div>
+                                @endforeach
                             </div>
                         </div>
                     </div>
@@ -116,10 +86,10 @@
                         <div class="card-body">
                             <h2 class="card-title text-lg font-bold">Lamar Posisi Ini</h2>
                             <p class="text-sm text-white/80">
-                                Batas pendaftaran: <strong>14 Juli 2025</strong>
+                                Batas pendaftaran: <strong>{{ $program->batas_pendaftaran->isoFormat('D MMMM YYYY') }}</strong>
                             </p>
                             <div class="card-actions justify-end mt-4">
-                                <button class="btn bg-[#F5C219] hover:bg-[#e0ac00] border-none text-black w-full font-bold">
+                                <button @disabled($program->status == 'tutup') class="btn btn-ghost {{ $program->status == 'tutup' ? 'bg-[#d0a824] cursor-not-allowed' : 'bg-[#F5C219] hover:bg-[#e0ac00]' }} border-none text-black w-full font-bold" >
                                     Lamar Sekarang
                                 </button>
                             </div>
@@ -130,10 +100,7 @@
                             <h2 class="card-title text-lg">Tentang Mitra</h2>
                             <div class="prose max-w-none text-sm text-gray-600 mt-2">
                                 <!-- SPACE-BACKEND: Ganti dengan 'mitra.deskripsi' -->
-                                <p>PT. Teknologi Maju adalah perusahaan terdepan dalam pengembangan solusi perangkat lunak enterprise dan layanan konsultasi IT untuk berbagai industri di Indonesia.</p>
-                            </div>
-                            <div class="card-actions justify-start mt-4">
-                                <a href="#" class="btn btn-primary btn-sm btn-outline">Lihat Profil Mitra</a>
+                                <p>{{ $program->mitra->deskripsi }}</p>
                             </div>
                         </div>
                     </div>
