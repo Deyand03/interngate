@@ -13,6 +13,7 @@
     <link rel="icon" type="image/png" href="{{ asset('img/title-icon.png') }}">
 </head>
 
+<<<<<<< HEAD
 <body style="font-family: Poppins" class="flex">
     <!-- Sidebar -->
     <nav class="w-[20%] h-screen bg-blue-600 text-white flex flex-col justify-between">
@@ -87,6 +88,21 @@
    @section('content')
     
 @endsection
+=======
+<body style="font-family: Poppins">
+    <div class="flex">
+        <nav class="flex w-[20%] h-screen bg-blue-500 p-3">
+            {{-- Sidebar --}}
+                <div class="text-center text-white ">
+                    <h1 class="text-2xl text-center font-bold"> DASHBOARD</h1>
+                </div>
+        </nav>
+
+        <div>
+            @yield('content')
+        </div>
+    </div>
+>>>>>>> 7c83105ea48999a0590b1b5ae5d7542024705442
 </body>
 
 </html>
