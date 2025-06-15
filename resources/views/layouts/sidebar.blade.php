@@ -36,9 +36,9 @@
                 <!-- Logo & Kembali ke Beranda -->
                 <a href="/" class="flex items-center gap-3 mb-8 group">
                     <div class="p-2 bg-white/20 rounded-lg group-hover:bg-white/30 transition-colors">
-                        <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path d="M10.707 2.293a1 1 0 00-1.414 0l-7 7a1 1 0 001.414 1.414L4 10.414V17a1 1 0 001 1h2a1 1 0 001-1v-2a1 1 0 011-1h2a1 1 0 011 1v2a1 1 0 001 1h2a1 1 0 001-1v-6.586l.293.293a1 1 0 001.414-1.414l-7-7z"></path></svg>
+                        <i class="fa-solid fa-fw fa-arrow-left"></i>
                     </div>
-                    <span class="text-xl font-bold">InternGate</span>
+                    <span class="text-lg font-semibold">Kembali ke Beranda</span>
                 </a>
 
                 <!-- Kartu Profil Mitra -->
@@ -74,27 +74,16 @@
                 <li class="menu-item">
                     <a href="">
                             <i class="fa-solid fa-fw fa-briefcase"></i>
-                        <span>Manajemen Lowongan</span>
+                        <span>Tambah Program</span>
                     </a>
                 </li>
-                <li class="menu-item">
-                    <a href="">
-                        <i class="fa-solid fa-fw fa-users"></i>
-                        <span>Data Pelamar</span>
-                    </a>
-                </li>
+                
                 
                 <li class="menu-title text-white/50 mt-4"><span>Akun</span></li>
                 <li class="menu-item">
                     <a href="#">
                         <i class="fa-solid fa-fw fa-building"></i>
                         <span>Profil Perusahaan</span>
-                    </a>
-                </li>
-                 <li class="menu-item">
-                    <a href="#">
-                        <i class="fa-solid fa-fw fa-cog"></i>
-                        <span>Pengaturan</span>
                     </a>
                 </li>
             </ul>

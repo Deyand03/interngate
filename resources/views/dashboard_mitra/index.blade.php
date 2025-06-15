@@ -10,60 +10,32 @@
     </header>
 
     <!-- Kartu Statistik -->
-    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
-        <!-- Card 1: Total Pelamar -->
-        <div class="card bg-gradient-to-br from-blue-500 to-blue-600 text-white shadow-lg">
-            <div class="card-body">
-                <div class="flex justify-between items-start">
-                    <h2 class="card-title text-white/80">Total Pelamar</h2>
-                    <div class="p-2 bg-white/20 rounded-lg">
-                        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" /></svg>
+    <div class="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-4 gap-6 mb-8">
+                    <div class="card bg-gradient-to-br from-blue-500 to-blue-600 text-white shadow-lg">
+                        <div class="card-body p-6">
+                            <div class="flex justify-between items-start"><h2 class="card-title text-white/80">Total Pelamar</h2><div class="p-2 bg-white/20 rounded-lg"><svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" /></svg></div></div>
+                            <p class="text-4xl font-extrabold mt-2">128</p>
+                        </div>
+                    </div>
+                    <div class="card bg-gradient-to-br from-yellow-400 to-yellow-500 text-white shadow-lg">
+                        <div class="card-body p-6">
+                             <div class="flex justify-between items-start"><h2 class="card-title text-white/80">Menunggu Konfirmasi</h2><div class="p-2 bg-white/20 rounded-lg"><svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" /></svg></div></div>
+                            <p class="text-4xl font-extrabold mt-2">15</p>
+                        </div>
+                    </div>
+                    <div class="card bg-gradient-to-br from-green-500 to-green-600 text-white shadow-lg">
+                        <div class="card-body p-6">
+                             <div class="flex justify-between items-start"><h2 class="card-title text-white/80">Aktif Magang</h2><div class="p-2 bg-white/20 rounded-lg"><svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z" /></svg></div></div>
+                            <p class="text-4xl font-extrabold mt-2">8</p>
+                        </div>
+                    </div>
+                    <div class="card bg-gradient-to-br from-gray-700 to-gray-800 text-white shadow-lg">
+                        <div class="card-body p-6">
+                            <div class="flex justify-between items-start"><h2 class="card-title text-white/80">Telah Selesai</h2><div class="p-2 bg-white/20 rounded-lg"><svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" /></svg></div></div>
+                            <p class="text-4xl font-extrabold mt-2">42</p>
+                        </div>
                     </div>
                 </div>
-                <!-- SPACE-BACKEND: Ganti angka ini dengan count dari DB -->
-                <p class="text-5xl font-extrabold mt-2">128</p>
-            </div>
-        </div>
-        <!-- Card 2: Menunggu Konfirmasi -->
-        <div class="card bg-gradient-to-br from-yellow-400 to-yellow-500 text-white shadow-lg">
-            <div class="card-body">
-                <div class="flex justify-between items-start">
-                    <h2 class="card-title text-white/80">Menunggu Konfirmasi</h2>
-                    <div class="p-2 bg-white/20 rounded-lg">
-                        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" /></svg>
-                    </div>
-                </div>
-                <!-- SPACE-BACKEND: Ganti angka ini dengan count dari DB (status='pending') -->
-                <p class="text-5xl font-extrabold mt-2">15</p>
-            </div>
-        </div>
-        <!-- Card 3: Aktif Magang -->
-        <div class="card bg-gradient-to-br from-green-500 to-green-600 text-white shadow-lg">
-            <div class="card-body">
-                <div class="flex justify-between items-start">
-                    <h2 class="card-title text-white/80">Aktif Magang</h2>
-                    <div class="p-2 bg-white/20 rounded-lg">
-                        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z" /></svg>
-                    </div>
-                </div>
-                <!-- SPACE-BACKEND: Ganti angka ini dengan count dari DB (status='berlangsung') -->
-                <p class="text-5xl font-extrabold mt-2">8</p>
-            </div>
-        </div>
-        <!-- Card 4: Magang Selesai -->
-        <div class="card bg-gradient-to-br from-gray-700 to-gray-800 text-white shadow-lg">
-            <div class="card-body">
-                <div class="flex justify-between items-start">
-                    <h2 class="card-title text-white/80">Telah Selesai</h2>
-                    <div class="p-2 bg-white/20 rounded-lg">
-                        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
-                    </div>
-                </div>
-                <!-- SPACE-BACKEND: Ganti angka ini dengan count dari DB (status='selesai') -->
-                <p class="text-5xl font-extrabold mt-2">42</p>
-            </div>
-        </div>
-    </div>
     
     <form method="GET" action="#">
          <div class="grid grid-cols-1 md:grid-cols-4 gap-4 mb-4 p-4 bg-base-200 rounded-lg">
