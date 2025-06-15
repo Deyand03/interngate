@@ -1,147 +1,144 @@
-<!DOCTYPE html>
-<html lang="en" data-theme="light">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Pratinjau Desain v2 - Detail Program Magang</title>
+@extends('layouts.base')
+@section('title', 'Detail Lowongan')
 
-    <link href="https://cdn.jsdelivr.net/npm/daisyui@4.12.2/dist/full.min.css" rel="stylesheet" type="text/css" />
-    <script src="https://cdn.tailwindcss.com"></script>
-
-    <script>
-    tailwind.config = {
-      daisyui: {
-        themes: ["light", {
-          mytheme: {
-            "primary": "#00529E", // Biru Tua dari screenshot
-            "secondary": "#FFD100", // Kuning dari screenshot
-            "accent": "#1FB2A6",
-            "neutral": "#2a323c",
-            "base-100": "#ffffff",
-            "info": "#3abff8",
-            "success": "#36d399",
-            "warning": "#fbbd23",
-            "error": "#f87272",
-          },
-        }],
-      },
-    }
-    </script>
-    <style>
-        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap');
-        body {
-            font-family: 'Poppins', sans-serif;
-            background-color: #f8f9fa; /* Sedikit abu-abu untuk background */
-        }
-    </style>
-</head>
-<body data-theme="mytheme">
-
-    <div class="navbar bg-base-100 shadow-sm sticky top-0 z-50">
-      <div class="flex-1">
-        <a class="btn btn-ghost text-xl font-bold text-primary">InternGate</a>
-      </div>
-      <div class="flex-none">
-        <ul class="menu menu-horizontal px-1 font-semibold">
-          <li><a>Beranda</a></li>
-          <li><a>Lowongan</a></li>
-          <li><a>Perusahaan</a></li>
-        </ul>
-      </div>
+@section('content')
+<!-- Header Halaman dengan Banner Perusahaan -->
+    <div class="relative h-64 md:h-80 w-full">
+        <!-- SPACE-BACKEND: Ganti src dengan 'mitra.banner_perusahaan' dari DB -->
+        <img src="https://images.unsplash.com/photo-1542744173-8e7e53415bb0?q=80&w=2070&auto=format&fit=crop"
+             alt="Banner Perusahaan"
+             class="h-full w-full object-cover">
+        <div class="absolute inset-0 bg-black/60"></div>
     </div>
 
-    <div class="container mx-auto max-w-6xl p-4 md:p-8">
+    <!-- Konten Utama -->
+    <main class="container mx-auto px-6 lg:px-20 -mt-24 relative z-20 pb-16">
 
-        <div class="mb-8 overflow-hidden rounded-2xl shadow-lg">
-            <img src="https://images.unsplash.com/photo-1542744173-8e7e53415bb0?q=80&w=2070&auto=format&fit=crop"
-                 alt="Foto Sampul Perusahaan"
-                 class="h-64 w-full object-cover">
-        </div>
-
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-
-            <div class="md:col-span-2">
-                <div class="card bg-base-100 shadow-xl border border-slate-200">
-                    <div class="card-body">
-                        <h1 class="card-title text-3xl md:text-4xl font-bold text-slate-800">
-                            Backend Developer Intern (Golang)
-                        </h1>
-                        <a href="#" class="text-xl font-medium text-primary hover:underline">
-                            Nama Perusahaan Keren
-                        </a>
-                        <p class="text-slate-500 mt-1">
-                            Jakarta Selatan, DKI Jakarta
-                        </p>
-
-                        <div class="flex flex-wrap gap-2 mt-4">
-                            <div class="badge badge-lg bg-primary text-white font-medium py-4 px-3">Web Development</div>
-                            <div class="badge badge-lg bg-emerald-100 text-emerald-800 font-medium py-4 px-3">Kuota: 5 Peserta</div>
-                            <div class="badge badge-lg bg-sky-100 text-sky-800 font-medium py-4 px-3">3 Bulan</div>
-                        </div>
-
-                        <div class="divider"></div>
-
-                        <div class="prose max-w-none text-slate-600">
-                            <h3 class="font-semibold text-slate-800">Deskripsi Program</h3>
-                            <p>
-                                Kami mencari intern yang bersemangat untuk belajar dan berkontribusi dalam pengembangan backend service kami menggunakan Golang, gRPC, dan arsitektur microservices. Anda akan bekerja sama dengan tim engineer senior untuk membangun fitur-fitur baru dan memelihara service yang sudah ada.
-                            </p>
-
-                            <h3 class="font-semibold text-slate-800 mt-6">Tanggung Jawab</h3>
-                            <ul>
-                                <li>Membantu desain, pengembangan, dan implementasi API backend.</li>
-                                <li>Menulis kode yang bersih, efisien, dan terdokumentasi dengan baik.</li>
-                                <li>Berkolaborasi dengan tim frontend untuk integrasi layanan.</li>
-                                <li>Melakukan testing dan debugging untuk memastikan kualitas kode.</li>
-                            </ul>
-
-                            <h3 class="font-semibold text-slate-800 mt-6">Kualifikasi</h3>
-                            <ul>
-                                <li>Mahasiswa tingkat akhir atau fresh graduate dari jurusan Teknik Informatika, Ilmu Komputer, atau sejenisnya.</li>
-                                <li>Memiliki pemahaman dasar tentang bahasa pemrograman Go (Golang).</li>
-                                <li>Familiar dengan konsep RESTful API dan gRPC adalah nilai plus.</li>
-                                <li>Memiliki semangat belajar yang tinggi dan kemampuan problem-solving yang baik.</li>
-                            </ul>
+        <!-- Kartu Judul dan Info Utama -->
+        <div class="card bg-base-100 shadow-xl mb-8">
+            <div class="card-body p-6 md:p-8">
+                <div class="flex flex-col sm:flex-row items-start gap-6">
+                    <div class="avatar -mt-16 sm:-mt-20">
+                        <div class="w-24 h-24 md:w-32 md:h-32 rounded-lg bg-white p-2 shadow-lg ring-4 ring-white">
+                             <!-- SPACE-BACKEND: Ganti src dengan 'mitra.logo_perusahaan' dari DB -->
+                            <img src="https://placehold.co/128x128/187DAB/FFFFFF?text=Mitra" alt="Logo Perusahaan"/>
                         </div>
                     </div>
+                    <div class="flex-grow">
+                        <!-- SPACE-BACKEND: Ganti dengan 'category.name' dari DB -->
+                        <div class="badge badge-primary text-white font-medium">Web Development</div>
+                        <!-- SPACE-BACKEND: Ganti dengan 'program_magang.judul' dari DB -->
+                        <h1 class="text-3xl lg:text-4xl font-extrabold text-gray-800 mt-2">Backend Web Developer (Laravel)</h1>
+                        <div class="flex items-center gap-2 mt-2">
+                             <!-- SPACE-BACKEND: Ganti dengan 'mitra.nama_perusahaan' dari DB -->
+                            <a href="#" class="text-xl font-medium text-gray-700 hover:underline">PT. Teknologi Maju</a>
+                            <!-- SPACE-BACKEND: Ganti dengan 'mitra.alamat_perusahaan' dari DB -->
+                            <p class="text-gray-500">• Jakarta Selatan</p>
+                        </div>
+                    </div>
+
                 </div>
             </div>
+        </div>
 
-            <div class="md:col-span-1">
-                <div class="sticky top-28 space-y-6"> <div class="card bg-base-100 shadow-xl border border-slate-200">
-                        <div class="card-body">
-                            <h2 class="card-title text-lg font-bold">Lamar Posisi Ini</h2>
-                            <p class="text-sm text-slate-500">
-                                Batas pendaftaran: 14 Juli 2025
-                            </p>
-                            <div class="card-actions justify-end mt-4">
-                                <button class="btn btn-secondary text-slate-900 w-full font-bold">
-                                    Lamar Sekarang
-                                </button>
-                                <button class="btn btn-outline btn-primary w-full">
-                                    Simpan Lowongan
-                                </button>
-                            </div>
+        <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+            <!-- Kolom Kiri: Detail Program -->
+            <div class="lg:col-span-2 space-y-8">
+                <div class="card bg-base-100 shadow-xl">
+                    <div class="card-body">
+                        <!-- Info Penting dalam bentuk Stats -->
+                        <div class="stats stats-vertical md:stats-horizontal shadow-sm bg-blue-50/50 w-full">
+                          <div class="stat">
+                            <div class="stat-title">Durasi Magang</div>
+                             <!-- SPACE-BACKEND: Hitung durasi dari 'awal_magang' dan 'selesai_magang' -->
+                            <div class="stat-value text-lg text-primary">3 Bulan</div>
+                            <div class="stat-desc text-xs">1 Agu - 31 Okt 2025</div>
+                          </div>
+                          <div class="stat">
+                            <div class="stat-title">Batas Pendaftaran</div>
+                            <!-- SPACE-BACKEND: Ganti dengan 'program_magang.batas_pendaftaran' -->
+                            <div class="stat-value text-lg text-secondary-focus">14 Juli 2025</div>
+                          </div>
+                          <div class="stat">
+                            <div class="stat-title">Kuota Tersedia</div>
+                             <!-- SPACE-BACKEND: Ganti dengan 'program_magang.kuota' -->
+                            <div class="stat-value text-lg text-accent">5 Peserta</div>
+                          </div>
                         </div>
-                    </div>
 
-                    <div class="card bg-base-100 shadow-xl border border-slate-200">
-                        <div class="card-body items-center text-center">
-                            <div class="avatar">
-                                <div class="w-24 rounded-full ring ring-primary ring-offset-base-100 ring-offset-2">
-                                    <img src="https://ui-avatars.com/api/?name=PT&background=00529E&color=fff&size=128" alt="Logo Perusahaan" />
+                        <!-- Deskripsi & Kualifikasi -->
+                        <div class="prose max-w-none text-gray-700 mt-8">
+                            <h3 class="font-bold text-gray-800 text-xl">Deskripsi Program</h3>
+                             <!-- SPACE-BACKEND: Ganti dengan 'program_magang.deskripsi_program' -->
+                            <p>Kami mencari intern yang bersemangat untuk belajar dan berkontribusi dalam pengembangan backend service kami menggunakan Laravel, Livewire, dan arsitektur modular. Anda akan bekerja sama dengan tim engineer senior untuk membangun fitur-fitur baru dan memelihara service yang sudah ada.</p>
+
+                            <h3 class="font-bold text-gray-800 mt-8 text-xl">Tanggung Jawab</h3>
+                            <!-- SPACE-BACKEND: Ganti dengan 'program_magang.kualifikasi' (format sebagai list) -->
+                            <div class="space-y-3 mt-4">
+                                <div class="flex items-start gap-3">
+                                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-primary flex-shrink-0 mt-1" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" /></svg>
+                                    <span>Membantu desain, pengembangan, dan implementasi API backend.</span>
+                                </div>
+                                 <div class="flex items-start gap-3">
+                                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-primary flex-shrink-0 mt-1" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" /></svg>
+                                    <span>Menulis kode yang bersih, efisien, dan terdokumentasi dengan baik.</span>
+                                </div>
+                                <div class="flex items-start gap-3">
+                                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-primary flex-shrink-0 mt-1" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" /></svg>
+                                    <span>Berkolaborasi dengan tim frontend untuk integrasi layanan.</span>
                                 </div>
                             </div>
-                            <h2 class="card-title mt-4">Nama Perusahaan Keren</h2>
-                            <p class="text-sm text-slate-500">
-                               Software Development
-                            </p>
+
+                            <h3 class="font-bold text-gray-800 mt-8 text-xl">Kualifikasi</h3>
+                            <div class="space-y-3 mt-4">
+                                <div class="flex items-start gap-3">
+                                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-primary flex-shrink-0 mt-1" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" /></svg>
+                                    <span>Mahasiswa tingkat akhir atau fresh graduate dari jurusan Teknik Informatika, Ilmu Komputer, atau sejenisnya.</span>
+                                </div>
+                                 <div class="flex items-start gap-3">
+                                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-primary flex-shrink-0 mt-1" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" /></svg>
+                                    <span>Memiliki pemahaman dasar tentang bahasa pemrograman PHP dan framework Laravel.</span>
+                                </div>
+                                <div class="flex items-start gap-3">
+                                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-primary flex-shrink-0 mt-1" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" /></svg>
+                                    <span>Memiliki semangat belajar yang tinggi dan kemampuan problem-solving yang baik.</span>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
-        </div>
-    </div>
 
-</body>
-</html>
+            <!-- Kolom Kanan: Aksi & Info Mitra -->
+            <aside class="lg:col-span-1">
+                <div class="sticky top-[5rem] space-y-6">
+                    <div class="card bg-gradient-to-br from-[#187DAB] to-blue-700 text-white shadow-xl">
+                        <div class="card-body">
+                            <h2 class="card-title text-lg font-bold">Lamar Posisi Ini</h2>
+                            <p class="text-sm text-white/80">
+                                Batas pendaftaran: <strong>14 Juli 2025</strong>
+                            </p>
+                            <div class="card-actions justify-end mt-4">
+                                <button class="btn bg-[#F5C219] hover:bg-[#e0ac00] border-none text-black w-full font-bold">
+                                    Lamar Sekarang
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                     <div class="card bg-base-100 shadow-xl">
+                        <div class="card-body">
+                            <h2 class="card-title text-lg">Tentang Mitra</h2>
+                            <div class="prose max-w-none text-sm text-gray-600 mt-2">
+                                <!-- SPACE-BACKEND: Ganti dengan 'mitra.deskripsi' -->
+                                <p>PT. Teknologi Maju adalah perusahaan terdepan dalam pengembangan solusi perangkat lunak enterprise dan layanan konsultasi IT untuk berbagai industri di Indonesia.</p>
+                            </div>
+                            <div class="card-actions justify-start mt-4">
+                                <a href="#" class="btn btn-primary btn-sm btn-outline">Lihat Profil Mitra</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </aside>
+        </div>
+    </main>
+@endsection

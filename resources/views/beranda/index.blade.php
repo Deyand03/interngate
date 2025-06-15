@@ -15,7 +15,7 @@
                 InternGate adalah platform pendaftaran magang resmi yang menghubungkan talenta mahasiswa dengan mitra industri IT terbaik di Indonesia.
             </p>
             <div class="flex gap-4 justify-center lg:justify-start">
-                <a href="#perusahaan" class="btn bg-[#F5C219] hover:bg-[#eab308] border-none text-black font-bold h-14 px-8 text-lg transform hover:-translate-y-1 transition-all duration-300 shadow-lg">
+                <a href="{{ route('lowongan') }}" class="btn bg-[#F5C219] hover:bg-[#eab308] border-none text-black font-bold h-14 px-8 text-lg transform hover:-translate-y-1 transition-all duration-300 shadow-lg">
                     Cari Program
                     <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 ml-2" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" /></svg>
                 </a>

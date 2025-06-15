@@ -17,6 +17,9 @@ Route::get('/detail', function(){
 });
 // Route::get('/profil/biodata', [ProfileController::class, 'show'])->name('profil.biodata.show');
 
+Route::get('/test-view', function(){
+    return view('welcome');
+});
 
 Route::get('/dashboard-mitra', function () {
     return view('dashboard_mitra.index');
