@@ -14,6 +14,18 @@ Route::get('/perusahaan', [NavigationController::class, 'perusahaan'])->name('pe
 Route::get('lowongan/{program:slug}', [PostController::class, 'show'])->name('lowongan.show');
 Route::get('/faq', [NavigationController::class, 'faq'])->name('faq');
 
+<<<<<<< HEAD
+=======
+Route::get('/detail', function(){
+    return view('lowongan.detail');
+});
+
+Route::get('/rincian', function(){
+    return view('rincian');
+});
+// Route::get('/profil/biodata', [ProfileController::class, 'show'])->name('profil.biodata.show');
+
+>>>>>>> cafd9b7df77f966f350360099a4056b3a0679906
 Route::get('/test-view', function(){
     return view('welcome');
 });
