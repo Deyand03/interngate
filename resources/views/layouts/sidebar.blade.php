@@ -63,7 +63,7 @@
                     </a>
                 </li>
                 <li>
-                    <a href="/tambah_program" class="text-white hover:bg-blue-700 active:bg-blue-700 rounded-none h-12 flex items-center pl-4">
+                    <a href="/tambah-program" class="text-white hover:bg-blue-700 active:bg-blue-700 rounded-none h-12 flex items-center pl-4">
                         <i class="fas fa-plus-circle mr-3"></i> Tambah Program
                     </a>
                 </li>
