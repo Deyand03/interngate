@@ -15,6 +15,10 @@ Route::get('/faq', [NavigationController::class, 'faq'])->name('faq');
 Route::get('/detail', function(){
     return view('lowongan.detail');
 });
+
+Route::get('/rincian', function(){
+    return view('rincian');
+});
 // Route::get('/profil/biodata', [ProfileController::class, 'show'])->name('profil.biodata.show');
 
 
