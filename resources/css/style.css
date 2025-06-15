@@ -65,7 +65,7 @@
 }
 
 .marquee-content {
-        animation: marquee 15s linear infinite;
+        animation: marquee 10s linear infinite;
     }
 
 .marquee-container:hover .marquee-content {
@@ -77,6 +77,6 @@
         transform: translateX(0);
     }
     to {
-        transform: translateX(-100%);
+        transform: translateX(-30%);
     }
 }

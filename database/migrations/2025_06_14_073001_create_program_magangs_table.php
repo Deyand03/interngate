@@ -15,7 +15,7 @@ return new class extends Migration
             $table->id();
             $table->string('judul');
             $table->string('slug')->unique();
-            $table->string('deskripsi');
+            $table->text('deskripsi');
             $table->string('gambar');
             $table->integer('kuota');
             $table->text('kualifikasi');

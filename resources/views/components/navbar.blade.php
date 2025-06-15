@@ -70,7 +70,7 @@
                         @elseif (Auth::user()->role === 'mitra' && Auth::user()->mitra && Auth::user()->mitra->logo_perusahaan)
                             <img src="{{ asset('storage/' . Auth::user()->mitra->logo_perusahaan) }}" alt="Logo Perusahaan Mitra" class="object-cover" />
                         @else
-                            <img src="https://placehold.co/400x400/a3e635/ffffff?text={{ substr(Auth::user()->nama, 0, 1) }}" alt="Default Avatar" class="object-cover" />
+                            <img src="{{ asset('img/placeholder.jpg') }}" alt="Default Avatar" class="object-cover" />
                         @endif
                     </div>
                 </div>
