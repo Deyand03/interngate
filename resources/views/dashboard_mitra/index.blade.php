@@ -2,9 +2,7 @@
 
 @section('content')
 <div class="p-8">
-    <!-- Header Dasbor -->
     <header class="mb-8">
-        <!-- SPACE-BACKEND: Ganti nama mitra dengan data dari Auth::user()->mitra->nama_perusahaan -->
         <h1 class="text-3xl font-extrabold text-gray-800">Dashboard PT. Teknologi Maju</h1>
         <p class="text-gray-500 mt-1">Selamat datang! Kelola semua pendaftaran magang Anda di sini.</p>
     </header>
@@ -36,7 +34,7 @@
                         </div>
                     </div>
                 </div>
-    
+
     <form method="GET" action="#">
          <div class="grid grid-cols-1 md:grid-cols-4 gap-4 mb-4 p-4 bg-base-200 rounded-lg">
             <input type="text" name="search" placeholder="Cari nama atau NIM..." class="input input-bordered w-full md:col-span-2" />
@@ -59,7 +57,7 @@
             </div>
         </div>
     </form>
-    
+
     <!-- Tabel Manajemen Pelamar -->
     <div class="overflow-x-auto">
         <table class="table">
@@ -73,7 +71,7 @@
                 </tr>
             </thead>
             <tbody>
-                <!-- 
+                <!--
                 // ===================================================================
                 // SPACE-BACKEND: Integrasi Backend Dimulai Di Sini
                 // ===================================================================
@@ -167,7 +165,7 @@
                     </td>
                 </tr>
                  {{-- <!-- SPACE-BACKEND: @empty state --> --}}
-                 {{-- 
+                 {{--
                     @empty
                     <tr>
                         <td colspan="5" class="text-center py-12">

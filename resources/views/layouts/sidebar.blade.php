@@ -47,38 +47,38 @@
                         <div class="avatar">
                             <div class="w-16 rounded-lg">
                                 <!-- SPACE-BACKEND: Ganti src dengan logo perusahaan dari DB -->
-                                <img src="https://placehold.co/128x128/FFFFFF/187DAB?text=Mitra" />
+                                <img src="{{ Auth::user()->mitra->logo_perusahaan ? asset('storage/' . Auth::user()->mitra->logo_perusahaan) : asset('img/placeholder.jpg') }}" alt="Logo Perusahaan" />
                             </div>
                         </div>
                         <div class="flex-grow">
                             <!-- SPACE-BACKEND: Ganti dengan nama perusahaan dari DB -->
-                            <h3 class="font-bold text-lg leading-tight text-white">PT. Teknologi Maju</h3>
+                            <h3 class="font-bold text-lg leading-tight text-white">{{ Auth::user()->mitra->nama_perusahaan }}</h3>
                         </div>
                     </div>
                     <div class="divider my-3 border-white/20"></div>
                      <!-- SPACE-BACKEND: Ganti dengan email dari DB -->
-                    <p class="text-xs text-white/70 px-1">contact@teknologimaju.com</p>
+                    <p class="text-sm text-white/70 px-1">{{ Auth::user()->email }}</p>
                 </div>
             </div>
 
             <!-- Bagian Tengah: Menu Navigasi Utama -->
-            <ul class="menu p-4 space-y-2 text-base font-medium flex-grow">
+            <ul class="menu p-4 space-y-2 text-base font-medium flex-grow w-full">
                 <li class="menu-title text-warning"><span>Menu Utama</span></li>
                 <li class="menu-item">
                     <!-- Tambahkan class 'active' jika route sedang aktif -->
-                    <a href="" class="active">
+                    <a href="{{ route('mitra.index')}}" class="{{ request()->routeIs('mitra.index') ? 'active' : '' }}">
                         <i class="fa-solid fa-fw fa-chart-pie"></i>
                         <span>Dashboard</span>
                     </a>
                 </li>
                 <li class="menu-item">
-                    <a href="">
+                    <a href="{{ route('mitra.kelola') }}" class="{{ request()->routeIs('mitra.kelola') ? 'active' : '' }}">
                             <i class="fa-solid fa-fw fa-briefcase"></i>
-                        <span>Tambah Program</span>
+                        <span>Kelola Program</span>
                     </a>
                 </li>
-                
-                
+
+
                 <li class="menu-title text-white/50 mt-4"><span>Akun</span></li>
                 <li class="menu-item">
                     <a href="#">
@@ -90,10 +90,13 @@
 
             <!-- Bagian Bawah: Logout -->
             <div class="p-4 border-t border-white/20">
-                <a href="#" class="btn btn-ghost w-full justify-start hover:bg-white/10">
-                    <i class="fa-solid fa-fw fa-arrow-right-from-bracket"></i>
-                    <span>Logout</span>
-                </a>
+                <form action="{{ route('logout') }}" method="post">
+                    @csrf
+                    <button type="submit" class="btn btn-ghost w-full justify-start hover:bg-white/10">
+                        <i class="fa-solid fa-fw fa-arrow-right-from-bracket"></i>
+                        <span>Logout</span>
+                    </button>
+                </form>
             </div>
 
             <div class="text-center text-xs text-white py-4 border-t border-white-400">
@@ -104,7 +107,7 @@
         <div>
             @yield('content')
         </div>
-    
+
         @yield('modals')
     </div>
 </body>
