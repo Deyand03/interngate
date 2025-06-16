@@ -11,16 +11,8 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', [NavigationController::class, 'beranda'])->name('beranda');
 Route::get('/lowongan', [NavigationController::class, 'lowongan'])->name('lowongan');
 Route::get('/perusahaan', [NavigationController::class, 'perusahaan'])->name('perusahaan');
+Route::get('lowongan/{program:slug}', [PostController::class, 'show'])->name('lowongan.show');
 Route::get('/faq', [NavigationController::class, 'faq'])->name('faq');
-
-Route::get('/detail', function(){
-    return view('lowongan.detail');
-});
-
-Route::get('/rincian', function(){
-    return view('rincian');
-});
-// Route::get('/profil/biodata', [ProfileController::class, 'show'])->name('profil.biodata.show');
 
 Route::get('/test-view', function(){
     return view('welcome');
@@ -50,13 +42,12 @@ Route::get('/dashboard', function () {
 // });
 
 Route::middleware(['auth', 'role:mitra'])->group(function () {
-    Route::resource('mitra', MitraController::class);
+    Route::get('mitra', [MitraController::class, 'index'])->name('mitra.index');
+    Route::get('mitra/kelola', [MitraController::class, 'create'])->name('mitra.kelola');
 });
 Route::middleware(['auth', 'role:mahasiswa'])->group(function(){
     Route::resource('mahasiswa', MahasiswaController::class);
 });
 
-// Routing Post Lowongan
-Route::get('lowongan/{program:slug}', [PostController::class, 'show'])->name('lowongan.show');
 
 require __DIR__ . '/auth.php';

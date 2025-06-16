@@ -22,7 +22,7 @@ return new class extends Migration
             $table->date('batas_pendaftaran');
             $table->date('awal_magang');
             $table->date('akhir_magang');
-            $table->enum('status', ['buka', 'tutup']);
+            $table->enum('status', ['Buka', 'Tutup']);
             $table->foreignId('id_mitra')->constrained('mitras')->onDelete('cascade');
             $table->foreignId('id_category')->constrained('categories')->onDelete('cascade');
             $table->timestamps();

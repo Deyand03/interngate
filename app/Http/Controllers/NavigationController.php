@@ -51,7 +51,8 @@ class NavigationController extends Controller
         return view('lowongan.index', compact('stats', 'categories', 'lowongans'));
     }
     public function perusahaan(){
-        return view('perusahaan.index');
+        $mitras = Mitra::paginate(9);
+        return view('perusahaan.index', compact('mitras'));
     }
     public function faq(){
         return view('faq.index');

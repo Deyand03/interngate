@@ -196,7 +196,7 @@
                         </div>
 
                         {{-- Dropdown Filter (Contoh) --}}
-                        <div class="w-full sm:w-auto">
+                        <div class="w-full sm:w-[30%]">
                             <select name="category"
                                 class="w-full bg-white border-gray-300 rounded-lg py-3 pr-8 pl-4 focus:ring-blue-500 focus:border-blue-500 transition duration-200">
                                 <option value="">Semua Kategori</option>
@@ -239,8 +239,8 @@
                                     <div class="flex flex-wrap gap-2 my-4">
                                         <span
                                             class="{{ $lowongan->category->badge_class }} text-xs font-medium px-2.5 py-1 rounded-full">{{ $lowongan->category->name }}</span>
-                                        <span
-                                            class="bg-gray-100 text-gray-800 text-xs font-medium px-2.5 py-1 rounded-full">{{ $lowongan->durasi }}</span>
+                                        <span class="bg-gray-100 text-gray-800 text-xs font-medium px-2.5 py-1 rounded-full">{{ $lowongan->durasi }}</span>
+                                        <span class="{{ $lowongan->status == 'Buka' ? 'text-emerald-800 bg-emerald-100' : 'bg-rose-100 text-rose-800' }} text-xs font-medium px-2.5 py-1 rounded-full">{{ $lowongan->status }}</span>
                                     </div>
 
                                     <p class="text-sm text-gray-600 line-clamp-3">
