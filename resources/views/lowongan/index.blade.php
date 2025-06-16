@@ -2,25 +2,74 @@
 @section('title', 'Lowongan - Cari Program')
 
 @section('content')
+
     <div class="">
         {{-- Page Hero Lowongan --}}
         <div class="flex bg-header text-white h-fit py-16 px-20 gap-16">
             <div class="flex flex-col w-full">
                 <div class="flex justify-between">
                     <div class="flex flex-col justify-between">
-                        <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold !leading-tight">Temukan Tempat Magang <br> Favorit Mu Disini!</h1>
+                        <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold !leading-tight">Temukan Tempat Magang <br>
+                            Favorit Mu Disini!</h1>
                         <h2 class="text-lg font-medium">
-                            <span class="text-[#F5C219] font-semibold">InternGate</span> hadir untuk mahasiswa dan fresh graduate <br>
+                            <span class="text-[#F5C219] font-semibold">InternGate</span> hadir untuk mahasiswa dan fresh
+                            graduate <br>
                             yang ingin dapat pengalaman nyata di dunia kerja.<br>
-                            Yuk, mulai petualanganmu!</h2>
-                        <a href="#list-perusahaan" class="btn bg-[#EAB308] hover:bg-[#c69f2a] shadow-lg w-fit mt-2 p-6 border-0 transition-all transform hover:-translate-y-1 hover:shadow-xl text-semibold text-black text-lg">Jelajahi Program Sekarang</a>
+                            Yuk, mulai petualanganmu!
+                        </h2>
+                        <a href="#list-perusahaan"
+                            class="btn bg-[#EAB308] hover:bg-[#c69f2a] shadow-lg w-fit mt-2 p-6 border-0 transition-all transform hover:-translate-y-1 hover:shadow-xl text-semibold text-black text-lg">Jelajahi
+                            Program Sekarang</a>
                     </div>
                     <div>
                         <img src="{{ asset('img/hero-image-lowongan.png') }}" alt="" class="w-80">
                     </div>
                 </div>
-                <div class="">
-                    <x-data-header></x-data-header>
+                <div>
+                    <div class="flex justify-between pt-16">
+                        <div class="flex gap-2">
+                            <div class="flex items-center justify-center bg-gray-300/50 w-[50px] h-[50px] rounded">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor"
+                                    class="bi bi-suitcase-lg-fill" viewBox="0 0 16 16">
+                                    <path
+                                        d="M7 0a2 2 0 0 0-2 2H1.5A1.5 1.5 0 0 0 0 3.5v9A1.5 1.5 0 0 0 1.5 14H2a.5.5 0 0 0 1 0h10a.5.5 0 0 0 1 0h.5a1.5 1.5 0 0 0 1.5-1.5v-9A1.5 1.5 0 0 0 14.5 2H11a2 2 0 0 0-2-2zM6 2a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1zM3 13V3h1v10zm9 0V3h1v10z" />
+                                </svg>
+                            </div>
+                            {{-- Data Lowongan --}}
+                            <div class="flex flex-col justify-center">
+                                <p class="text-base">{{ $stats['jml_lowongan'] }} Lowongan</p>
+                                <p class="text-white/75 text-sm">Jumlah lowongan yang tersedia</p>
+                            </div>
+                        </div>
+                        <div class="flex gap-2">
+                            <div class="flex items-center justify-center bg-gray-300/50 w-[50px] h-[50px] rounded">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor"
+                                    class="bi bi-buildings-fill" viewBox="0 0 16 16">
+                                    <path
+                                        d="M15 .5a.5.5 0 0 0-.724-.447l-8 4A.5.5 0 0 0 6 4.5v3.14L.342 9.526A.5.5 0 0 0 0 10v5.5a.5.5 0 0 0 .5.5h9a.5.5 0 0 0 .5-.5V14h1v1.5a.5.5 0 0 0 .5.5h3a.5.5 0 0 0 .5-.5zM2 11h1v1H2zm2 0h1v1H4zm-1 2v1H2v-1zm1 0h1v1H4zm9-10v1h-1V3zM8 5h1v1H8zm1 2v1H8V7zM8 9h1v1H8zm2 0h1v1h-1zm-1 2v1H8v-1zm1 0h1v1h-1zm3-2v1h-1V9zm-1 2h1v1h-1zm-2-4h1v1h-1zm3 0v1h-1V7zm-2-2v1h-1V5zm1 0h1v1h-1z" />
+                                </svg>
+                            </div>
+                            {{-- Data Perusahaan --}}
+                            <div class="flex flex-col justify-center">
+                                <p class="text-base">{{ $stats['jml_perusahaan'] }} Perusahaan</p>
+                                <p class="text-white/75 text-sm">Jumlah perusahaan yang tersedia</p>
+                            </div>
+                        </div>
+                        <div class="flex gap-2">
+                            <div class="flex items-center justify-center bg-gray-300/50 w-[50px] h-[50px] rounded">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor"
+                                    class="bi bi-people-fill" viewBox="0 0 16 16">
+                                    <path
+                                        d="M7 14s-1 0-1-1 1-4 5-4 5 3 5 4-1 1-1 1zm4-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6m-5.784 6A2.24 2.24 0 0 1 5 13c0-1.355.68-2.75 1.936-3.72A6.3 6.3 0 0 0 5 9c-4 0-5 3-5 4s1 1 1 1zM4.5 8a2.5 2.5 0 1 0 0-5 2.5 2.5 0 0 0 0 5" />
+                                </svg>
+                            </div>
+                            {{-- Data Pelamar --}}
+                            <div class="flex flex-col justify-center">
+                                <p class="text-base">{{ $stats['jml_peserta'] }} Peserta</p>
+                                <p class="text-white/75 text-sm">Jumlah peserta magang</p>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -29,8 +78,7 @@
         <div class="flex items-center justify-evenly bg-header-2 text-white h-[8rem]">
             <div class="flex gap-2 items-center">
                 <div>
-                    <svg xmlns="http://www.w3.org/2000/svg" width="50" height="50" viewBox="0 0 160 160"
-                        fill="none">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="50" height="50" viewBox="0 0 160 160" fill="none">
                         <path
                             d="M54.9532 48.9333L12.4199 55.1L11.6666 55.2533C10.5262 55.556 9.48654 56.156 8.65385 56.992C7.82117 57.8279 7.22526 58.8699 6.92699 60.0115C6.62871 61.1531 6.63875 62.3534 6.95609 63.4898C7.27342 64.6262 7.88668 65.6581 8.73324 66.48L39.5466 96.4733L32.2799 138.84L32.1932 139.573C32.1234 140.753 32.3683 141.93 32.9029 142.983C33.4375 144.037 34.2425 144.93 35.2355 145.57C36.2285 146.21 37.3738 146.575 38.5542 146.627C39.7346 146.679 40.9077 146.417 41.9532 145.867L79.9932 125.867L117.947 145.867L118.613 146.173C119.714 146.607 120.91 146.74 122.078 146.558C123.247 146.377 124.346 145.888 125.264 145.142C126.181 144.395 126.884 143.418 127.299 142.311C127.714 141.203 127.827 140.006 127.627 138.84L120.353 96.4733L151.18 66.4733L151.7 65.9066C152.443 64.9918 152.93 63.8963 153.111 62.7319C153.293 61.5676 153.163 60.3758 152.734 59.2782C152.305 58.1805 151.593 57.2162 150.67 56.4834C149.747 55.7506 148.646 55.2755 147.48 55.1066L104.947 48.9333L85.9332 10.4C85.3831 9.28354 84.5314 8.34341 83.4745 7.686C82.4177 7.0286 81.1979 6.68018 79.9532 6.68018C78.7086 6.68018 77.4888 7.0286 76.432 7.686C75.3751 8.34341 74.5234 9.28354 73.9732 10.4L54.9532 48.9333Z"
                             fill="#ECDD10" />
@@ -43,8 +91,7 @@
             </div>
             <div class="flex gap-2 items-center">
                 <div>
-                    <svg xmlns="http://www.w3.org/2000/svg" width="50" height="50" viewBox="0 0 115 115"
-                        fill="none">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="50" height="50" viewBox="0 0 115 115" fill="none">
                         <g clip-path="url(#clip0_213_19)">
                             <path
                                 d="M17.9687 3.59375C17.9687 2.64063 18.3473 1.72654 19.0213 1.05259C19.6952 0.378626 20.6093 0 21.5624 0L93.4374 0C94.3905 0 95.3046 0.378626 95.9786 1.05259C96.6525 1.72654 97.0312 2.64063 97.0312 3.59375C97.0312 7.46062 96.9497 11.1406 96.7868 14.6338C99.6268 15.104 102.344 16.1382 104.778 17.6754C107.212 19.2125 109.313 21.2214 110.958 23.5837C112.604 25.946 113.759 28.6137 114.357 31.4297C114.955 34.2457 114.982 37.1528 114.438 39.9797C113.895 42.8065 112.79 45.4959 111.191 47.8892C109.591 50.2824 107.528 52.3311 105.124 53.9145C102.72 55.4978 100.023 56.5837 97.1926 57.1082C94.362 57.6327 91.4552 57.585 88.6434 56.9681C82.9652 70.3728 75.1452 76.9278 68.2812 78.6097V94.2281L78.5234 96.7869C79.9177 97.1319 81.233 97.7572 82.383 98.6197L95.5937 108.531C96.1971 108.984 96.6428 109.615 96.8677 110.335C97.0926 111.055 97.0853 111.827 96.8467 112.543C96.6082 113.258 96.1506 113.881 95.5387 114.322C94.9268 114.763 94.1917 115 93.4374 115H21.5624C20.8082 115 20.073 114.763 19.4611 114.322C18.8492 113.881 18.3916 113.258 18.1531 112.543C17.9146 111.827 17.9072 111.055 18.1321 110.335C18.357 109.615 18.8028 108.984 19.4062 108.531L32.6168 98.6197C33.7668 97.7572 35.0821 97.1319 36.4765 96.7869L46.7187 94.2281V78.6097C39.8546 76.9278 32.0346 70.3728 26.3565 56.9609C23.5432 57.5812 20.6342 57.6314 17.8011 57.1086C14.9681 56.5858 12.2686 55.5006 9.86198 53.9171C7.45536 52.3336 5.39046 50.2839 3.78921 47.8891C2.18797 45.4942 1.08286 42.8028 0.539136 39.9737C-0.00458337 37.1447 0.0241179 34.2353 0.623545 31.4175C1.22297 28.5997 2.38097 25.9306 4.02915 23.5678C5.67733 21.2051 7.78227 19.1965 10.2197 17.6608C12.657 16.1251 15.3775 15.0934 18.2202 14.6266C18.0508 10.9514 17.9669 7.27281 17.9687 3.59375ZM18.6802 21.85C14.9297 22.5362 11.6054 24.6843 9.43861 27.8216C7.27183 30.9588 6.44008 34.8284 7.12633 38.5789C7.81257 42.3294 9.96061 45.6538 13.0979 47.8205C16.2352 49.9873 20.1047 50.8191 23.8552 50.1328C21.4618 42.5859 19.629 33.2709 18.6802 21.85ZM91.1518 50.1328C94.9023 50.8191 98.7719 49.9873 101.909 47.8205C105.046 45.6538 107.194 42.3294 107.881 38.5789C108.567 34.8284 107.735 30.9588 105.568 27.8216C103.402 24.6843 100.077 22.5362 96.3268 21.85C95.3709 33.2781 93.538 42.5859 91.1518 50.1328Z"
@@ -64,8 +111,7 @@
             </div>
             <div class="flex gap-2 items-center">
                 <div>
-                    <svg xmlns="http://www.w3.org/2000/svg" width="60" height="60" viewBox="0 0 163 163"
-                        fill="none">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="60" height="60" viewBox="0 0 163 163" fill="none">
                         <path opacity="0.2" d="M142.625 40.75L81.5 61.125L20.375 40.75L81.5 20.375L142.625 40.75Z"
                             fill="#ECDD10" />
                         <path
@@ -124,10 +170,100 @@
         </div>
         {{-- List Perusahaan --}}
         <div id="list-perusahaan">
-            <x-list-perusahaan></x-list-perusahaan>
-        </div>
+            <div class="flex flex-col pt-12 md:pt-20 -mt-15 px-6 sm:px-12 lg:px-20 pb-20">
+                {{-- Judul Section --}}
+                <div class="flex flex-col items-center justify-center text-center">
+                    <h2 class="font-bold text-3xl md:text-4xl text-gray-800 mb-3">Pilihan Lowongan Magang</h2>
+                    <div class="w-24 h-1 bg-yellow-400 rounded-full"></div>
+                </div>
 
-        {{-- Pagination --}}
+                {{-- Search & Filter Bar --}}
+                <div class="bg-blue-50 p-4 sm:p-5 rounded-xl my-8 sm:my-10 shadow-sm border border-blue-100">
+                    <form action="{{ route('lowongan') }}#list-perusahaan" method="GET"
+                        class="flex flex-col sm:flex-row items-center gap-3 sm:gap-4">
+                        {{-- Input Pencarian Utama --}}
+                        <div class="relative w-full flex-grow">
+                            <div class="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none">
+                                <svg class="w-5 h-5 text-gray-400" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"
+                                    fill="currentColor">
+                                    <path fill-rule="evenodd"
+                                        d="M8 4a4 4 0 100 8 4 4 0 000-8zM2 8a6 6 0 1110.89 3.476l4.817 4.817a1 1 0 01-1.414 1.414l-4.816-4.816A6 6 0 012 8z"
+                                        clip-rule="evenodd" />
+                                </svg>
+                            </div>
+                            <input type="text" name="search" placeholder="Cari posisi atau perusahaan..."
+                                class="w-full pl-11 pr-4 py-3 border-gray-300 rounded-lg focus:ring-blue-500 focus:border-blue-500 transition duration-200">
+                        </div>
+
+                        {{-- Dropdown Filter (Contoh) --}}
+                        <div class="w-full sm:w-auto">
+                            <select name="category"
+                                class="w-full bg-white border-gray-300 rounded-lg py-3 pr-8 pl-4 focus:ring-blue-500 focus:border-blue-500 transition duration-200">
+                                <option value="">Semua Kategori</option>
+                                @foreach ($categories as $category)
+                                    <option value="{{ $category->slug }}" @selected(request('category') == $category->slug)>
+                                        {{ $category->name }}
+                                    </option>
+                                @endforeach
+                            </select>
+                        </div>
+
+                        {{-- Tombol Cari --}}
+                        <div class="w-full sm:w-auto">
+                            <button type="submit" class="btn btn-info w-full py-3 text-base font-semibold">Cari</button>
+                        </div>
+                    </form>
+                </div>
+
+                {{-- Grid untuk List Lowongan --}}
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+                    @foreach ($lowongans as $lowongan)
+                        <div
+                            class="bg-white rounded-xl shadow-lg overflow-hidden flex flex-col md:flex-row transition-all duration-300 hover:shadow-2xl hover:-translate-y-1">
+                            {{-- Bagian Gambar --}}
+                            <div class="md:w-1/3 flex-shrink-0">
+                                <img class="w-full h-48 md:h-full object-cover"
+                                    src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?q=80&w=2071&auto=format&fit=crop"
+                                    alt="">
+                            </div>
+
+                            <div class="p-6 flex flex-col justify-between flex-grow">
+                                <div>
+                                    <p class="text-sm font-semibold text-blue-600">{{ $lowongan->mitra->nama_perusahaan }}</p>
+                                    <h3 class="mt-1 text-xl font-bold text-gray-900">
+                                        <a href="{{ route('lowongan.show', $lowongan) }}"
+                                            class="hover:underline">{{ $lowongan->judul }}</a>
+                                    </h3>
+                                    <p class="text-sm text-gray-500 mt-1">{{ $lowongan->mitra->alamat_perusahaan }}</p>
+
+                                    <div class="flex flex-wrap gap-2 my-4">
+                                        <span
+                                            class="{{ $lowongan->category->badge_class }} text-xs font-medium px-2.5 py-1 rounded-full">{{ $lowongan->category->name }}</span>
+                                        <span
+                                            class="bg-gray-100 text-gray-800 text-xs font-medium px-2.5 py-1 rounded-full">{{ $lowongan->durasi }}</span>
+                                    </div>
+
+                                    <p class="text-sm text-gray-600 line-clamp-3">
+                                        {{ $lowongan->deskripsi }}
+                                    </p>
+                                </div>
+
+                                <div class="pt-4 mt-4 border-t border-gray-200">
+                                    <a href="{{ route('lowongan.show', $lowongan) }}" class="btn btn-warning w-full">Lihat
+                                        Selengkapnya</a>
+                                </div>
+                            </div>
+                        </div>
+                        @endforeach
+                    </div>
+
+                    <div class="flex flex-col mt-8 w-full">
+                        {{ $lowongans->withQueryString()->fragment('list-perusahaan')->links('pagination::tailwind')  }}
+                    </div>
+                </div>
+            </div>
+
+            {{-- Pagination --}}
 
     </div>
 @endsection

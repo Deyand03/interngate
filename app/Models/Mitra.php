@@ -10,6 +10,9 @@ class Mitra extends Model
     protected $guarded = [];
 
     public function mahasiswa(){
-        return $this->belongsTo(Mahasiswa::class, 'user_id', 'id');
+        return $this->belongsTo(Mahasiswa::class);
+    }
+    public function program_magang(){
+        return $this->hasMany(ProgramMagang::class, 'id_mitra', 'id');
     }
 }

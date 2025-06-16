@@ -6,16 +6,16 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Login</title>
-    @vite(['resources/css/app.css', 'resources/css/style.css', 'resources/js/main.js'])
     <link rel="shortcut icon" href="{{ asset('img/title-icon.png') }}" type="image/x-icon">
 </head>
 
 <body>
     <div class="flex justify-between w-full border h-screen px-20 py-10">
+
         {{-- Form Login --}}
         <div class="flex flex-col justify-between w-1/3 py-10">
             <div>
-                <a href=""
+                <a href="{{ route('beranda') }}"
                     class="inline-flex items-center justify-center transition-all hover:-translate-y-0.5 active:translate-y-0 mb-8 gap-2">
                     <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"
                         fill="none">
@@ -85,11 +85,14 @@
         {{-- Gambar Kanan --}}
         <div class="flex justify-center items-center rounded-xl w-3/5 overflow-hidden">
             <div class="flex justify-center items-center">
-                <img src="{{ asset('img/login-image.jpg') }}" alt=""
-                    class="rounded-xl object-cover w-11/12">
+                <img src="{{ asset('img/login-image.jpg') }}" alt="" class="rounded-xl object-cover w-11/12">
             </div>
         </div>
     </div>
+    @vite(['resources/css/app.css', 'resources/css/style.css', 'resources/js/main.js', 'resources/js/app.js'])
+    @if (session('success'))
+        <div id="success-message" data-message="{{ session('success') }}" class="hidden"></div>
+    @endif
 </body>
 
 </html>

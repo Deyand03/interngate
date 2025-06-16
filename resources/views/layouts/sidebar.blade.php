@@ -11,57 +11,71 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
     <link rel="icon" type="image/png" href="{{ asset('img/title-icon.png') }}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" xintegrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <style>
+        .content-area {
+            background-color: #f7f9fc;
+        }
+        /* Style kustom untuk menu item aktif */
+        .menu .menu-item a.active {
+            background-color: rgba(255, 255, 255, 0.15);
+            font-weight: 700;
+            color: white;
+        }
+        .menu .menu-item a.active i {
+            color: #F5C219; /* Warna kuning sebagai aksen ikon aktif */
+        }
+    </style>
 </head>
 
-<body style="font-family: Poppins" class="flex">
-    <!-- Sidebar -->
-    <nav class="w-[20%] h-screen bg-blue-600 text-white flex flex-col justify-between">
-        <div>
-            <div class="flex items-center gap-2 p-4">
-                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
-                        fill="none">
-                        <g clip-path="url(#clip0_80_59)">
-                            <path
-                                d="M3.28292 10.94C3.00202 11.2213 2.84424 11.6025 2.84424 12C2.84424 12.3975 3.00202 12.7788 3.28292 13.06L8.93892 18.718C9.07825 18.8573 9.24366 18.9679 9.42571 19.0433C9.60776 19.1187 9.80287 19.1575 9.99992 19.1575C10.197 19.1575 10.3921 19.1187 10.5741 19.0433C10.7562 18.9679 10.9216 18.8573 11.0609 18.718C11.2003 18.5787 11.3108 18.4133 11.3862 18.2312C11.4616 18.0492 11.5004 17.854 11.5004 17.657C11.5004 17.46 11.4616 17.2648 11.3862 17.0828C11.3108 16.9007 11.2003 16.7353 11.0609 16.596L7.96492 13.5H19.4999C19.8977 13.5 20.2793 13.342 20.5606 13.0607C20.8419 12.7794 20.9999 12.3978 20.9999 12C20.9999 11.6022 20.8419 11.2206 20.5606 10.9393C20.2793 10.658 19.8977 10.5 19.4999 10.5H7.96492L11.0609 7.404C11.3422 7.12261 11.5001 6.74101 11.5 6.34315C11.5 5.94529 11.3418 5.56377 11.0604 5.2825C10.779 5.00124 10.3974 4.84328 9.99956 4.84338C9.60171 4.84347 9.22018 5.00161 8.93892 5.283L3.28292 10.94Z"
-                                fill="white" fill-opacity="0.9" />
-                        </g>
-                        <defs>
-                            <clipPath id="clip0_80_59">
-                                <rect width="24" height="24" fill="white" />
-                            </clipPath>
-                        </defs>
-                    </svg>
-                <h1 class="text-lg font-bold">BERANDA</h1>
-                
-            </div>
 
-             <div class="card w-20% h-40 bg-blue-200 shadow-xl">
-            <div class="card-body items-center text-center">
-            <div class="avatar mb-1">
-                <div class="w-10 rounded-full ring ring-primary ring-offset-base-100 ring-offset-2">
-                    <img src="https://daisyui.com/images/stock/photo-1534528741775-53994a69daeb.jpg" alt="" />
+
+
+<body style="font-family: Poppins">
+    <div class="flex">
+        <nav class="w-[25%] bg-gradient-to-b from-[#187DAB] to-[#146C94] text-white flex flex-col sticky top-0">
+            <!-- Bagian Atas: Logo & Profil -->
+            <div class="p-6">
+                <!-- Logo & Kembali ke Beranda -->
+                <a href="/" class="flex items-center gap-3 mb-8 group">
+                    <div class="p-2 bg-white/20 rounded-lg group-hover:bg-white/30 transition-colors">
+                        <i class="fa-solid fa-fw fa-arrow-left"></i>
+                    </div>
+                    <span class="text-lg font-semibold">Kembali ke Beranda</span>
+                </a>
+
+
+                <!-- Kartu Profil Mitra -->
+                <div class="p-4 bg-white/10 rounded-xl backdrop-blur-sm border border-white/20">
+                    <div class="flex items-center gap-4">
+                        <div class="avatar">
+                            <div class="w-16 rounded-lg">
+                                <!-- SPACE-BACKEND: Ganti src dengan logo perusahaan dari DB -->
+                                <img src="https://placehold.co/128x128/FFFFFF/187DAB?text=Mitra" />
+                            </div>
+                        </div>
+                        <div class="flex-grow">
+                            <!-- SPACE-BACKEND: Ganti dengan nama perusahaan dari DB -->
+                            <h3 class="font-bold text-lg leading-tight text-white">PT. Teknologi Maju</h3>
+                        </div>
+                    </div>
+                    <div class="divider my-3 border-white/20"></div>
+                     <!-- SPACE-BACKEND: Ganti dengan email dari DB -->
+                    <p class="text-xs text-white/70 px-1">contact@teknologimaju.com</p>
                 </div>
             </div>
-        
-    
 
-             <h2 class="card-title text-xs font-bold text-gray-800">Nama perusahaan</h2>
-            {{-- Mengurangi margin atas dari paragraf pertama agar lebih dekat ke nama --}}
-            <p class="text-gray-600 text-xs leading-tight mt-0 mb-0">Deskripsi</p>
-                 <a href="/profil/edit" class="btn btn-xs btn-primary btn-xs">Edit Profil</a>
-            
-        </div>
-            </div>
-            
-            <div class="text-white py-4 border-t border-blue-400"></div>
-
-            <ul class="menu p-0 w-full">
-                <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-                <li>
-                    <a href="/dashboard-mitra" class="text-white hover:bg-blue-700 active:bg-blue-700 rounded-none h-12 flex items-center pl-4">
-                        <i class="fas fa-chart-line mr-3"></i> Dashboard Mitra
+            <!-- Bagian Tengah: Menu Navigasi Utama -->
+            <ul class="menu p-4 space-y-2 text-base font-medium flex-grow">
+                <li class="menu-title text-warning"><span>Menu Utama</span></li>
+                <li class="menu-item">
+                    <!-- Tambahkan class 'active' jika route sedang aktif -->
+                    <a href="" class="active">
+                        <i class="fa-solid fa-fw fa-chart-pie"></i>
+                        <span>Dashboard</span>
                     </a>
                 </li>
+
                 <li>
                     <a href="/tambah-program" class="text-white hover:bg-blue-700 active:bg-blue-700 rounded-none h-12 flex items-center pl-4">
                         <i class="fas fa-plus-circle mr-3"></i> Tambah Program
@@ -75,18 +89,48 @@
                 <li>
                     <a href="/logout" class="text-white hover:bg-blue-700 active:bg-blue-700 rounded-none h-12 flex items-center pl-4">
                         <i class="fas fa-sign-out-alt mr-3"></i> Logout
+
+                <li class="menu-item">
+                    <a href="">
+                            <i class="fa-solid fa-fw fa-briefcase"></i>
+                        <span>Tambah Program</span>
+                    </a>
+                </li>
+                
+                
+                <li class="menu-title text-white/50 mt-4"><span>Akun</span></li>
+                <li class="menu-item">
+                    <a href="#">
+                        <i class="fa-solid fa-fw fa-building"></i>
+                        <span>Profil Perusahaan</span>
+
                     </a>
                 </li>
             </ul>
-        </div>
-        <div class="text-center text-xs text-white py-4 border-t border-blue-400">
-            &copy; 2025 InternGate
-        </div>
-    </nav>
+
 
    @section('content')
     
 @endsection
-</body>
+    <!-- Bagian Bawah: Logout -->
+            <div class="p-4 border-t border-white/20">
+                <a href="#" class="btn btn-ghost w-full justify-start hover:bg-white/10">
+                    <i class="fa-solid fa-fw fa-arrow-right-from-bracket"></i>
+                    <span>Logout</span>
+                </a>
+            </div>
 
+            <div class="text-center text-xs text-white py-4 border-t border-white-400">
+                &copy; 2025 InternGate
+            </div>
+        </nav>
+
+        <div>
+            @yield('content')
+        </div>
+    
+        @yield('modals')
+    </div>
+
+</body>
 </html>

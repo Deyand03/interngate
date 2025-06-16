@@ -7,7 +7,7 @@
         </div>
         {{-- Data Lowongan --}}
         <div class="flex flex-col justify-center">
-            <p class="text-base">?? Lowongan</p>
+            <p class="text-base">{{ $jml_lowongan }} Lowongan</p>
             <p class="text-white/75 text-sm">Jumlah lowongan yang tersedia</p>
         </div>
     </div>
@@ -19,7 +19,7 @@
         </div>
         {{-- Data Perusahaan --}}
         <div class="flex flex-col justify-center">
-            <p class="text-base">?? Perusahaan</p>
+            <p class="text-base">{{ $jml_perusahaan }} Perusahaan</p>
             <p class="text-white/75 text-sm">Jumlah perusahaan yang tersedia</p>
         </div>
     </div>
@@ -31,7 +31,7 @@
         </div>
         {{-- Data Pelamar --}}
         <div class="flex flex-col justify-center">
-            <p class="text-base">?? Peserta</p>
+            <p class="text-base">{{ $jml_peserta }} Peserta</p>
             <p class="text-white/75 text-sm">Jumlah peserta magang</p>
         </div>
     </div>

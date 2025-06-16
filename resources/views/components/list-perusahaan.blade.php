@@ -1,5 +1,3 @@
-@props(['posts'])
-
 <div class="flex flex-col pt-12 md:pt-20 -mt-15 px-6 sm:px-12 lg:px-20 pb-20">
     {{-- Judul Section --}}
     <div class="flex flex-col items-center justify-center text-center">
@@ -76,31 +74,6 @@
             </div>
         </div>
 
-        {{-- CARD LOWONGAN (Contoh 2) --}}
-        <div class="bg-white rounded-xl shadow-lg overflow-hidden flex flex-col md:flex-row transition-all duration-300 hover:shadow-2xl hover:-translate-y-1">
-            <div class="md:w-1/3 flex-shrink-0">
-                <img class="w-full h-48 md:h-full object-cover" src="https://images.unsplash.com/photo-1556761175-5973dc0f32e7?q=80&w=1932&auto=format&fit=crop" alt="Foto suasana kerja">
-            </div>
-            <div class="p-6 flex flex-col justify-between flex-grow">
-                <div>
-                    <p class="text-sm font-semibold text-blue-600">Startup Maju Jaya</p>
-                    <h3 class="mt-1 text-xl font-bold text-gray-900">
-                        <a href="#" class="hover:underline">Digital Marketing Intern</a>
-                    </h3>
-                    <p class="text-sm text-gray-500 mt-1">Work From Home</p>
-                    <div class="flex flex-wrap gap-2 my-4">
-                        <span class="bg-blue-100 text-blue-800 text-xs font-medium px-2.5 py-1 rounded-full">Work From Home</span>
-                        <span class="bg-gray-100 text-gray-800 text-xs font-medium px-2.5 py-1 rounded-full">Paid Internship</span>
-                    </div>
-                    <p class="text-sm text-gray-600 line-clamp-3">
-                        Kesempatan emas untuk belajar tentang SEO, SEM, dan Content Marketing. Kamu akan terlibat langsung dalam campaign digital kami dan menganalisis performa iklan...
-                    </p>
-                </div>
-                <div class="pt-4 mt-4 border-t border-gray-200">
-                    <a href="#" class="btn btn-warning w-full">Lihat Selengkapnya</a>
-                </div>
-            </div>
-        </div>
 
         {{-- Tambahkan card lain di sini --}}
 

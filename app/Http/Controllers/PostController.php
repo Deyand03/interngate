@@ -2,18 +2,17 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Mitra;
+use App\Models\ProgramMagang;
 use Illuminate\Http\Request;
 
-class MitraController extends Controller
+class PostController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
-        $data_mitra = Mitra::all();
-        return view('mitra.index', compact('data_mitra'));
+        //
     }
 
     /**
@@ -35,9 +34,10 @@ class MitraController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(string $id)
+    public function show(ProgramMagang $program)
     {
-        //
+
+        return view('lowongan.detail', compact('program'));
     }
 
     /**
