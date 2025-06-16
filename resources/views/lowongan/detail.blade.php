@@ -25,7 +25,6 @@
                             <img src="{{ $program->mitra->logo_perusahaan ? asset('storage/' . $program->mitra->logo_perusahaan) : asset('img/placeholder.jpg') }}" alt="Logo Perusahaan"/>                        </div>
                     </div>
                     <div class="flex-grow">
-                        <!-- SPACE-BACKEND: Ganti dengan 'category.name' dari DB -->
                         <div class="{{ $program->category->badge_class }} badge badge-md font-medium">{{ $program->category->name }}</div>
                         <h1 class="text-3xl lg:text-4xl font-extrabold text-gray-800 mt-2">{{ $program->judul }}</h1>
                         <div class="flex items-center gap-2 mt-2">
@@ -33,7 +32,7 @@
                             <p class="text-gray-500">• {{ $program->mitra->alamat_perusahaan }}</p>
                         </div>
                     </div>
-                    <div class="badge badge-xl font-semibold {{ $program->status == 'buka' ? 'text-emerald-800 bg-emerald-100' : 'text-rose-800 bg-rose-100' }} ">
+                    <div class="badge badge-xl font-semibold {{ $program->status == 'Buka' ? 'text-emerald-800 bg-emerald-100' : 'text-rose-800 bg-rose-100' }} ">
                         {{ $program->status }}
                     </div>
                 </div>
@@ -89,7 +88,7 @@
                                 Batas pendaftaran: <strong>{{ $program->batas_pendaftaran->isoFormat('D MMMM YYYY') }}</strong>
                             </p>
                             <div class="card-actions justify-end mt-4">
-                                <button @disabled($program->status == 'tutup') class="btn btn-ghost {{ $program->status == 'tutup' ? 'bg-[#d0a824] cursor-not-allowed' : 'bg-[#F5C219] hover:bg-[#e0ac00]' }} border-none text-black w-full font-bold" >
+                                <button @disabled($program->status == 'Tutup' || Auth::user()->mitra ) class="btn btn-ghost {{ $program->status == 'Tutup' ? 'bg-[#d0a824] cursor-not-allowed' : 'bg-[#F5C219] hover:bg-[#e0ac00]' }} border-none text-black w-full font-bold" >
                                     Lamar Sekarang
                                 </button>
                             </div>
@@ -99,7 +98,6 @@
                         <div class="card-body">
                             <h2 class="card-title text-lg">Tentang Mitra</h2>
                             <div class="prose max-w-none text-sm text-gray-600 mt-2">
-                                <!-- SPACE-BACKEND: Ganti dengan 'mitra.deskripsi' -->
                                 <p>{{ $program->mitra->deskripsi }}</p>
                             </div>
                         </div>

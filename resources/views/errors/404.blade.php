@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>404 - Not Found</title>
+    <link rel="shortcut icon" href="{{ asset('img/title-icon.png') }}" type="image/x-icon">
 </head>
 <body>
 <script src="https://unpkg.com/@dotlottie/player-component@2.7.12/dist/dotlottie-player.mjs" type="module"></script>

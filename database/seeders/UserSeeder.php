@@ -42,12 +42,18 @@ class UserSeeder extends Seeder
                 ],
                 [
                     'id' => 5,
+                    'email' => 'rizky@gmail.com',
+                    'password' => Hash::make('mahasiswa123'),
+                    'role' => 'mahasiswa',
+                ],
+                [
+                    'id' => 6,
                     'email' => 'mitra1@gmail.com',
                     'password' => Hash::make('mitra123'),
                     'role' => 'mitra',
                 ],
                 [
-                    'id' => 6,
+                    'id' => 7,
                     'email' => 'mitra2@gmail.com',
                     'password' => Hash::make('mitra123'),
                     'role' => 'mitra',

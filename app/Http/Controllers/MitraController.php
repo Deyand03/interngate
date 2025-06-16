@@ -2,8 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Category;
 use App\Models\Mitra;
+use App\Models\Pendaftaran;
 use Illuminate\Http\Request;
+use App\Models\ProgramMagang;
 
 class MitraController extends Controller
 {
@@ -12,8 +15,18 @@ class MitraController extends Controller
      */
     public function index()
     {
-        $data_mitra = Mitra::all();
-        return view('mitra.index', compact('data_mitra'));
+        $programs = ProgramMagang::all();
+        $pendaftarans = Pendaftaran::with('program_magang')->get();
+        $stats = [
+            'total_pendaftaran' => Pendaftaran::where('status', '!=', 'Ditolak')->count(),
+            'menunggu' => Pendaftaran::where('status', 'Menunggu')->count(),
+            'berlangsung' => Pendaftaran::where('status', 'Berlangsung')->count(),
+            'selesai' => Pendaftaran::where('status', 'Selesai')->count(),
+        ];
+
+        $categories = Category::orderBy('name', 'asc')->get();
+        return view('mitra.index', compact('pendaftarans', 'stats', 'programs', 'categories'));
+        ;
     }
 
     /**
@@ -21,7 +34,7 @@ class MitraController extends Controller
      */
     public function create()
     {
-        //
+        return view('mitra.kelola');
     }
 
     /**
@@ -38,6 +51,12 @@ class MitraController extends Controller
     public function show(string $id)
     {
         //
+    }
+
+    public function profile()
+    {
+        return view('mitra.profile');
+
     }
 
     /**

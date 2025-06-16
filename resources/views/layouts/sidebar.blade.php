@@ -35,7 +35,7 @@
         <!-- Sidebar yang Telah Diperbarui -->
         <!-- ====================================================== -->
         <nav class="w-72 bg-gradient-to-b from-[#187DAB] to-[#146C94] text-white flex flex-col h-screen sticky top-0">
-            
+
             <!-- Bagian Atas: Kembali & Profil -->
             <div class="p-4">
                 <a href="{{ url('/') }}" class="btn btn-ghost w-full justify-start mb-4 text-base font-semibold normal-case">
@@ -46,41 +46,40 @@
                 <div class="p-4 bg-white/10 rounded-xl backdrop-blur-sm border border-white/20">
                     <div class="flex items-center gap-4">
                         <div class="avatar">
-                            <div class="w-12 h-12 rounded-lg">
-                                <!-- SPACE-BACKEND: Ganti src dengan Auth::user()->mitra->logo_perusahaan -->
-                                <img src="https://placehold.co/128x128/FFFFFF/187DAB?text=M" />
+                            <div class="w-16 rounded-lg">
+                                <img src="{{ Auth::user()->mitra->logo_perusahaan ? asset('storage/' . Auth::user()->mitra->logo_perusahaan) : asset('img/placeholder.jpg') }}" alt="Logo Perusahaan" />
                             </div>
                         </div>
                         <div class="flex-grow">
-                            <div class="badge badge-sm bg-[#F5C219] border-none text-black font-semibold">MITRA</div>
-                            <!-- SPACE-BACKEND: Ganti dengan Auth::user()->mitra->nama_perusahaan -->
-                            <h3 class="font-bold text-base leading-tight text-white">PT. Teknologi Maju</h3>
+                            <h3 class="font-bold text-lg leading-tight text-white">{{ Auth::user()->mitra->nama_perusahaan }}</h3>
                         </div>
                     </div>
+                    <div class="divider my-3 border-white/20"></div>
+                    <p class="text-sm text-white/70 px-1">{{ Auth::user()->email }}</p>
                 </div>
             </div>
 
-            <!-- Bagian Tengah: Menu Utama -->
-            <ul class="menu p-4 space-y-2 text-base font-medium flex-grow">
-                <li class="menu-title text-white/50"><span>MENU UTAMA</span></li>
+            <!-- Bagian Tengah: Menu Navigasi Utama -->
+            <ul class="menu p-4 space-y-2 text-base font-medium flex-grow w-full">
+                <li class="menu-title text-warning"><span>Menu Utama</span></li>
                 <li class="menu-item">
-                    {{-- SPACE-BACKEND: Logika untuk link aktif --}}
-                    {{-- <a href="{{ route('mitra.dashboard') }}" class="{{ request()->routeIs('mitra.dashboard') ? 'active' : '' }}"> --}}
-                    <a href="#" class="active -mt-3">
+                    <!-- Tambahkan class 'active' jika route sedang aktif -->
+                    <a href="{{ route('mitra.index')}}" class="{{ request()->routeIs('mitra.index') ? 'active' : '' }}">
                         <i class="fa-solid fa-fw fa-chart-pie"></i>
                         <span>Dashboard</span>
                     </a>
                 </li>
                 <li class="menu-item">
-                    <a href="#">
-                        <i class="fa-solid fa-fw fa-briefcase"></i>
+                    <a href="{{ route('mitra.kelola') }}" class="{{ request()->routeIs('mitra.kelola') ? 'active' : '' }}">
+                            <i class="fa-solid fa-fw fa-briefcase"></i>
                         <span>Kelola Program</span>
                     </a>
                 </li>
-                
-                <li class="menu-title text-white/50 mt-4"><span>AKUN</span></li>
+
+
+                <li class="menu-title text-white/50 mt-4"><span>Akun</span></li>
                 <li class="menu-item">
-                    <a href="#" class="-mt-3">
+                    <a href="{{ route('mitra.profile') }}" class="-mt-3">
                         <i class="fa-solid fa-fw fa-building"></i>
                         <span>Profil Perusahaan</span>
                     </a>
@@ -88,8 +87,8 @@
             </ul>
 
             <!-- Bagian Bawah: Logout -->
-            <div class="p-4 border-t border-white-400">
-                 <form method="POST" action="{{ route('logout') }}">
+            <div class="p-4 border-t border-white/20">
+                <form action="{{ route('logout') }}" method="post">
                     @csrf
                     <button type="submit" class="btn btn-ghost w-full justify-start hover:bg-white/10">
                         <i class="fa-solid fa-fw fa-arrow-right-from-bracket"></i>
@@ -105,7 +104,7 @@
         <!-- Konten Halaman Utama -->
         <main class="flex-1 content-area h-screen overflow-y-auto">
             @yield('content')
-        </main>
+        </div>
     </div>
 
     @yield('modals')

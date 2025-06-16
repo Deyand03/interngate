@@ -31,7 +31,7 @@ class AuthenticatedSessionController extends Controller
         return match ($user->role) {
             'mahasiswa' => redirect()->route('beranda'),
             'mitra'     => redirect()->route('mitra.index'),
-            default     => redirect('/'), 
+            default     => redirect('/'),
         };
 
         return redirect()->intended(route('beranda', absolute: false));

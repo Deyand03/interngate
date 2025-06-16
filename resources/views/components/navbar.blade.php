@@ -80,7 +80,7 @@
                     {{-- Header Dropdown --}}
                     <li class="px-2 pt-2 pb-1">
                         <div class="flex flex-col pointer-events-none">
-                            <p class="font-bold truncate">{{ Auth::user()->mahasiswa->nama }}</p>
+                            <p class="font-bold truncate">{{ Auth::user()->role == 'mahasiswa' ? Auth::user()->mahasiswa->nama : Auth::user()->mitra->nama_perusahaan }}</p>
                             <p class="text-xs text-base-content/60 truncate">{{ Auth::user()->email }}</p>
                         </div>
                     </li>

@@ -18,14 +18,12 @@
                     <div class="avatar -mt-16 md:-mt-24">
                         <div class="w-32 h-32 rounded-full ring ring-[#187DAB] ring-offset-base-100 ring-offset-4">
                             <!-- SPACE-BACKEND: Hubungkan dengan path logo dari storage -->
-                            <img src="https://placehold.co/300x300/E0E0E0/757575?text=Logo" alt="Logo Perusahaan" />
+                            <img src="{{ Auth::user()->mitra->logo_perusahaan ? asset('storage/' . Auth::user()->mitra->logo_perusahaan) : asset('img/placeholder.jpg')  }}" alt="Logo Perusahaan" />
                         </div>
                     </div>
                     <div class="text-center md:text-left flex-grow">
-                        {{-- <!-- SPACE-BACKEND: Ganti dengan {{ $mitra->nama_perusahaan ?? '...' }} --> --}}
-                        <h1 class="text-3xl font-extrabold text-gray-900">PT. Teknologi Maju</h1>
-                        {{-- <!-- SPACE-BACKEND: Ganti dengan {{ $user->email ?? '...' }} --> --}}
-                        <p class="text-gray-600 mt-1">contact@teknologimaju.com</p>
+                        <h1 class="text-3xl font-extrabold text-gray-900">{{ Auth::user()->mitra->nama_perusahaan }}</h1>
+                        <p class="text-gray-600 mt-1">{{ Auth::user()->email }}</p>
                     </div>
                     <div class="md:ml-auto flex-shrink-0">
                         <button class="btn btn-primary" onclick="edit_profil_modal.showModal()">
@@ -48,16 +46,12 @@
                         <div>
                             <div class="font-semibold text-gray-500">Alamat Lengkap</div>
                             {{-- <!-- SPACE-BACKEND: Ganti dengan {{ $mitra->alamat_perusahaan ?? 'Belum diisi' }} --> --}}
-                            <p class="text-gray-800">Menara Digital, Jl. Gatot Subroto No. Kav. 14, Jakarta Selatan, DKI
-                                Jakarta</p>
+                            <p class="text-gray-800">{{Auth::user()->mitra->alamat_perusahaan}}</p>
                         </div>
                         <div>
                             <div class="font-semibold text-gray-500">Deskripsi Perusahaan</div>
                             {{-- <!-- SPACE-BACKEND: Ganti dengan {{ $mitra->deskripsi ?? 'Belum diisi' }} --> --}}
-                            <p class="text-gray-800">PT. Teknologi Maju adalah perusahaan terdepan dalam pengembangan solusi
-                                perangkat lunak enterprise dan layanan konsultasi IT untuk berbagai industri di Indonesia.
-                                Kami berfokus pada inovasi dan kualitas untuk membantu klien mencapai tujuan bisnis mereka.
-                            </p>
+                            <p class="text-gray-800">{{ Auth::user()->mitra->deskripsi }} </p>
                         </div>
                     </div>
                 </div>

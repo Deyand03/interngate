@@ -18,7 +18,7 @@ class ProgramMagang extends Model
     ];
 
     public function pendaftaran(){
-        return $this->hasMany(Pendaftaran::class, "id_programm_magang", "id");;
+        return $this->hasMany(Pendaftaran::class, "id_program_magang", "id");;
     }
     public function mitra(){
         return $this->belongsTo(Mitra::class, 'id_mitra', 'id');

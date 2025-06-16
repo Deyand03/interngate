@@ -2,9 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Mahasiswa;
 use App\Models\User;
+use App\Models\Mahasiswa;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 
 class MahasiswaController extends Controller
 {
@@ -15,6 +16,27 @@ class MahasiswaController extends Controller
     {
         $mhs_all = Mahasiswa::all();
         return view('mahasiswa.index', compact('mhs_all'));
+    }
+
+    public function updateFoto(Request $request){
+        $request->validate([
+            'foto_profil' => 'required|image|mimes:jpeg,png,jpg,gif|max:4096', // Wajib, gambar, ekstensi, maks 2MB
+        ]);
+
+        $mahasiswa = auth()->user()->mahasiswa;
+
+        // 3. Hapus foto lama jika ada
+        if ($mahasiswa->foto_profil) {
+            Storage::delete('public/' . $mahasiswa->foto_profil);
+        }
+
+        $path = $request->file('foto_profil')->store('foto_mahasiswa', 'public');
+
+        $mahasiswa->update([
+            'foto_profil' => $path
+        ]);
+
+        return back()->with('success', 'Foto profil berhasil diperbarui!');
     }
 
     /**
