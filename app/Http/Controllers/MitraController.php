@@ -25,7 +25,8 @@ class MitraController extends Controller
         ];
 
         $categories = Category::orderBy('name', 'asc')->get();
-        return view('mitra.index', compact('pendaftarans', 'stats', 'programs', 'categories'));;
+        return view('mitra.index', compact('pendaftarans', 'stats', 'programs', 'categories'));
+        ;
     }
 
     /**
@@ -33,7 +34,7 @@ class MitraController extends Controller
      */
     public function create()
     {
-        //
+        return view('mitra.kelola');
     }
 
     /**
@@ -50,6 +51,12 @@ class MitraController extends Controller
     public function show(string $id)
     {
         //
+    }
+
+    public function profile()
+    {
+        return view('mitra.profile');
+
     }
 
     /**

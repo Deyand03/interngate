@@ -35,7 +35,7 @@
         <!-- Sidebar yang Telah Diperbarui -->
         <!-- ====================================================== -->
         <nav class="w-72 bg-gradient-to-b from-[#187DAB] to-[#146C94] text-white flex flex-col h-screen sticky top-0">
-            
+
             <!-- Bagian Atas: Kembali & Profil -->
             <div class="p-4">
                 <a href="{{ url('/') }}" class="btn btn-ghost w-full justify-start mb-4 text-base font-semibold normal-case">
@@ -79,7 +79,7 @@
 
                 <li class="menu-title text-white/50 mt-4"><span>Akun</span></li>
                 <li class="menu-item">
-                    <a href="#" class="-mt-3">
+                    <a href="{{ route('mitra.profile') }}" class="-mt-3">
                         <i class="fa-solid fa-fw fa-building"></i>
                         <span>Profil Perusahaan</span>
                     </a>

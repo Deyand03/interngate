@@ -18,23 +18,13 @@ Route::get('/test-view', function(){
     return view('welcome');
 });
 
-Route::prefix('dashboard-mitra')->group(function () {
-    Route::get('/', function () {
-        return view('dashboard_mitra.index');
-    });
-    Route::get('/profile', function () {
-        return view('dashboard_mitra.profile');
-    });
-    Route::get('/tambah-program', function () {
-        return view('dashboard_mitra.tambah_program');
-    });
-});
 
 Route::get('/dashboard', [NavigationController::class, 'beranda']);
 
 Route::middleware(['auth', 'role:mitra'])->group(function () {
     Route::get('mitra', [MitraController::class, 'index'])->name('mitra.index');
     Route::get('mitra/kelola', [MitraController::class, 'create'])->name('mitra.kelola');
+    Route::get('mitra/profile', [MitraController::class, 'profile'])->name('mitra.profile');
 });
 Route::middleware(['auth', 'role:mahasiswa'])->group(function(){
     Route::get('mahasiswa', [MahasiswaController::class, 'index'])->name('mahasiswa.index');
