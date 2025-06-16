@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>@yield('title')</title>
-    @vite(['resources/css/app.css', 'resources/css/style.css', 'resources/js/main.js'])
+    @vite(['resources/css/app.css', 'resources/css/style.css'])
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -109,5 +109,6 @@
     </div>
 
     @yield('modals')
+    @vite(['resources/js/app.js', 'resources/js/main.js'])
 </body>
 </html>
