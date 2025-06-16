@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>@yield('title')</title>
-    @vite(['resources/css/app.css', 'resources/css/style.css', 'resources/js/main.js'])
+    @vite(['resources/css/app.css', 'resources/css/style.css'])
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -17,31 +17,32 @@
             background-color: #f7f9fc;
         }
         /* Style kustom untuk menu item aktif */
-        .menu .menu-item a.active {
+        .menu .menu-item > a.active {
             background-color: rgba(255, 255, 255, 0.15);
             font-weight: 700;
             color: white;
+            border-left: 4px solid #F5C219; /* Aksen kuning untuk link aktif */
         }
-        .menu .menu-item a.active i {
+        .menu .menu-item > a.active i {
             color: #F5C219; /* Warna kuning sebagai aksen ikon aktif */
         }
     </style>
 </head>
 
 <body style="font-family: Poppins">
-    <div class="flex">
-        <nav class="w-[25%] bg-gradient-to-b from-[#187DAB] to-[#146C94] text-white flex flex-col sticky top-0">
-            <!-- Bagian Atas: Logo & Profil -->
-            <div class="p-6">
-                <!-- Logo & Kembali ke Beranda -->
-                <a href="/" class="flex items-center gap-3 mb-8 group">
-                    <div class="p-2 bg-white/20 rounded-lg group-hover:bg-white/30 transition-colors">
-                        <i class="fa-solid fa-fw fa-arrow-left"></i>
-                    </div>
-                    <span class="text-lg font-semibold">Kembali ke Beranda</span>
+    <div class="flex min-h-screen">
+        <!-- ====================================================== -->
+        <!-- Sidebar yang Telah Diperbarui -->
+        <!-- ====================================================== -->
+        <nav class="w-72 bg-gradient-to-b from-[#187DAB] to-[#146C94] text-white flex flex-col h-screen sticky top-0">
+            
+            <!-- Bagian Atas: Kembali & Profil -->
+            <div class="p-4">
+                <a href="{{ url('/') }}" class="btn btn-ghost w-full justify-start mb-4 text-base font-semibold normal-case">
+                    <i class="fa-solid fa-fw fa-arrow-left"></i>
+                    Kembali ke Beranda
                 </a>
 
-                <!-- Kartu Profil Mitra -->
                 <div class="p-4 bg-white/10 rounded-xl backdrop-blur-sm border border-white/20">
                     <div class="flex items-center gap-4">
                         <div class="avatar">
@@ -78,7 +79,7 @@
 
                 <li class="menu-title text-white/50 mt-4"><span>Akun</span></li>
                 <li class="menu-item">
-                    <a href="#">
+                    <a href="#" class="-mt-3">
                         <i class="fa-solid fa-fw fa-building"></i>
                         <span>Profil Perusahaan</span>
                     </a>
@@ -95,17 +96,18 @@
                     </button>
                 </form>
             </div>
-
             <div class="text-center text-xs text-white py-4 border-t border-white-400">
                 &copy; 2025 InternGate
             </div>
         </nav>
 
-        <div>
+        <!-- Konten Halaman Utama -->
+        <main class="flex-1 content-area h-screen overflow-y-auto">
             @yield('content')
         </div>
-
-        @yield('modals')
     </div>
+
+    @yield('modals')
+    @vite(['resources/js/app.js', 'resources/js/main.js'])
 </body>
 </html>
