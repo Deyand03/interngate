@@ -21,6 +21,7 @@ class DatabaseSeeder extends Seeder
             MitraSeeder::class,
             CategorySeeder::class,
             ProgramMagangSeeder::class,
+            PendaftaranSeeder::class,
         ]);
     }
 }

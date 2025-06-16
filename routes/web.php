@@ -30,23 +30,16 @@ Route::prefix('dashboard-mitra')->group(function () {
     });
 });
 
-Route::get('/dashboard', function () {
-    return view('dashboard');
-})->middleware(['auth', 'verified'])->name('dashboard');
-
-
-// Route::middleware('auth')->group(function () {
-//     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
-//     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
-//     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
-// });
+Route::get('/dashboard', [NavigationController::class, 'beranda']);
 
 Route::middleware(['auth', 'role:mitra'])->group(function () {
     Route::get('mitra', [MitraController::class, 'index'])->name('mitra.index');
     Route::get('mitra/kelola', [MitraController::class, 'create'])->name('mitra.kelola');
 });
 Route::middleware(['auth', 'role:mahasiswa'])->group(function(){
-    Route::resource('mahasiswa', MahasiswaController::class);
+    Route::get('mahasiswa', [MahasiswaController::class, 'index'])->name('mahasiswa.index');
+    Route::patch('/mahasiswa/profil/update-foto', [MahasiswaController::class, 'updateFoto'])->name('mahasiswa.foto.update');
+    Route::patch('/mahasiswa/{id}', [MahasiswaController::class, 'update'])->name('mahasiswa.update');
 });
 
 

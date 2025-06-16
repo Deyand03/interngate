@@ -12,7 +12,7 @@ class Pendaftaran extends Model
     public function mahasiswa(){
         return $this->belongsTo(Mahasiswa::class, 'id_mahasiswa', 'id');
     }
-    public function programMagang(){
-        return $this->belongsTo(ProgramMagang::class, 'id_programm_magang', 'id');
+    public function program_magang(){
+        return $this->belongsTo(ProgramMagang::class, 'id_program_magang', 'id');
     }
 }

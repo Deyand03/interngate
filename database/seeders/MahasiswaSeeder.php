@@ -89,6 +89,25 @@ class MahasiswaSeeder extends Seeder
                 'user_id' => 4,
                 'created_at' => now(),
                 'updated_at' => now(),
+            ],
+            [
+                'id' => 5,
+                'nim' => 'F1E123064',
+                'nama' => 'Rizky Ramadhan',
+                'jurusan' => 'Sistem Informasi',
+                'universitas' => 'Universitas Jambi',
+                'jenis_kelamin' => 'Laki-laki',
+                'tempat_lahir' => 'Bogor',
+                'tanggal_lahir' => '2003-12-03',
+                'no_hp' => '081234567894',
+                'provinsi_domisili' => 'Jambi',
+                'kabupaten_domisili' => 'Kab. Muaro Jambi',
+                'kecamatan_domisili' => 'Kec. Muaro Jambi',
+                'desa_domisili' => 'Kel. Muaro Jambi',
+                'alamat_domisili' => 'Jl. Muaro Jambi',
+                'user_id' => 5,
+                'created_at' => now(),
+                'updated_at' => now(),
             ]
         ]);
     }

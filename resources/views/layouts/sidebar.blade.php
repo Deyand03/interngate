@@ -46,17 +46,14 @@
                     <div class="flex items-center gap-4">
                         <div class="avatar">
                             <div class="w-16 rounded-lg">
-                                <!-- SPACE-BACKEND: Ganti src dengan logo perusahaan dari DB -->
                                 <img src="{{ Auth::user()->mitra->logo_perusahaan ? asset('storage/' . Auth::user()->mitra->logo_perusahaan) : asset('img/placeholder.jpg') }}" alt="Logo Perusahaan" />
                             </div>
                         </div>
                         <div class="flex-grow">
-                            <!-- SPACE-BACKEND: Ganti dengan nama perusahaan dari DB -->
                             <h3 class="font-bold text-lg leading-tight text-white">{{ Auth::user()->mitra->nama_perusahaan }}</h3>
                         </div>
                     </div>
                     <div class="divider my-3 border-white/20"></div>
-                     <!-- SPACE-BACKEND: Ganti dengan email dari DB -->
                     <p class="text-sm text-white/70 px-1">{{ Auth::user()->email }}</p>
                 </div>
             </div>

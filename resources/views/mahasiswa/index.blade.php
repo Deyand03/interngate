@@ -21,7 +21,8 @@
                 <div class="flex flex-col md:flex-row items-center gap-6 md:gap-8 border-b border-base-300 pb-8">
                     <div class="avatar">
                         <div class="w-32 h-32 rounded-full ring ring-[#187DAB] ring-offset-base-100 ring-offset-4">
-                            <img src="{{ Auth::user()->mahasiswa->foto_profil ? asset('storage/' . Auth::user()->mahasiswa->foto_profil) : asset('img/placeholder.jpg') }}" alt="Foto Profil" />
+                            <img src="{{ Auth::user()->mahasiswa->foto_profil ? asset('storage/' . Auth::user()->mahasiswa->foto_profil) : asset('img/placeholder.jpg') }}"
+                                alt="Foto Profil" />
                         </div>
                     </div>
                     <div class="text-center md:text-left">
@@ -37,20 +38,42 @@
                         </div>
                     </div>
                     <div class="md:ml-auto">
-                        <button class="btn btn-success" onclick="edit_biodata_modal.showModal()">
-                            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
-                                <path d="M17.414 2.586a2 2 0 00-2.828 0L7 10.172V13h2.828l7.586-7.586a2 2 0 000-2.828z" />
-                                <path fill-rule="evenodd"
-                                    d="M2 6a2 2 0 012-2h4a1 1 0 010 2H4v10h10v-4a1 1 0 112 0v4a2 2 0 01-2 2H4a2 2 0 01-2-2V6z"
-                                    clip-rule="evenodd" />
-                            </svg>
-                            Lengkapi Biodata
-                        </button>
-                        <form action="{{ route('mahasiswa.update', $mahasiswa->id) }}">
-                            @csrf
-                            @method('patch')
-                            <input type="file" name="foto_profil" class="">
-                        </form>
+                        <div class="flex flex-col w-52">
+                            <button class="btn btn-success" onclick="edit_biodata_modal.showModal()">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20"
+                                    fill="currentColor">
+                                    <path
+                                        d="M17.414 2.586a2 2 0 00-2.828 0L7 10.172V13h2.828l7.586-7.586a2 2 0 000-2.828z" />
+                                    <path fill-rule="evenodd"
+                                        d="M2 6a2 2 0 012-2h4a1 1 0 010 2H4v10h10v-4a1 1 0 112 0v4a2 2 0 01-2 2H4a2 2 0 01-2-2V6z"
+                                        clip-rule="evenodd" />
+                                </svg>
+                                Lengkapi Biodata
+                            </button>
+                            <form action="{{ route('mahasiswa.foto.update') }}" method="POST" enctype="multipart/form-data">
+                                @csrf
+                                @method('patch')
+                                <div class="flex flex-col w-full">
+                                    <input type="file" name="foto_profil" id="foto_profil_input" class="hidden"
+                                        accept="image/*">
+                                    <label for="foto_profil_input"
+                                        class="w-full btn btn-ghost bg-[var(--bg-primary)] text-white cursor-pointer mt-2">
+                                        Pilih Foto Baru
+                                    </label>
+
+                                    {{-- Tombol simpan yang hanya muncul jika ada file baru dipilih --}}
+                                    <button type="submit" id="tombol_simpan_foto" class="btn btn-info hidden mt-2">
+                                        Simpan Perubahan
+                                    </button>
+                                    @error('foto_profil')
+                                        <span class="text-red-500 text-sm mt-2">{{ $message }}</span>
+                                    @enderror
+                                </div>
+
+                                {{-- Menampilkan error validasi --}}
+                            </form>
+
+                        </div>
                     </div>
                 </div>
 
@@ -120,6 +143,11 @@
                 <div class="pt-8">
                     <h3 class="text-xl font-bold text-gray-800 mb-4">Riwayat Lamaran Magang</h3>
                     <div class="overflow-x-auto">
+                        @php
+                            $pendaftarans = [
+
+                            ];
+                        @endphp
                         <table class="table">
                             <thead class="bg-base-200">
                                 <tr>
@@ -132,6 +160,7 @@
                             </thead>
                             <tbody>
                                 <!-- Contoh Data 1 (Status Diterima) -->
+                                @forelse ($pendaftarans as $pendaftaran)
                                 <tr>
                                     <td>
                                         <div class="font-bold">Backend Web Developer (Laravel)</div>
@@ -172,6 +201,26 @@
                                     </td>
 
                                 </tr>
+
+                                @empty
+
+                                <tr>
+                                    <td colspan="5" class="text-center py-12">
+                                        <div class="flex flex-col items-center">
+                                            <svg xmlns="http://www.w3.org/2000/svg" class="h-16 w-16 text-gray-300"
+                                                fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                                    d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+                                            </svg>
+                                            <p class="text-gray-500 mt-4 text-lg">Anda belum pernah melamar program magang.
+                                            </p>
+                                            <p class="text-gray-400 text-sm">Ayo mulai cari peluang terbaikmu sekarang!</p>
+                                            <a href="{{ route('lowongan') }}" class="btn btn-ghost bg-[var(--bg-primary)] text-white mt-6">Cari
+                                                Lowongan Sekarang</a>
+                                        </div>
+                                    </td>
+                                </tr>
+                                @endforelse
                                 {{-- <!--
                                 // ===================================================================
                                 // SPACE-BACKEND: Integrasi Backend Dimulai Di Sini
@@ -186,21 +235,6 @@
                                 --> --}}
 
                                 {{-- <!-- Placeholder jika tidak ada data lamaran --> --}}
-                                <tr>
-                                    <td colspan="5" class="text-center py-12">
-                                        <div class="flex flex-col items-center">
-                                            <svg xmlns="http://www.w3.org/2000/svg" class="h-16 w-16 text-gray-300"
-                                                fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                                    d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
-                                            </svg>
-                                            <p class="text-gray-500 mt-4 text-lg">Anda belum pernah melamar program magang.
-                                            </p>
-                                            <p class="text-gray-400 text-sm">Ayo mulai cari peluang terbaikmu sekarang!</p>
-                                            <a href="{{ route('lowongan') }}" class="btn btn-primary btn-sm mt-6">Cari Lowongan Sekarang</a>
-                                        </div>
-                                    </td>
-                                </tr>
                             </tbody>
                         </table>
                     </div>
@@ -209,7 +243,7 @@
     </main>
 
 
-    @if(session('success'))
+    @if (session('success'))
         <div id="success-message" data-message="{{ session('success') }}" class="hidden"></div>
     @endif
     <dialog id="edit_biodata_modal" class="modal modal-bottom sm:modal-middle">

@@ -17,9 +17,6 @@ return Application::configure(basePath: dirname(__DIR__))
             'role' => RoleMiddleware::class,
         ]);
     })
-    ->withSchedule(function (Schedule $schedule) {
-        $schedule->command('internships:update-status')->daily();
-    })
     ->withExceptions(function (Exceptions $exceptions) {
         //
     })
