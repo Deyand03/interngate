@@ -17,6 +17,7 @@ Route::get('/logout', function(){
     return view('beranda.index');
 })->middleware('auth');
 
+//
 
 Route::middleware(['auth', 'role:mitra'])->group(function () {
     Route::get('mitra', [MitraController::class, 'index'])->name('mitra.index');
