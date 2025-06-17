@@ -35,7 +35,7 @@
 
             <!-- Bagian Atas: Kembali & Profil -->
             <div class="p-4">
-                <a href="{{ url('/') }}" class="btn btn-ghost w-full justify-start mb-4 text-base font-semibold normal-case">
+                <a href="{{ route('beranda') }}" class="btn btn-ghost w-full justify-start mb-4 text-base font-semibold normal-case">
                     <i class="fa-solid fa-fw fa-arrow-left"></i>
                     Kembali ke Beranda
                 </a>
@@ -76,7 +76,7 @@
 
                 <li class="menu-title text-white/50 mt-4"><span>Akun</span></li>
                 <li class="menu-item">
-                    <a href="{{ route('mitra.profile') }}" class="-mt-3">
+                    <a href="{{ route('mitra.profile') }}" class="{{ request()->routeIs('mitra.profile  ') ? 'active' : '' }} -mt-3">
                         <i class="fa-solid fa-fw fa-building"></i>
                         <span>Profil Perusahaan</span>
                     </a>

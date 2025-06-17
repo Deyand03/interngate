@@ -3,7 +3,7 @@
 @section('content')
     <div class="relative h-56 md:h-72 w-full">
         <!-- SPACE-BACKEND: Ganti src dengan 'mitra->banner_perusahaan' dari DB -->
-        <img src="https://images.unsplash.com/photo-1517048676732-d65bc937f952?q=80&w=2070&auto=format&fit=crop"
+        <img src="{{ Auth::user()->mitra->banner ? asset('storage/' . Auth::user()->mitra->banner) : asset('img/placeholder.jpg') }}"
             alt="Banner Perusahaan" class="h-full w-full object-cover">
         <div class="absolute inset-0 bg-black/50"></div>
     </div>
@@ -18,13 +18,14 @@
                     <div class="avatar -mt-16 md:-mt-24">
                         <div class="w-32 h-32 rounded-full ring ring-[#187DAB] ring-offset-base-100 ring-offset-4">
                             <!-- SPACE-BACKEND: Hubungkan dengan path logo dari storage -->
-                            <img src="{{ Auth::user()->mitra->logo_perusahaan ? asset('storage/' . Auth::user()->mitra->logo_perusahaan) : asset('img/placeholder.jpg')  }}" alt="Logo Perusahaan" />
+                            <img src="{{ Auth::user()->mitra->logo_perusahaan ? asset('storage/' . Auth::user()->mitra->logo_perusahaan) : asset('img/placeholder.jpg') }}"
+                                alt="Logo Perusahaan" />
                         </div>
                     </div>
-                    <div class="text-center md:text-left flex-grow">
-                        <h1 class="text-3xl font-extrabold text-gray-900">{{ Auth::user()->mitra->nama_perusahaan }}</h1>
-                        <p class="text-gray-600 mt-1">{{ Auth::user()->email }}</p>
-                    </div>
+                        <div class="text-center md:text-left flex-grow">
+                            <h1 class="text-3xl font-extrabold text-gray-900">{{ Auth::user()->mitra->nama_perusahaan }}</h1>
+                            <p class="text-gray-600 mt-1">{{ Auth::user()->email }}</p>
+                        </div>
                     <div class="md:ml-auto flex-shrink-0">
                         <button class="btn btn-primary" onclick="edit_profil_modal.showModal()">
                             <i class="fa-solid fa-pen-to-square"></i>
@@ -46,7 +47,7 @@
                         <div>
                             <div class="font-semibold text-gray-500">Alamat Lengkap</div>
                             {{-- <!-- SPACE-BACKEND: Ganti dengan {{ $mitra->alamat_perusahaan ?? 'Belum diisi' }} --> --}}
-                            <p class="text-gray-800">{{Auth::user()->mitra->alamat_perusahaan}}</p>
+                            <p class="text-gray-800">{{ Auth::user()->mitra->alamat_perusahaan }}</p>
                         </div>
                         <div>
                             <div class="font-semibold text-gray-500">Deskripsi Perusahaan</div>
@@ -64,7 +65,9 @@
                     <div class="divider my-2"></div>
 
                     <!-- Form Upload Logo -->
-                    <form action="#" method="POST" class="space-y-4">
+                    <form action="{{ route('mitra.foto.update', Auth::user()->mitra->id) }}" method="POST" enctype="multipart/form-data" class="space-y-4">
+                        @csrf
+                        @method('patch')
                         <div>
                             <label class="label"><span class="label-text font-semibold">Logo Perusahaan</span></label>
                             <input type="file" name="logo_perusahaan"
@@ -75,7 +78,7 @@
                         <!-- Form Upload Banner -->
                         <div>
                             <label class="label"><span class="label-text font-semibold">Banner Perusahaan</span></label>
-                            <input type="file" name="banner_perusahaan"
+                            <input type="file" name="banner"
                                 class="file-input file-input-bordered file-input-primary w-full" />
                             <div class="label"><span class="label-text-alt">Rekomendasi: 1200x400, maks 2MB.</span></div>
                         </div>
@@ -89,6 +92,9 @@
     </main>
 @endsection
 @section('modals')
+    @if (session('success'))
+        <div id="success-message" data-message="{{ session('success') }}" class="hidden"></div>
+    @endif
     <dialog id="edit_profil_modal" class="modal modal-bottom sm:modal-middle">
         <div class="modal-box w-11/12 max-w-3xl">
             <form method="dialog">
@@ -96,30 +102,30 @@
             </form>
             <h3 class="font-bold text-2xl mb-6 border-b pb-3">Edit Profil Perusahaan</h3>
 
-            <form method="post" action="#" class="space-y-4">
-                {{-- SPACE-BACKEND: Ganti action="#" dan tambahkan @csrf @method('patch') --}}
+            <form method="post" action="{{ route('mitra.update', Auth::user()->mitra->id) }}" class="space-y-4">
+                @csrf
+                @method('patch')
 
                 <div class="form-control w-full">
                     <label class="label"><span class="label-text font-semibold">Nama Perusahaan</span></label>
                     {{-- <!-- SPACE-BACKEND: Ganti value dengan {{ old('nama_perusahaan', $mitra->nama_perusahaan) }} --> --}}
-                    <input type="text" name="nama_perusahaan" value="PT. Teknologi Maju"
+                    <input type="text" name="nama_perusahaan" value="{{ Auth::user()->mitra->nama_perusahaan }}"
                         class="input input-bordered w-full" />
                 </div>
                 <div class="form-control w-full">
                     <label class="label"><span class="label-text font-semibold">Email Kontak</span></label>
-                    <input type="email" value="contact@teknologimaju.com" class="input input-bordered w-full" disabled />
+                    <input type="email" value="{{Auth::user()->email}}" class="input input-bordered w-full" disabled />
                 </div>
                 <div class="form-control w-full">
                     <label class="label"><span class="label-text font-semibold">Alamat Lengkap</span></label>
-                    {{-- <!-- SPACE-BACKEND: Isi dengan {{ old('alamat_perusahaan', $mitra->alamat_perusahaan) }} --> --}}
                     <textarea name="alamat_perusahaan" class="textarea textarea-bordered h-24"
-                        placeholder="Masukkan alamat lengkap perusahaan">Menara Digital, Jl. Gatot Subroto No. Kav. 14, Jakarta Selatan, DKI Jakarta</textarea>
+                        placeholder="Masukkan alamat lengkap perusahaan">{{Auth::user()->mitra->alamat_perusahaan}}</textarea>
                 </div>
                 <div class="form-control w-full">
                     <label class="label"><span class="label-text font-semibold">Deskripsi Perusahaan</span></label>
                     {{-- <!-- SPACE-BACKEND: Isi dengan {{ old('deskripsi', $mitra->deskripsi) }} --> --}}
                     <textarea name="deskripsi" class="textarea textarea-bordered h-32"
-                        placeholder="Jelaskan secara singkat mengenai perusahaan Anda...">PT. Teknologi Maju adalah perusahaan terdepan dalam pengembangan solusi perangkat lunak enterprise dan layanan konsultasi IT untuk berbagai industri di Indonesia. Kami berfokus pada inovasi dan kualitas untuk membantu klien mencapai tujuan bisnis mereka.</textarea>
+                        placeholder="Jelaskan secara singkat mengenai perusahaan Anda...">{{Auth::user()->mitra->deskripsi}}</textarea>
                 </div>
 
                 <div class="modal-action pt-4">
