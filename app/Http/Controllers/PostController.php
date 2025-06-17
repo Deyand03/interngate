@@ -126,17 +126,11 @@ class PostController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, ProgramMagang $program)
+    public function update(Request $request, string $id)
     {
-
-        if ($program->id_mitra != Auth::user()->mitra->id) {
-            abort(403);
-        }
-
-        // 1. Validasi Data
-        // Kunci-kunci di sini ('judul', 'deskripsi', dll.) HARUS SAMA PERSIS
-        // dengan nama kolom di database DAN ada di dalam properti $fillable di model Anda.
-        $validatedData = $request->validate([
+        $program = ProgramMagang::findOrFail($id);
+        
+        $request->validate([
             'judul'             => 'required|string|max:255',
             'id_category'       => 'required|exists:categories,id',
             'kuota'             => 'required|integer|min:1',
@@ -149,13 +143,6 @@ class PostController extends Controller
         ]);
 
         // 2. Siapkan data untuk diupdate. Kita mulai dengan data yang sudah tervalidasi.
-        $programData = $validatedData;
-
-        // 3. Logika Tambahan (Slug & Gambar)
-        // Generate slug baru hanya jika judul program diubah.
-        if ($request->judul !== $program->judul) {
-            $programData['slug'] = Str::slug($validatedData['judul']) . '-' . uniqid();
-        }
 
         if ($request->hasFile('gambar')) {
             // Hapus gambar lama jika ada, untuk menghemat storage.
@@ -164,27 +151,27 @@ class PostController extends Controller
             }
             $programData['gambar'] = $request->file('gambar')->store('program_banners', 'public');
         }
+        $program->update([
+            'judul' => $request->judul,
+            'id_category' => $request->id_category,
+            'kuota' => $request->kuota,
+            'deskripsi' => $request->deskripsi,
+            'kualifikasi' => $request->kualifikasi,
+            'batas_pendaftaran' => $request->batas_pendaftaran,
+            'awal_magang' => $request->awal_magang,
+            'akhir_magang' => $request->akhir_magang,
+            'gambar' => $programData['gambar'] ?? $program->gambar,
+        ]);
 
-        // 4. Update Data
-        // Perintah ini hanya akan berhasil jika semua kunci di dalam $programData
-        // terdaftar di dalam properti `$fillable` pada model ProgramMagang.
-        $program->update($programData);
-
-        // 5. Redirect ke halaman yang benar
-        // Pastikan Anda mengarahkan kembali ke halaman index kelola program.
-        return redirect()->route('mitra.program.index')->with('success', 'Program magang berhasil diperbarui!');
+        return redirect()->route('mitra.kelola')->with('success', 'Program magang berhasil diperbarui!');
     }
 
-    public function toggleStatus(ProgramMagang $program)
+    public function toggleStatus(Request $request, string $id)
     {
-        // Otorisasi
-        if ($program->id_mitra !== Auth::user()->mitra->id) {
-            abort(403);
-        }
-
-        $program->status_magang = $program->status_magang === 'buka' ? 'tutup' : 'buka';
-        $program->save();
-
+        $program = ProgramMagang::findOrFail($id);
+        $program->update([
+            'status' => $request->status,
+        ]);
         return redirect()->back()->with('success', 'Status lowongan berhasil diubah!');
     }
     /**

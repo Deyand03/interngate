@@ -58,7 +58,7 @@ class MahasiswaSeeder extends Seeder
                 'nama' => 'Melani Fitri',
                 'jurusan' => 'Sistem Informasi',
                 'universitas' => 'Universitas Jambi',
-                'jenis_kelamin' => 'Laki-laki',
+                'jenis_kelamin' => 'Perempuan',
                 'tempat_lahir' => 'Bogor',
                 'tanggal_lahir' => '2003-12-03',
                 'no_hp' => '081234567892',

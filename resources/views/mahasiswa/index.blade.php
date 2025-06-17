@@ -5,7 +5,7 @@
     @php
         $mahasiswa = Auth::user()->mahasiswa;
         // foreach($mahasiswa->pendaftaran as $pendaftaran) {
-        //     dd($pendaftaran->program_magang);
+        //     dd($pendaftaran->status);
         // }
     @endphp
     <header class="bg-[#187DAB] text-white pt-10 pb-24 md:pb-32 relative overflow-hidden">
@@ -191,20 +191,19 @@
                                         <td>
                                             <div class="badge @if ($pendaftaran->status == 'Diterima') text-emerald-800 bg-emerald-100
                                             @elseif($pendaftaran->status == 'Ditolak')
-                                                        text-rose-800 bg-rose-800
+                                                        text-rose-800 bg-rose-100
                                                     @elseif($pendaftaran->status == 'Menunggu')
                                                                 text-purple-800 bg-purple-100
                                                             @elseif($pendaftaran->status == 'Berlangsung')
                                                                         text-amber-800 bg-amber-100
                                                                     @elseif($pendaftaran->status == 'Selesai')
-                                                                            text-sky-800 bg-sky-100 @endif ">
-                                                {{ $pendaftaran->status }}
+                                                                            text-sky-800 bg-sky-100 
+                                                                            @endif font-medium">
+                                                {{ $pendaftaran->status }} 
                                             </div>
                                         </td>
-
                                     </tr>
                                 @empty
-
                                     <tr>
                                         <td colspan="5" class="text-center py-12">
                                             <div class="flex flex-col items-center">

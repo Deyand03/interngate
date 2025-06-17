@@ -30,7 +30,7 @@
 
     <!-- Form Edit Program -->
     <div class="card bg-base-100 shadow-xl">
-        <form method="POST" action="{{ route('mitra.program.update', $program->id) }}" enctype="multipart/form-data">
+        <form method="POST" action="{{ route('mitra.program.update', $program) }}" enctype="multipart/form-data">
             @csrf
             @method('patch')
             <div class="card-body">
@@ -40,33 +40,33 @@
                         <div class="divider lg:hidden text-sm font-semibold">Info Dasar</div>
                         <div class="form-control w-full">
                             <label class="label"><span class="label-text font-semibold">Judul Program</span></label>
-                            <input type="text" name="judul" value="{{ old('judul', $program->judul) }}" class="input input-bordered w-full" />
+                            <input type="text" name="judul" value="{{ $program->judul }}" class="input input-bordered w-full" />
                         </div>
                         <div class="form-control w-full">
                             <label class="label"><span class="label-text font-semibold">Kategori Program</span></label>
                             <select name="id_category" class="select select-bordered w-full">
                                 <option disabled>Pilih Kategori</option>
                                 @foreach($categories as $category)
-                                    <option value="{{ $category->id }}" @selected(old('id_category', $program->id_category) == $category->id)>{{ $category->name }}</option>
+                                    <option value="{{ $category->id }}" @selected($program->id_category == $category->id)>{{ $category->name }}</option>
                                 @endforeach
                             </select>
                         </div>
                         <div class="form-control w-full">
                             <label class="label"><span class="label-text font-semibold">Kuota Peserta</span></label>
-                            <input type="number" name="kuota" value="{{ old('kuota', $program->kuota) }}" class="input input-bordered w-full" />
+                            <input type="number" name="kuota" value="{{ $program->kuota }}" class="input input-bordered w-full" />
                         </div>
                     </div>
                     <!-- Kolom Kanan Form -->
                     <div class="space-y-4">
                          <div class="divider lg:hidden text-sm font-semibold">Deskripsi & Kualifikasi</div>
-                         <div class="form-control w-full">
+                         <div class="form-control flex flex-col w-full">
                             <label class="label"><span class="label-text font-semibold">Deskripsi Program</span></label>
                             {{-- PERBAIKAN: name diubah dari 'deskripsi_program' menjadi 'deskripsi' --}}
-                            <textarea name="deskripsi" class="textarea textarea-bordered h-24">{{ old('deskripsi', $program->deskripsi) }}</textarea>
+                            <textarea name="deskripsi" class="textarea textarea-bordered w-full" rows="5">{{ $program->deskripsi }}</textarea>
                         </div>
-                        <div class="form-control w-full">
+                        <div class="form-control flex flex-col w-full">
                             <label class="label"><span class="label-text font-semibold">Kualifikasi</span></label>
-                            <textarea name="kualifikasi" class="textarea textarea-bordered h-24">{{ old('kualifikasi', $program->kualifikasi) }}</textarea>
+                            <textarea name="kualifikasi" class="textarea textarea-bordered w-full" rows="5" placeholder="Garis baru untuk setiap syarat yang akan dibuat">{{ $program->kualifikasi }}</textarea>
                         </div>
                     </div>
                     <!-- Bagian Jadwal & Banner (Full Width) -->
@@ -75,16 +75,16 @@
                         <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
                             <div class="form-control w-full">
                                 <label class="label"><span class="label-text font-semibold">Batas Pendaftaran</span></label>
-                                <input type="date" name="batas_pendaftaran" value="{{ old('batas_pendaftaran', \Carbon\Carbon::parse($program->batas_pendaftaran)->format('Y-m-d')) }}" class="input input-bordered w-full" />
+                                <input type="date" name="batas_pendaftaran" value="{{  \Carbon\Carbon::parse($program->batas_pendaftaran)->format('Y-m-d') }}" class="input input-bordered w-full" />
                             </div>
                             <div class="form-control w-full">
                                 <label class="label"><span class="label-text font-semibold">Awal Magang</span></label>
-                                <input type="date" name="awal_magang" value="{{ old('awal_magang', \Carbon\Carbon::parse($program->awal_magang)->format('Y-m-d')) }}" class="input input-bordered w-full" />
+                                <input type="date" name="awal_magang" value="{{ \Carbon\Carbon::parse($program->awal_magang)->format('Y-m-d') }}" class="input input-bordered w-full" />
                             </div>
                             <div class="form-control w-full">
                                 <label class="label"><span class="label-text font-semibold">Selesai Magang</span></label>
                                 {{-- PERBAIKAN: name diubah dari 'selesai_magang' menjadi 'akhir_magang' --}}
-                                <input type="date" name="akhir_magang" value="{{ old('akhir_magang', \Carbon\Carbon::parse($program->akhir_magang)->format('Y-m-d')) }}" class="input input-bordered w-full" />
+                                <input type="date" name="akhir_magang" value="{{ \Carbon\Carbon::parse($program->akhir_magang)->format('Y-m-d') }}" class="input input-bordered w-full" />
                             </div>
                         </div>
                          <div class="form-control w-full mt-4">
