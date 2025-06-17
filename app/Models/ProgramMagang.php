@@ -9,7 +9,20 @@ use Illuminate\Database\Eloquent\Model;
 class ProgramMagang extends Model
 {
     protected $table = 'program_magangs';
-    protected $guarded = [];
+    protected $fillable = [
+        'judul',
+        'slug',
+        'deskripsi',
+        'gambar',
+        'kuota',
+        'kualifikasi',
+        'batas_pendaftaran',
+        'awal_magang',
+        'akhir_magang', // Sesuaikan dengan nama kolom Anda
+        'status',
+        'id_mitra',
+        'id_category',
+    ];
 
     protected $casts = [
         'batas_pendaftaran' => 'datetime',

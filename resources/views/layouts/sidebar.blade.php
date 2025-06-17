@@ -79,7 +79,7 @@
 
                 <li class="menu-title text-white/50 mt-4"><span>Akun</span></li>
                 <li class="menu-item">
-                    <a href="{{ route('mitra.profile') }}" class="-mt-3">
+                    <a href="{{ route('mitra.profile') }}" class="{{ request()->routeIs('mitra.profile  ') ? 'active' : '' }} -mt-3">
                         <i class="fa-solid fa-fw fa-building"></i>
                         <span>Profil Perusahaan</span>
                     </a>
