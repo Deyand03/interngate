@@ -18,6 +18,7 @@ Route::get('/test-view', function(){
     return view('welcome');
 });
 
+//
 
 Route::get('/dashboard', [NavigationController::class, 'beranda']);
 
