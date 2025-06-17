@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Pendaftaran;
 use App\Models\User;
 use App\Models\Mahasiswa;
 use Illuminate\Http\Request;
@@ -15,7 +16,8 @@ class MahasiswaController extends Controller
     public function index()
     {
         $mhs_all = Mahasiswa::all();
-        return view('mahasiswa.index', compact('mhs_all'));
+        $pendaftarans = Pendaftaran::with('program_magang')->get();
+        return view('mahasiswa.index', compact('mhs_all', 'pendaftarans'));
     }
 
     public function updateFoto(Request $request){

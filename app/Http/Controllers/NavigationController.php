@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Mitra;
 use App\Models\Category;
 use App\Models\Mahasiswa;
+use App\Models\Pendaftaran;
 use Illuminate\Http\Request;
 use App\Models\ProgramMagang;
 
@@ -21,7 +22,7 @@ class NavigationController extends Controller
         $stats = [
             'jml_lowongan' => ProgramMagang::where('status', 'buka')->count(),
             'jml_perusahaan' => Mitra::count(),
-            'jml_peserta' => Mahasiswa::count(),
+            'jml_peserta' => Pendaftaran::where('status', '!=', 'Ditolak')->count(),
         ];
 
         $query = ProgramMagang::with('mitra', 'category');

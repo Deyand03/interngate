@@ -4,12 +4,16 @@
 @section('content')
     @php
         $mahasiswa = Auth::user()->mahasiswa;
+        // foreach($mahasiswa->pendaftaran as $pendaftaran) {
+        //     dd($pendaftaran->program_magang);
+        // }
     @endphp
     <header class="bg-[#187DAB] text-white pt-10 pb-24 md:pb-32 relative overflow-hidden">
         <div class="absolute top-0 left-0 w-full h-full bg-grid-white/[0.05]"></div>
         <div class="container mx-auto px-6 lg:px-20 text-center relative z-10">
             <h1 class="text-4xl lg:text-4xl font-extrabold !leading-tight">Hai, {{ $mahasiswa->nama }}</h1>
-            <p class="text-md text-white/80 mt-4 max-w-2xl mx-auto">Ini adalah pusat kendali profil Anda. Pastikan semua data
+            <p class="text-md text-white/80 mt-4 max-w-2xl mx-auto">Ini adalah pusat kendali profil Anda. Pastikan semua
+                data
                 terisi lengkap untuk meningkatkan peluang magang.</p>
         </div>
     </header>
@@ -21,14 +25,16 @@
                 <div class="flex flex-col md:flex-row items-center gap-6 md:gap-8 border-b border-base-300 pb-8">
                     <div class="avatar">
                         <div class="w-32 h-32 rounded-full ring ring-[#187DAB] ring-offset-base-100 ring-offset-4">
-                            <img src="{{ Auth::user()->mahasiswa->foto_profil ? asset('storage/' . Auth::user()->mahasiswa->foto_profil) : asset('img/placeholder.jpg') }}"
+                            <img id="preview_foto"
+                                src="{{ Auth::user()->mahasiswa->foto_profil ? asset('storage/' . Auth::user()->mahasiswa->foto_profil) : 'https://ui-avatars.com/api/?name=' . urlencode($mahasiswa->nama) . '&background=187DAB&color=fff&size=128' }}"
                                 alt="Foto Profil" />
                         </div>
                     </div>
                     <div class="text-center md:text-left">
                         <h2 class="text-3xl font-bold text-gray-900">{{ $mahasiswa->nama }}</h2>
                         <p class="text-gray-600 text-lg mt-1">{{ $mahasiswa->jurusan ?? 'Jurusan Belum Diisi' }},
-                            {{ $mahasiswa->universitas ?? 'Universitas Belum Diisi' }}</p>
+                            {{ $mahasiswa->universitas ?? 'Universitas Belum Diisi' }}
+                        </p>
                         <div class="flex items-center justify-center md:justify-start gap-2 mt-3 text-gray-500">
                             <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
                                 <path d="M2.003 5.884L10 9.882l7.997-3.998A2 2 0 0016 4H4a2 2 0 00-1.997 1.884z" />
@@ -60,19 +66,25 @@
                                         class="w-full btn btn-ghost bg-[var(--bg-primary)] text-white cursor-pointer mt-2">
                                         Pilih Foto Baru
                                     </label>
-
-                                    {{-- Tombol simpan yang hanya muncul jika ada file baru dipilih --}}
-                                    <button type="submit" id="tombol_simpan_foto" class="btn btn-info hidden mt-2">
-                                        Simpan Perubahan
-                                    </button>
+                                    {{-- Tombol yang hanya muncul jika ada file baru dipilih --}}
                                     @error('foto_profil')
                                         <span class="text-red-500 text-sm mt-2">{{ $message }}</span>
                                     @enderror
                                 </div>
-
-                                {{-- Menampilkan error validasi --}}
+                                <dialog id="preview_foto_modal" class="modal modal-bottom sm:modal-middle">
+                                    <div class="modal-box">
+                                        <h3 class="font-bold text-lg">Pratinjau Foto Profil Baru</h3>
+                                        <p class="py-4">Apakah Anda ingin menggunakan foto ini sebagai foto profil baru?</p>
+                                        <figure class="my-4 flex justify-center bg-base-200 p-4 rounded-lg">
+                                            <img id="modal_preview_image" src="" alt="Pratinjau Foto"
+                                                class="max-h-64 rounded-lg shadow-lg" />
+                                        </figure>
+                                        <div class="modal-action">
+                                            <button id="terapkan_foto_btn" class="btn btn-primary">Gunakan Foto Ini</button>
+                                        </div>
+                                    </div>
+                                </dialog>
                             </form>
-
                         </div>
                     </div>
                 </div>
@@ -87,54 +99,65 @@
                         </div>
                         <div>
                             <div class="text-sm font-semibold text-gray-400">Jenis Kelamin</div>
-                            <div class="text-lg text-gray-800">{{ $mahasiswa->jenis_kelamin ?? 'Belum Diisi' }}</div>
+                            <div
+                                class="{{ $mahasiswa->jenis_kelamin ? 'text-lg text-gray-800' : 'text-lg text-error font-medium' }}">
+                                {{ $mahasiswa->jenis_kelamin ?? 'Belum Diisi' }}
+                            </div>
                         </div>
                         <div>
                             <div class="text-sm font-semibold text-gray-400">Tempat, Tanggal Lahir</div>
                             <div class="flex gap-1">
                                 <div
                                     class="{{ $mahasiswa->tempat_lahir ? 'text-lg text-gray-800' : 'text-lg text-error font-medium' }}">
-                                    {{ $mahasiswa->tempat_lahir ?? 'Belum Diisi' }}, </div>
+                                    {{ $mahasiswa->tempat_lahir ?? 'Belum Diisi' }},
+                                </div>
                                 <div
                                     class="{{ $mahasiswa->tanggal_lahir ? 'text-lg text-gray-800' : 'text-lg text-error font-medium' }}">
-                                    {{ $mahasiswa->tanggal_lahir ?? 'Belum Diisi' }}</div>
+                                    {{ $mahasiswa->tanggal_lahir ? \Carbon\Carbon::parse($mahasiswa->tanggal_lahir)->isoFormat('D MMM YYYY') : 'Belum Diisi' }}
+                                </div>
                             </div>
                         </div>
                         <div>
                             <div class="text-sm font-semibold text-gray-400">No. Handphone</div>
                             <div
                                 class="{{ $mahasiswa->no_hp ? 'text-lg text-gray-800' : 'text-lg text-error font-medium' }}">
-                                {{ $mahasiswa->no_hp ?? 'Belum Diisi' }}</div>
+                                {{ $mahasiswa->no_hp ?? 'Belum Diisi' }}
+                            </div>
                         </div>
                         <div>
                             <div class="text-sm font-semibold text-gray-400">Provinsi Domisili</div>
                             <div
                                 class="{{ $mahasiswa->provinsi_domisili ? 'text-lg text-gray-800' : 'text-lg text-error font-medium' }}">
-                                {{ $mahasiswa->provinsi_domisili ?? 'Belum Diisi' }}</div>
+                                {{ $mahasiswa->provinsi_domisili ?? 'Belum Diisi' }}
+                            </div>
                         </div>
                         <div>
                             <div class="text-sm font-semibold text-gray-400">Kabupaten/Kota Domisili</div>
                             <div
                                 class="{{ $mahasiswa->kabupaten_domisili ? 'text-lg text-gray-800' : 'text-lg text-error font-medium' }}">
-                                {{ $mahasiswa->kabupaten_domisili ?? 'Belum Diisi' }}</div>
+                                {{ $mahasiswa->kabupaten_domisili ?? 'Belum Diisi' }}
+                            </div>
                         </div>
                         <div>
                             <div class="text-sm font-semibold text-gray-400">Kecamatan Domisili</div>
                             <div
                                 class="{{ $mahasiswa->kecamatan_domisili ? 'text-lg text-gray-800' : 'text-lg text-error font-medium' }}">
-                                {{ $mahasiswa->kecamatan_domisili ?? 'Belum Diisi' }}</div>
+                                {{ $mahasiswa->kecamatan_domisili ?? 'Belum Diisi' }}
+                            </div>
                         </div>
                         <div>
                             <div class="text-sm font-semibold text-gray-400">Kelurahan Domisili</div>
                             <div
                                 class="{{ $mahasiswa->desa_domisili ? 'text-lg text-gray-800' : 'text-lg text-error font-medium' }}">
-                                {{ $mahasiswa->desa_domisili ?? 'Belum Diisi' }}</div>
+                                {{ $mahasiswa->desa_domisili ?? 'Belum Diisi' }}
+                            </div>
                         </div>
                         <div class="md:col-span-2">
                             <div class="text-sm font-semibold text-gray-400">Alamat Domisili</div>
                             <div
                                 class="{{ $mahasiswa->alamat_domisili ? 'text-lg text-gray-800' : 'text-lg text-error font-medium' }}">
-                                {{ $mahasiswa->alamat_domisili ?? 'Belum Diisi' }}</div>
+                                {{ $mahasiswa->alamat_domisili ?? 'Belum Diisi' }}
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -143,11 +166,6 @@
                 <div class="pt-8">
                     <h3 class="text-xl font-bold text-gray-800 mb-4">Riwayat Lamaran Magang</h3>
                     <div class="overflow-x-auto">
-                        @php
-                            $pendaftarans = [
-
-                            ];
-                        @endphp
                         <table class="table">
                             <thead class="bg-base-200">
                                 <tr>
@@ -160,81 +178,53 @@
                             </thead>
                             <tbody>
                                 <!-- Contoh Data 1 (Status Diterima) -->
-                                @forelse ($pendaftarans as $pendaftaran)
-                                <tr>
-                                    <td>
-                                        <div class="font-bold">Backend Web Developer (Laravel)</div>
-                                        <div class="text-sm opacity-60">Kategori: Web Development</div>
-                                    </td>
-                                    <td>PT. Teknologi Maju</td>
-                                    <td>12 Juni 2025</td>
-                                    <td>
-                                        <div class="badge badge-success text-white">Diterima</div>
-                                    </td>
+                                @forelse ($mahasiswa->pendaftaran as $pendaftaran)
+                                    <tr>
+                                        <td>
+                                            <div class="font-bold">{{ $pendaftaran->program_magang->judul }}</div>
+                                            <div class="text-sm opacity-60">Kategori:
+                                                {{ $pendaftaran->program_magang->category->name }}
+                                            </div>
+                                        </td>
+                                        <td>{{ $pendaftaran->program_magang->mitra->nama_perusahaan }}</td>
+                                        <td>{{ $pendaftaran->created_at }}</td>
+                                        <td>
+                                            <div class="badge @if ($pendaftaran->status == 'Diterima') text-emerald-800 bg-emerald-100
+                                            @elseif($pendaftaran->status == 'Ditolak')
+                                                        text-rose-800 bg-rose-800
+                                                    @elseif($pendaftaran->status == 'Menunggu')
+                                                                text-purple-800 bg-purple-100
+                                                            @elseif($pendaftaran->status == 'Berlangsung')
+                                                                        text-amber-800 bg-amber-100
+                                                                    @elseif($pendaftaran->status == 'Selesai')
+                                                                            text-sky-800 bg-sky-100 @endif ">
+                                                {{ $pendaftaran->status }}
+                                            </div>
+                                        </td>
 
-                                </tr>
-
-                                <!-- Contoh Data 2 (Status Ditolak) -->
-                                <tr>
-                                    <td>
-                                        <div class="font-bold">UI/UX Designer (Figma)</div>
-                                        <div class="text-sm opacity-60">Kategori: Desain Grafis</div>
-                                    </td>
-                                    <td>Suitmedia</td>
-                                    <td>10 Juni 2025</td>
-                                    <td>
-                                        <div class="badge badge-error text-white">Ditolak</div>
-                                    </td>
-
-                                </tr>
-
-                                <!-- Contoh Data 3 (Status Pending) -->
-                                <tr>
-                                    <td>
-                                        <div class="font-bold">Mobile App Developer (Flutter)</div>
-                                        <div class="text-sm opacity-60">Kategori: Mobile Development</div>
-                                    </td>
-                                    <td>GITS Indonesia</td>
-                                    <td>5 Juni 2025</td>
-                                    <td>
-                                        <div class="badge badge-warning text-white">Pending</div>
-                                    </td>
-
-                                </tr>
-
+                                    </tr>
                                 @empty
 
-                                <tr>
-                                    <td colspan="5" class="text-center py-12">
-                                        <div class="flex flex-col items-center">
-                                            <svg xmlns="http://www.w3.org/2000/svg" class="h-16 w-16 text-gray-300"
-                                                fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                                    d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
-                                            </svg>
-                                            <p class="text-gray-500 mt-4 text-lg">Anda belum pernah melamar program magang.
-                                            </p>
-                                            <p class="text-gray-400 text-sm">Ayo mulai cari peluang terbaikmu sekarang!</p>
-                                            <a href="{{ route('lowongan') }}" class="btn btn-ghost bg-[var(--bg-primary)] text-white mt-6">Cari
-                                                Lowongan Sekarang</a>
-                                        </div>
-                                    </td>
-                                </tr>
+                                    <tr>
+                                        <td colspan="5" class="text-center py-12">
+                                            <div class="flex flex-col items-center">
+                                                <svg xmlns="http://www.w3.org/2000/svg" class="h-16 w-16 text-gray-300"
+                                                    fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                                        d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+                                                </svg>
+                                                <p class="text-gray-500 mt-4 text-lg">Anda belum pernah melamar program
+                                                    magang.
+                                                </p>
+                                                <p class="text-gray-400 text-sm">Ayo mulai cari peluang terbaikmu sekarang!
+                                                </p>
+                                                <a href="{{ route('lowongan') }}"
+                                                    class="btn btn-ghost bg-[var(--bg-primary)] text-white mt-6">Cari
+                                                    Lowongan Sekarang</a>
+                                            </div>
+                                        </td>
+                                    </tr>
                                 @endforelse
-                                {{-- <!--
-                                // ===================================================================
-                                // SPACE-BACKEND: Integrasi Backend Dimulai Di Sini
-                                // ===================================================================
-                                // Gunakan loop @forelse untuk menampilkan data dari database.
-                                // Contoh: @forelse ($pendaftarans as $pendaftaran)
-                                //     ... (kode tr untuk setiap pendaftaran)
-                                // @empty
-                                //     ... (kode tr untuk placeholder di bawah)
-                                // @endforelse
-                                // ===================================================================
-                                --> --}}
-
-                                {{-- <!-- Placeholder jika tidak ada data lamaran --> --}}
                             </tbody>
                         </table>
                     </div>
@@ -269,8 +259,8 @@
                 </div>
                 <div class="form-control w-full">
                     <label class="label"><span class="label-text">Jurusan</span></label>
-                    <input type="text" name="jurusan" placeholder="cth: Sistem Informasi"
-                        value="{{ $mahasiswa->jurusan }}" class="input input-bordered w-full" />
+                    <input type="text" name="jurusan" placeholder="cth: Sistem Informasi" value="{{ $mahasiswa->jurusan }}"
+                        class="input input-bordered w-full" />
                 </div>
                 <div class="form-control w-full">
                     <label class="label"><span class="label-text">Universitas</span></label>
@@ -287,10 +277,12 @@
                         <option value="{{ $mahasiswa->jenis_kelamin }}" selected>{{ $mahasiswa->jenis_kelamin }}</option>
                         <option value="{{ $mahasiswa->jenis_kelamin ? '' : 'Laki-laki' }}"
                             class="{{ $mahasiswa->jenis_kelamin ? 'hidden' : 'block' }}">
-                            {{ $mahasiswa->jenis_kelamin ? '' : 'Laki-laki' }}</option>
+                            {{ $mahasiswa->jenis_kelamin ? '' : 'Laki-laki' }}
+                        </option>
                         <option value="{{ $mahasiswa->jenis_kelamin ? '' : 'Perempuan' }}"
                             class="{{ $mahasiswa->jenis_kelamin ? 'hidden' : 'block' }}">
-                            {{ $mahasiswa->jenis_kelamin ? '' : 'Perempuan' }}</option>
+                            {{ $mahasiswa->jenis_kelamin ? '' : 'Perempuan' }}
+                        </option>
                     </select>
                 </div>
                 <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
@@ -307,8 +299,8 @@
                 </div>
                 <div class="form-control w-full">
                     <label class="label"><span class="label-text">No. Handphone</span></label>
-                    <input type="tel" name="no_hp" placeholder="cth: 081234567890"
-                        value="{{ $mahasiswa->no_hp }}" class="input input-bordered w-full" />
+                    <input type="tel" name="no_hp" placeholder="cth: 081234567890" value="{{ $mahasiswa->no_hp }}"
+                        class="input input-bordered w-full" />
                 </div>
 
                 <div class="divider">Alamat Domisili</div>
@@ -354,4 +346,45 @@
         </form>
     </dialog>
 
+    @vite('resources/js/utility/profil-mahasiswa.js')
+    @push('scripts')
+        <script>
+            // Pastikan semua script ada di dalam listener ini untuk mencegah error
+            document.addEventListener('DOMContentLoaded', function () {
+
+                // --- LOGIKA UNTUK MODAL PRATINJAU FOTO ---
+                const inputFoto = document.getElementById('foto_profil_input');
+                const avatarUtama = document.getElementById('preview_foto');
+
+                const modal = document.getElementById('preview_foto_modal');
+                const modalImage = document.getElementById('modal_preview_image');
+                const tombolTerapkan = document.getElementById('terapkan_foto_btn');
+
+                // Defensive Coding: Cek dulu apakah semua elemennya ada sebelum menambahkan listener
+                if (inputFoto && avatarUtama && modal && modalImage && tombolTerapkan) {
+
+                    // 1. Saat user memilih file baru...
+                    inputFoto.addEventListener('change', function (event) {
+                        if (event.target.files && event.target.files[0]) {
+                            const reader = new FileReader();
+                            reader.onload = function (e) {
+                                modalImage.src = e.target.result;
+                                modal.showModal();
+                            }
+                            reader.readAsDataURL(event.target.files[0]);
+                        }
+                    });
+
+                    // 2. Saat user menekan tombol "Gunakan Foto Ini"...
+                    tombolTerapkan.addEventListener('click', function () {
+                        avatarUtama.src = modalImage.src;
+                        tombolSimpan.classList.remove('hidden');
+                        modal.close();
+                    });
+                } else {
+                    console.error('Satu atau lebih elemen untuk pratinjau foto tidak ditemukan di halaman.');
+                }
+            });
+        </script>
+    @endpush
 @endsection

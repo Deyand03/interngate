@@ -11,6 +11,7 @@ Alpine.start();
 document.addEventListener('DOMContentLoaded', () => {
 
     const successMessageElement = document.getElementById('success-message');
+    const errorMessageElement = document.getElementById('error-message');
 
     if (successMessageElement) {
         const message = successMessageElement.getAttribute('data-message');
@@ -29,6 +30,26 @@ document.addEventListener('DOMContentLoaded', () => {
 
         Toast.fire({
             icon: 'success',
+            title: `${message}`
+        });
+    }
+    if (errorMessageElement) {
+        const message = errorMessageElement.getAttribute('data-message');
+        console.log(message);
+        const Toast = Swal.mixin({
+            toast: true,
+            position: 'top-end',
+            showConfirmButton: false,
+            timer: 7000,
+            timerProgressBar: true,
+            didOpen: (toast) => {
+                toast.onmouseenter = Swal.stopTimer;
+                toast.onmouseleave = Swal.resumeTimer;
+            }
+        });
+
+        Toast.fire({
+            icon: 'error',
             title: `${message}`
         });
     }

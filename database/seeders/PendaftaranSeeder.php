@@ -20,7 +20,7 @@ class PendaftaranSeeder extends Seeder
                 'transkrip_nilai' => 'transkrip_nilai.pdf',
                 'status' => 'Menunggu',
                 'catatan_mitra' => null,
-                'id_mahasiswa' => 1,
+                'id_mahasiswa' => 2,
                 'id_program_magang' => 1,
                 'created_at' => now(),
                 'updated_at' => now(),

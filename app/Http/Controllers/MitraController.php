@@ -2,31 +2,55 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Category;
 use App\Models\Mitra;
+use App\Models\Category;
 use App\Models\Pendaftaran;
 use Illuminate\Http\Request;
 use App\Models\ProgramMagang;
+use Illuminate\Support\Facades\Auth;
 
 class MitraController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(Request $request)
     {
-        $programs = ProgramMagang::all();
-        $pendaftarans = Pendaftaran::with('program_magang')->get();
+        $mitra = Auth::user()->mitra;
+
+        $programIds = $mitra->program_magang()->pluck('id');
+        $pendaftaransQuery = Pendaftaran::whereIn('id_program_magang', $programIds);
+
         $stats = [
-            'total_pendaftaran' => Pendaftaran::where('status', '!=', 'Ditolak')->count(),
-            'menunggu' => Pendaftaran::where('status', 'Menunggu')->count(),
-            'berlangsung' => Pendaftaran::where('status', 'Berlangsung')->count(),
-            'selesai' => Pendaftaran::where('status', 'Selesai')->count(),
+            'totalPelamar' => $pendaftaransQuery->clone()->where('status', '!=', 'Ditolak')
+                ->where('status', '!=', 'Menunggu')
+                ->count(),
+            'menungguKonfirmasi' => $pendaftaransQuery->clone()->where('status', 'Menunggu')->count(),
+            'aktifMagang' => $pendaftaransQuery->clone()->where('status', 'Berlangsung')->count(),
+            'telahSelesai' => $pendaftaransQuery->clone()->where('status', 'Selesai')->count(),
         ];
 
-        $categories = Category::orderBy('name', 'asc')->get();
-        return view('mitra.index', compact('pendaftarans', 'stats', 'programs', 'categories'));
-        ;
+        $queryBuilder = $pendaftaransQuery->clone()->with(['mahasiswa', 'program_magang']);
+        if ($request->filled('search')) {
+            $search = $request->search;
+            $queryBuilder->whereHas('mahasiswa', function ($query) use ($search) {
+                $query->where('nama', 'like', "%{$search}%")
+                    ->orWhere('nim', 'like', "%{$search}%");
+            });
+        }
+
+        if ($request->filled('program')) {
+            $queryBuilder->where('id_program_magang', $request->program);
+        }
+
+        if ($request->filled('status')) {
+            $queryBuilder->where('status', $request->status);
+        }
+
+        $pendaftarans = $queryBuilder->latest()->paginate(10);
+
+        $categories = Category::all();
+        return view('mitra.index', compact('mitra', 'stats', 'pendaftarans', 'categories'));
     }
 
     /**

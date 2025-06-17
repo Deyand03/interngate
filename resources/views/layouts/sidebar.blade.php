@@ -31,9 +31,6 @@
 
 <body style="font-family: Poppins">
     <div class="flex min-h-screen">
-        <!-- ====================================================== -->
-        <!-- Sidebar yang Telah Diperbarui -->
-        <!-- ====================================================== -->
         <nav class="w-72 bg-gradient-to-b from-[#187DAB] to-[#146C94] text-white flex flex-col h-screen sticky top-0">
 
             <!-- Bagian Atas: Kembali & Profil -->
@@ -108,6 +105,6 @@
     </div>
 
     @yield('modals')
-    @vite(['resources/js/app.js', 'resources/js/main.js'])
+    @vite(['resources/js/app.js', 'resources/js/utility/profil-mitra.js'])
 </body>
 </html>

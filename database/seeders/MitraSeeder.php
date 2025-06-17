@@ -16,18 +16,18 @@ class MitraSeeder extends Seeder
         DB::table('mitras')->insert([
             [
                 'id' => 1,
-                'nama_perusahaan' => 'PT. Vanith',
+                'nama_perusahaan' => 'PT. ID Star Technology',
                 'alamat_perusahaan' => 'Jl. Muaro Jambi',
-                'deskripsi' => 'PT. Vanith adalah perusahaan yang bergerak di bidang teknologi informasi dan komunikasi.',
+                'deskripsi' => 'PT. ID Star Technology adalah perusahaan yang bergerak di bidang teknologi informasi dan komunikasi.',
                 'user_id' => 6,
                 'created_at' => now(),
                 'updated_at' => now(),
             ],
             [
                 'id' => 2,
-                'nama_perusahaan' => 'PT. ASOMASO',
-                'alamat_perusahaan' => 'Jl. Muaro Jambi',
-                'deskripsi' => 'PT. ASOMASO adalah perusahaan yang bergerak di bidang Game Development.',
+                'nama_perusahaan' => 'PT. Vanith Nusantara',
+                'alamat_perusahaan' => 'Jl. Telanaipura',
+                'deskripsi' => 'PT. Vanith Nusantara adalah perusahaan yang bergerak di bidang Game Development.',
                 'user_id' => 7,
                 'created_at' => now(),
                 'updated_at' => now(),

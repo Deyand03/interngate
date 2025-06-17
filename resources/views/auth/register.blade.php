@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Register</title>
-    @vite(['resources/css/app.css', 'resources/css/style.css', 'resources/js/main.js', 'resources/js/app.js'])
+    @vite(['resources/css/app.css', 'resources/css/style.css'])
     <link rel="shortcut icon" href="{{ asset('img/title-icon.png') }}" type="image/x-icon">
 </head>
 
@@ -37,16 +37,6 @@
             <div class="flex flex-col overflow-y-auto transition-all px-2">
                 <form action="{{ route('register') }}" method="POST" class="flex flex-col gap-3 py-1">
                     @csrf
-                    <div>
-                        <label for="nama" class="font-medium">Nama: </label>
-                        <input type="text"
-                            class="input w-full input-ghost focus:ring-blue-500 ring-blue-500 ring-1 shadow-md"
-                            id="nama" name="nama" placeholder="Masukan Nama" value="{{ old('nama') }}"
-                            required />
-                        @error('nama')
-                            <span class="text-red-500 text-sm">{{ $message }}</span>
-                        @enderror
-                    </div>
                     <div>
                         <label for="email" class="font-medium">Email: </label>
                         <input type="email"
@@ -117,6 +107,7 @@
             </div>
         </div>
     </div>
+    @vite([ 'resources/js/utility/register.js', 'resources/js/app.js'])
 </body>
 
 </html>

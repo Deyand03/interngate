@@ -92,8 +92,8 @@ class MahasiswaSeeder extends Seeder
             ],
             [
                 'id' => 5,
-                'nim' => 'F1E123064',
-                'nama' => 'Rizky Ramadhan',
+                'nim' => 'F1E123014',
+                'nama' => 'MonoZikk',
                 'jurusan' => 'Sistem Informasi',
                 'universitas' => 'Universitas Jambi',
                 'jenis_kelamin' => 'Laki-laki',

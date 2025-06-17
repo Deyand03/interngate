@@ -100,7 +100,7 @@
                             </tr>
 
                             <!-- Placeholder jika tidak ada data -->
-                            {{-- 
+                            {{--
                         @empty
                         <tr>
                             <td colspan="5" class="text-center py-12">
@@ -331,4 +331,5 @@
             <button>close</button>
         </form>
     </dialog>
+    
 @endsection

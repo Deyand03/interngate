@@ -10,9 +10,9 @@
     </div>
     <div>
         <label class="font-medium " for="alamat_perusaahan">Alamat Perusahaan :</label>
-        <input type="text" id="alamat_perusaahan" name="alamat_perusaahan"
+        <input type="text" id="alamat_perusaahan" name="alamat_perusahaan"
             class="input w-full input-ghost focus:ring-blue-500 ring-blue-500 ring-1 shadow-md mb-2"
-            placeholder="Masukan alamat_perusaahan">
+            placeholder="Masukan Alamat Perusaahan">
         @error('alamat_perusaahan')
             <span class="text-red-500 text-sm">{{ $message }}</span>
         @enderror

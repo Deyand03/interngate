@@ -87,7 +87,7 @@ class RegisteredUserController extends Controller
                     'jurusan' => $request->jurusan,
                     'universitas' => $request->universitas,
                 ]);
-            } elseif ($user->role == "mahasiswa") {
+            } elseif ($user->role == "mitra") {
                 Mitra::create([
                     'user_id' => $user->id,
                     'nama_perusahaan' => $request->nama_perusahaan,

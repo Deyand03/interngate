@@ -1,5 +1,13 @@
 <div class="transition-opacity duration-500 ease-in-out opacity-0 hidden form-regis py-1" id="form-mahasiswa">
     <div>
+        <label for="nama" class="font-medium">Nama: </label>
+        <input type="text" class="input w-full input-ghost focus:ring-blue-500 ring-blue-500 ring-1 shadow-md" id="nama"
+            name="nama" placeholder="Masukan Nama" value="{{ old('nama') }}" />
+        @error('nama')
+            <span class="text-red-500 text-sm">{{ $message }}</span>
+        @enderror
+    </div>
+    <div>
         <label class="font-medium" for="nim">NIM :</label>
         <input type="text" id="nim" name="nim"
             class="input w-full input-ghost focus:ring-blue-500 ring-blue-500 ring-1 shadow-md mb-2"

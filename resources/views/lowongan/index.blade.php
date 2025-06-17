@@ -216,6 +216,7 @@
                 </div>
 
                 {{-- Grid untuk List Lowongan --}}
+                @if($lowongans->isNotEmpty())
                 <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
                     @foreach ($lowongans as $lowongan)
                         <div
@@ -239,8 +240,10 @@
                                     <div class="flex flex-wrap gap-2 my-4">
                                         <span
                                             class="{{ $lowongan->category->badge_class }} text-xs font-medium px-2.5 py-1 rounded-full">{{ $lowongan->category->name }}</span>
-                                        <span class="bg-gray-100 text-gray-800 text-xs font-medium px-2.5 py-1 rounded-full">{{ $lowongan->durasi }}</span>
-                                        <span class="{{ $lowongan->status == 'Buka' ? 'text-emerald-800 bg-emerald-100' : 'bg-rose-100 text-rose-800' }} text-xs font-medium px-2.5 py-1 rounded-full">{{ $lowongan->status }}</span>
+                                        <span
+                                            class="bg-gray-100 text-gray-800 text-xs font-medium px-2.5 py-1 rounded-full">{{ $lowongan->durasi }}</span>
+                                        <span
+                                            class="{{ $lowongan->status == 'Buka' ? 'text-emerald-800 bg-emerald-100' : 'bg-rose-100 text-rose-800' }} text-xs font-medium px-2.5 py-1 rounded-full">{{ $lowongan->status }}</span>
                                     </div>
 
                                     <p class="text-sm text-gray-600 line-clamp-3">
@@ -254,16 +257,19 @@
                                 </div>
                             </div>
                         </div>
-                        @endforeach
+                    @endforeach
+                </div>
+                @else
+                    <div class="text-center w-full font-bold text-2xl">
+                        <p>Belum ada Lowongan</p>
                     </div>
+                @endif
 
-                    <div class="flex flex-col mt-8 w-full">
-                        {{ $lowongans->withQueryString()->fragment('list-perusahaan')->links('pagination::tailwind')  }}
-                    </div>
+                <div class="flex flex-col mt-8 w-full">
+                    {{ $lowongans->withQueryString()->fragment('list-perusahaan')->links('pagination::tailwind')  }}
                 </div>
             </div>
-
-            {{-- Pagination --}}
-
+        </div>
     </div>
+    @vite(['resources/js/utility/lowongan.js'])
 @endsection

@@ -36,7 +36,8 @@
             </div>
         </section>
     </footer>
-    @vite(['resources/js/main.js', 'resources/js/app.js'])
+    @vite(['resources/js/app.js'])
+    @stack('scripts')
 </body>
 
 </html>

@@ -4,22 +4,19 @@ use App\Http\Controllers\MahasiswaController;
 use App\Http\Controllers\MitraController;
 use App\Http\Controllers\NavigationController;
 use App\Http\Controllers\PostController;
-use App\Http\Controllers\ProfileController;
-use App\Models\Mitra;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', [NavigationController::class, 'beranda'])->name('beranda');
-Route::get('/lowongan', [NavigationController::class, 'lowongan'])->name('lowongan');
 Route::get('/perusahaan', [NavigationController::class, 'perusahaan'])->name('perusahaan');
+Route::get('/lowongan', [NavigationController::class, 'lowongan'])->name('lowongan');
 Route::get('lowongan/{program:slug}', [PostController::class, 'show'])->name('lowongan.show');
+Route::post('lowongan/{program:slug}/apply', [PostController::class, 'store'])->name('lowongan.store');
 Route::get('/faq', [NavigationController::class, 'faq'])->name('faq');
 
 Route::get('/test-view', function(){
     return view('welcome');
 });
 
-
-Route::get('/dashboard', [NavigationController::class, 'beranda']);
 
 Route::middleware(['auth', 'role:mitra'])->group(function () {
     Route::get('mitra', [MitraController::class, 'index'])->name('mitra.index');

@@ -65,10 +65,10 @@
             <div class="dropdown dropdown-end">
                 <div tabindex="0" role="button" class="btn btn-ghost btn-circle avatar transition-transform duration-300 hover:scale-110">
                     <div class="w-10 rounded-full ring-2 ring-primary/50 ring-offset-base-100 ring-offset-2">
-                        @if (Auth::user()->role === 'mahasiswa' && Auth::user()->mahasiswa && Auth::user()->mahasiswa->foto_profil)
-                            <img src="{{ asset('storage/' . Auth::user()->mahasiswa->foto_profil) }}" alt="Foto Profil Mahasiswa" class="object-cover" />
-                        @elseif (Auth::user()->role === 'mitra' && Auth::user()->mitra && Auth::user()->mitra->logo_perusahaan)
-                            <img src="{{ asset('storage/' . Auth::user()->mitra->logo_perusahaan) }}" alt="Logo Perusahaan Mitra" class="object-cover" />
+                        @if (Auth::user()->role === 'mahasiswa' && Auth::user()->mahasiswa)
+                            <img src="{{ Auth::user()->mahasiswa->foto_profil ? asset('storage/' . Auth::user()->mahasiswa->foto_profil) : 'https://ui-avatars.com/api/?name=' . urlencode(Auth::user()->mahasiswa->nama) . '&background=187DAB&color=fff&size=128' }}" alt="Foto Profil Mahasiswa" class="object-cover" />
+                        @elseif (Auth::user()->role === 'mitra' && Auth::user()->mitra)
+                            <img src="{{ Auth::user()->mitra->logo_perusahaan ? asset('storage/' . Auth::user()->mitra->logo_perusahaan) : 'https://ui-avatars.com/api/?name=' . urlencode(Auth::user()->mitra->nama_perusahaan) . '&background=187DAB&color=fff&size=128' }}}" alt="Logo Perusahaan Mitra" class="object-cover" />
                         @else
                             <img src="{{ asset('img/placeholder.jpg') }}" alt="Default Avatar" class="object-cover" />
                         @endif

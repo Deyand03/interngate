@@ -10,6 +10,7 @@
         </p>
     </section>
 
+    @if($mitras->isNotEmpty())
     <section class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6 p-10">
         @foreach ($mitras as $mitra)
             <div class="bg-white shadow-md rounded-lg p-4">
@@ -20,6 +21,11 @@
             </div>
         @endforeach
     </section>
+    @else
+        <div class="w-full text-center font-bold text-2xl p-24">
+            Belum ada Mitra
+        </div>
+    @endif
     <div class="flex flex-col w-full px-10 pb-10">
         {{ $mitras->links('pagination::tailwind')  }}
     </div>

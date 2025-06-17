@@ -21,6 +21,7 @@ export default {
         'text-amber-800',
         'bg-sky-100',
         'text-sky-800',
+        
     ],
 
     theme: {
