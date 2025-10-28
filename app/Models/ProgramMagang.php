@@ -18,7 +18,7 @@ class ProgramMagang extends Model
         'kualifikasi',
         'batas_pendaftaran',
         'awal_magang',
-        'akhir_magang', // Sesuaikan dengan nama kolom Anda
+        'akhir_magang',
         'status',
         'id_mitra',
         'id_category',

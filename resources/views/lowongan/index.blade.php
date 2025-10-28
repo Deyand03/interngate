@@ -2,7 +2,6 @@
 @section('title', 'Lowongan - Cari Program')
 
 @section('content')
-
     <div class="">
         {{-- Page Hero Lowongan --}}
         <div class="flex bg-header text-white h-fit py-16 px-20 gap-16">

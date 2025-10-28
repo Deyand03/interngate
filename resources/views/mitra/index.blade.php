@@ -168,11 +168,8 @@
                                             data-nohp="{{ $pendaftaran->mahasiswa->no_hp }}"
                                             data-foto="{{ $pendaftaran->mahasiswa->foto_profil ? asset('storage/' . $pendaftaran->mahasiswa->foto_profil) : 'https://placehold.co/300x400/E0E0E0/757575?text=' . $pendaftaran->mahasiswa->nama }}"
                                             data-cv-url="{{ asset('storage/' . $pendaftaran->file_cv) }}"
-                                            {{-- Sesuaikan path --}}
                                             data-transkrip-url="{{ asset('storage/' . $pendaftaran->transkrip_nilai) }}"
-                                            {{-- Sesuaikan path --}}
                                             data-action-url="{{ route('mitra.index.togglemhs', $pendaftaran) }}">
-                                            {{-- Ganti dengan route-mu yg benar --}}
                                             Tinjau Lamaran
                                         </button>
                                     </td>

@@ -16,7 +16,7 @@ return new class extends Migration
             $table->string('judul');
             $table->string('slug')->unique();
             $table->text('deskripsi');
-            $table->string('gambar');
+            $table->string('gambar')->nullable();
             $table->integer('kuota');
             $table->text('kualifikasi');
             $table->date('batas_pendaftaran');

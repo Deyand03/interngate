@@ -2,7 +2,6 @@
 
 @section('content')
     <div class="relative h-56 md:h-72 w-full">
-        <!-- SPACE-BACKEND: Ganti src dengan 'mitra->banner_perusahaan' dari DB -->
         <img src="{{ Auth::user()->mitra->banner ? asset('storage/' . Auth::user()->mitra->banner) : asset('img/placeholder.jpg') }}"
             alt="Banner Perusahaan" class="h-full w-full object-cover">
         <div class="absolute inset-0 bg-black/50"></div>
@@ -17,7 +16,6 @@
                 <div class="flex flex-col md:flex-row items-center gap-6 md:gap-8">
                     <div class="avatar -mt-16 md:-mt-24">
                         <div class="w-32 h-32 rounded-full ring ring-[#187DAB] ring-offset-base-100 ring-offset-4">
-                            <!-- SPACE-BACKEND: Hubungkan dengan path logo dari storage -->
                             <img src="{{ Auth::user()->mitra->logo_perusahaan ? asset('storage/' . Auth::user()->mitra->logo_perusahaan) : asset('img/placeholder.jpg') }}"
                                 alt="Logo Perusahaan" />
                         </div>
@@ -46,12 +44,10 @@
                     <div class="space-y-4 text-base">
                         <div>
                             <div class="font-semibold text-gray-500">Alamat Lengkap</div>
-                            {{-- <!-- SPACE-BACKEND: Ganti dengan {{ $mitra->alamat_perusahaan ?? 'Belum diisi' }} --> --}}
                             <p class="text-gray-800">{{ Auth::user()->mitra->alamat_perusahaan }}</p>
                         </div>
                         <div>
                             <div class="font-semibold text-gray-500">Deskripsi Perusahaan</div>
-                            {{-- <!-- SPACE-BACKEND: Ganti dengan {{ $mitra->deskripsi ?? 'Belum diisi' }} --> --}}
                             <p class="text-gray-800">{{ Auth::user()->mitra->deskripsi }} </p>
                         </div>
                     </div>
@@ -108,7 +104,6 @@
 
                 <div class="form-control w-full">
                     <label class="label"><span class="label-text font-semibold">Nama Perusahaan</span></label>
-                    {{-- <!-- SPACE-BACKEND: Ganti value dengan {{ old('nama_perusahaan', $mitra->nama_perusahaan) }} --> --}}
                     <input type="text" name="nama_perusahaan" value="{{ Auth::user()->mitra->nama_perusahaan }}"
                         class="input input-bordered w-full" />
                 </div>
@@ -123,7 +118,6 @@
                 </div>
                 <div class="form-control w-full">
                     <label class="label"><span class="label-text font-semibold">Deskripsi Perusahaan</span></label>
-                    {{-- <!-- SPACE-BACKEND: Isi dengan {{ old('deskripsi', $mitra->deskripsi) }} --> --}}
                     <textarea name="deskripsi" class="textarea textarea-bordered h-32"
                         placeholder="Jelaskan secara singkat mengenai perusahaan Anda...">{{Auth::user()->mitra->deskripsi}}</textarea>
                 </div>

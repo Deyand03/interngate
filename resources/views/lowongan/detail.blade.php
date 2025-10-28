@@ -7,7 +7,6 @@
 
     <!-- Header Halaman dengan Banner Perusahaan -->
     <div class="relative h-64 md:h-80 w-full">
-        <!-- SPACE-BACKEND: Ganti src dengan 'mitra.banner_perusahaan' dari DB -->
         <img src="{{ $program->banner ? asset('storage/' . $program->banner) : asset('img/banner-placehold.png') }}"
             alt="Banner Perusahaan" class="h-full w-full object-cover">
         <div class="absolute inset-0 bg-black/60"></div>
