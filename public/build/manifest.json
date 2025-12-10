@@ -4,6 +4,11 @@
     "src": "resources/css/app.css",
     "isEntry": true
   },
+  "resources/css/style.css": {
+    "file": "assets/style-BaCsB7LJ.css",
+    "src": "resources/css/style.css",
+    "isEntry": true
+  },
   "resources/js/app.js": {
     "file": "assets/app-Csz8HS3F.js",
     "name": "app",
