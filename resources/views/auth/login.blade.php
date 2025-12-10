@@ -89,7 +89,7 @@
             </div>
         </div>
     </div>
-    @vite(['resources/css/app.css', 'resources/css/style.css', 'resources/js/main.js', 'resources/js/app.js'])
+    @vite(['resources/css/app.css', 'resources/css/style.css', 'resources/js/app.js'])
     @if (session('success'))
         <div id="success-message" data-message="{{ session('success') }}" class="hidden"></div>
     @endif
