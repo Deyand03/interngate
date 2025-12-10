@@ -1,13 +1,37 @@
 {
   "resources/css/app.css": {
-    "file": "assets/app-B4Qi55n8.css",
+    "file": "assets/app-Dq2Xr-0B.css",
     "src": "resources/css/app.css",
     "isEntry": true
   },
   "resources/js/app.js": {
-    "file": "assets/app-Bf4POITK.js",
+    "file": "assets/app-Csz8HS3F.js",
     "name": "app",
     "src": "resources/js/app.js",
+    "isEntry": true
+  },
+  "resources/js/utility/lowongan.js": {
+    "file": "assets/lowongan-uWOHdoKu.js",
+    "name": "lowongan",
+    "src": "resources/js/utility/lowongan.js",
+    "isEntry": true
+  },
+  "resources/js/utility/profil-mahasiswa.js": {
+    "file": "assets/profil-mahasiswa-l0sNRNKZ.js",
+    "name": "profil-mahasiswa",
+    "src": "resources/js/utility/profil-mahasiswa.js",
+    "isEntry": true
+  },
+  "resources/js/utility/profil-mitra.js": {
+    "file": "assets/profil-mitra-BYP0SA-N.js",
+    "name": "profil-mitra",
+    "src": "resources/js/utility/profil-mitra.js",
+    "isEntry": true
+  },
+  "resources/js/utility/register.js": {
+    "file": "assets/register-BYsLX9ig.js",
+    "name": "register",
+    "src": "resources/js/utility/register.js",
     "isEntry": true
   }
 }

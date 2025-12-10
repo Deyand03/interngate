@@ -1,0 +1,1 @@
+document.addEventListener("DOMContentLoaded",function(){const t=new URLSearchParams(window.location.search);if(t.has("search")||t.has("category")){const e=document.getElementById("list-perusahaan");console.log(e),e&&e.scrollIntoView({behavior:"smooth",block:"start"})}});
